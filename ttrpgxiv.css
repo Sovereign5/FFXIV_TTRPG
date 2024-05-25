@@ -1,0 +1,271 @@
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.romanesco-regular {
+  font-family: "Romanesco";
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.sheet-block-a,
+.charsheet .sheet-block-switch:checked ~ .sheet-block-b {
+  display: block;
+}
+
+.charsheet .sheet-block-b,
+.charsheet .sheet-block-switch:checked ~ .sheet-block-a {
+  display: none;
+}
+
+.sheet-block-attack-hide,
+.charsheet .sheet-block-attack-switch:checked ~ .sheet-block-attack-show {
+  display: block;
+}
+
+.charsheet .sheet-block-attack-show,
+.charsheet .sheet-block-attack-switch:checked ~ .sheet-block-attack-hide {
+  display: none;
+}
+
+.repcontainer .repitem{
+  padding-bottom: 25px;
+}
+
+.hide {
+  display: none;
+}
+
+/*FFXIV Main Roll Container*/
+
+.sheet-rolltemplate-ffxivmain .sheet-header {
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  text-align: center;
+  font-size: 0.7em;
+  transform: scale(0.7, 1);
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  padding-bottom: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-tags {
+  font-size: 0.8em;
+  font-style: italic;
+  transform: scale(1.3, 1);
+  padding-top: 3px;
+}
+
+.sheet-rolltemplate-ffxivmain div.sheet-template-container {
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(57,57,57);
+  background: linear-gradient(180deg, rgba(92,92,92,1) 0%, rgba(29,29,29,1) 10%, rgba(29,29,29,1) 50%, rgba(29,29,29,1) 90%, rgba(0,0,0,1) 100%);
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-header {
+  color: #000;
+  padding: 2px;
+  font-size: 2.3em;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-row {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.2em;
+  transform: scale(0.8, 1.2);
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain div {
+  padding: 5px;
+  padding-top: 6px;
+  padding-bottom: 4px;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-value {
+  text-align: center;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-masterheader {
+  background: rgb(246,162,187);
+  background: linear-gradient(180deg, rgba(246,162,187,1) 0%, rgba(216,87,126,1) 10%, rgba(216,87,126,1) 100%);
+  padding: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-line {
+  margin: 5px;
+  margin-left: 0px;
+  margin-top: 0px;
+  padding-top: 1px;
+  width: 100%;
+  border-width: 2px;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-info {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 300;
+  color: white;
+  font-size: 0.5em;
+  padding: 1px;
+  transform: scale(1, 1);
+  text-align: center;
+
+}
+
+.sheet-rolltemplate-ffxivmain .inlinerollresult {
+  background-color: transparent;
+  color: white;
+  border: transparent;
+  font-family: "Romanesco";
+  font-weight: 500;
+  font-style: normal;
+}
+
+.sheet-rolltemplate-ffxivmain .inlinerollresult.fullfail {
+  border: transparent;
+  color: red;
+}
+
+.sheet-rolltemplate-ffxivmain .inlinerollresult.fullcrit {
+  border: transparent;
+  color: #00ff24;
+}
+
+.sheet-rolltemplate-ffxivmain a[href^="~"] {
+  background-color: gray;
+  display: block;
+  text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+/*FFXIV Damage Roll Template*/
+
+.sheet-rolltemplate-ffxivdamage div.sheet-template-container {
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(57,57,57);
+  background: linear-gradient(180deg, rgba(92,92,92,1) 0%, rgba(29,29,29,1) 10%, rgba(29,29,29,1) 50%, rgba(29,29,29,1) 90%, rgba(0,0,0,1) 100%);
+}
+
+.sheet-rolltemplate-ffxivdamage .sheet-header {
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  text-align: center;
+  font-size: 0.7em;
+  transform: scale(0.7, 1);
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  padding-bottom: 0px;
+}
+
+.sheet-rolltemplate-ffxivdamage .sheet-template-header {
+  color: #000;
+  padding: 2px;
+  font-size: 2.3em;
+}
+
+.sheet-rolltemplate-ffxivdamage .sheet-template-row {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.2em;
+  transform: scale(0.8, 1.2);
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.sheet-rolltemplate-ffxivdamage div {
+  padding: 5px;
+  padding-top: 6px;
+  padding-bottom: 4px;
+}
+
+.sheet-rolltemplate-ffxivdamage .sheet-value {
+  text-align: center;
+
+}
+
+.sheet-rolltemplate-ffxivdamage .sheet-line {
+  margin: 5px;
+  margin-top: 3px;
+  margin-left: 0px;
+  width: 100%;
+  border-width: 2px;
+}
+
+.sheet-rolltemplate-ffxivdamage .sheet-info {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 300;
+  color: white;
+  font-size: 0.5em;
+  padding: 1px;
+  transform: scale(1, 1);
+  text-align: center;
+
+}
+
+.sheet-rolltemplate-ffxivdamage .inlinerollresult {
+  background-color: transparent;
+  color: white;
+  border: transparent;
+  font-family: "Romanesco";
+  font-weight: 500;
+  font-style: normal;
+}
+
+.sheet-rolltemplate-ffxivdamage .inlinerollresult.fullfail {
+  border: transparent;
+  color: red;
+}
+
+.sheet-rolltemplate-ffxivdamage .inlinerollresult.fullcrit {
+  border: transparent;
+  color: #00ff24;
+}
+
+.sheet-rolltemplate-ffxivdamage a[href^="~"] {
+  background-color: gray;
+  display: block;
+  text-align: center;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+
+.sheet-rolltemplate-ffxivdamage .sheet-tags {
+  font-size: 0.7em;
+  transform: scale(1.3, 1);
+  padding-top: 1px;
+  padding-bottom: 0px;
+}
+
+.sheet-rolltemplate-ffxivdamage .sheet-tags-2 {
+  font-size: 0.7em;
+  transform: scale(1.3, 1);
+  padding-top: 1px;
+  padding-bottom: 4px;
+}

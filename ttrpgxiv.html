@@ -1,0 +1,571 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Romanesco&display=swap" rel="stylesheet">
+
+<input type="text" name="attr_char_modifier" hidden>
+
+
+<div name="char_name_box">
+	<span>Character Name</span>
+	<input type="text" name="attr_character_name">
+</div>
+Level<input type="number" name="attr_char_level" step="10" min="0" max="50">
+
+HP<input type="number" name="attr_char_HP" min="0"/>
+MaxHP<input type="number" name="attr_char_maxHP" min="0"/>
+Temp HP<input type="number" name="attr_temp_hp" min="0">
+
+MP<input type="number" name="attr_char_MP" min="0" max="5"/>
+MaxMP<input type="number" name="attr_char_maxMP" value="5" readonly/>
+<br>
+<div name="Role Selection">
+	<select name="attr_class">
+		<option value="0">Paladin</option>
+		<option value="1">Warrior</option>
+		<option value="2">Dark Knight</option>
+		<option value="3">Gunbreaker</option>
+		<option value="4">Monk</option>
+		<option value="5">Dragoon</option>
+		<option value="6">Ninja</option>
+		<option value="7">Samurai</option>
+		<option value="8">Reaper</option>
+		<option value="9">White Mage</option>
+		<option value="10">Scholar</option>
+		<option value="11">Astrologian</option>
+		<option value="12">Sage</option>
+		<option value="13">Bard</option>
+		<option value="14">Machinist</option>
+		<option value="15">Dancer</option>
+		<option value="16">Black Mage</option>
+		<option value="17">Summoner</option>
+		<option value="18">Red Mage</option>
+		<option value="19">Blue Mage</option>
+	</select>
+	<span>Role</span>
+	<input type="text" name="attr_role" readonly>
+</div>
+<br>
+<br>
+STR<input type="number" name="attr_char_strength"/>
+<button type='roll' value="/roll 1d20 + @{char_strength}" name=roll_strCheck>STR</button>
+<br>
+DEX<input type="number" name="attr_char_dexterity"/>
+<button type='roll' value='/roll 1d20 + @{char_dexterity}' name=roll_strCheck>DEX</button>
+<br>
+VIT<input type="number" name="attr_char_vitality"/>
+<button type='roll' value='/roll 1d20 + @{char_vitality}' name=roll_strCheck>VIT</button>
+<br>
+INT<input type="number" name="attr_char_intelligence"/>
+<button type='roll' value='/roll 1d20 + @{char_intelligence}' name=roll_strCheck>INT</button>
+<br>
+MND<input type="number" name="attr_char_mind"/>
+<button type='roll' value='/roll 1d20 + @{char_mind}' name=roll_strCheck>MND</button>
+<br>
+<br>
+<span>Physical Defense</span>
+<input type="number" name="attr_physical_defense" value="10" readonly>
+<br>
+<span>Magical Defense</span>
+<input type="number" name="attr_magical_defense" value="10" readonly>
+<br>
+Vigilance<input type="number" name="attr_char_vigilance" readonly />
+<br>
+<span>Movement Squares</span>
+<input type="number" name="attr_movement">
+<br>
+<br>
+<h2>Primary Abilities</h2>
+<fieldset class="repeating_primaryability">
+	<span>Ability Name</span>
+	<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
+
+
+	<input type="text" name="attr_abilityname" class="sheet-block-a" placeholder="Storm's Path">
+	<button type='roll' value="&{template:ffxivmain} {{rolltype=@{abilityselector} }} {{name=@{abilityname} }} {{tags=@{tags} }} {{basedamage=@{abilityBaseEffectNumber} }} {{directdamage=[ROLL DIRECT HIT](~repeating_primaryability_directDamageRoll) }} {{effect=@{abilityBaseEffectDescription} }} {{Attack = [[@{convertedAbilityCheckSelector}]]}}" name="roll_abilityCheckSelector" class="sheet-block-b"><span name="attr_abilityname"></span></button>
+	<br>
+
+	<span>Tags</span>
+	<div class="sheet-block-a">
+		<div >
+			<span>Physical</span>
+			<input type="checkbox" name="attr_tagphysical" value="Physical">
+		</div>
+		<div>
+			<span>Magical</span>
+			<input type="checkbox" name="attr_tagmagical" value="Magical">
+		</div>
+		<div>
+			<span>Ice</span>
+			<input type="checkbox" name="attr_tagice" value="Ice">
+		</div>
+		<div>
+			<span>Fire</span>
+			<input type="checkbox" name="attr_tagfire" value="Fire">
+		</div>
+		<div>
+			<span>Thunder</span>
+			<input type="checkbox" name="attr_tagthunder" value="Thunder">
+		</div>
+	</div>
+	<input type="text" name="attr_tags" class="sheet-block-b" class="sheet-block-b" readonly>
+	<br>
+
+	<span>Target:</span>
+	<input type="text" name="attr_abilitytarget" class="sheet-block-a" placeholder="Single">
+	<span name="attr_abilitytarget" class="sheet-block-b"></span>
+	<br>
+
+	<span>Range:</span>
+	<input type="number" name="attr_abilityrange" min=1 class="sheet-block-a" placeholder="5">
+	<span class="sheet-block-b" name="attr_abilityrange"></span>
+	<br>
+
+	<span>Attack?</span><input type="checkbox" name="attr_attackcheckbox" class="sheet-block-attack-switch sheet-block-a">
+
+	<!-- <div class="sheet-block-attack-show"> -->
+		<span>Check:</span>
+		<span>Ability Modifier: </span>
+		<input type="text" name="attr_convertedAbilityCheckSelector" hidden>
+		<span class="sheet-block-b" name="attr_convertedAbilityCheckSelector"></span>
+		<select class="sheet-block-a" name="attr_abilityselector">
+			<option value="STR">STR</option>
+			<option value="DEX">DEX</option>
+			<option value="INT">INT</option>
+			<option value="MND">MND</option>
+			<option value="OTHER">OTHER</option>
+		</select>
+		<br>
+		<span>Other:</span>
+		<input type="text" name="attr_abilitycheck" class="sheet-block-a" placeholder="1d20+1">
+		<span class="sheet-block-b" name="attr_abilitycheck" class="sheet-block-b"></span>
+		<input type="text" name="attr_convertedAbilityCheck" hidden>
+		<button type='roll' value="@{convertedAbilityCheck}" name=roll_abilityCheck class="sheet-block-b"></button>
+		<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilityDirectHit}]] }}">Hide</button>
+		<br>
+
+		<span>CR:</span>
+		<input type="text" name="attr_abilitycr" class="sheet-block-a" placeholder="Target's P. Defense">
+		<span class="sheet-block-b" name="attr_abilitycr"></span>
+		<br>
+
+		<span>Base Effect:</span>
+		<br>
+		<span>Damage:</span>
+		<input type="number" name="attr_abilityBaseEffectNumber" class="sheet-block-a" placeholder="2">
+		<span name="attr_abilityBaseEffectNumber" class="sheet-block-b"></span>
+		<span>Effect:</span>
+		<input type="text" name="attr_abilityBaseEffectDescription" class="sheet-block-a" placeholder="Inflicts Enmity to the target. Combo: Storm's Path">
+		<span name="attr_abilityBaseEffectDescription" class="sheet-block-b"></span>
+		<span>Direct Hit:</span>
+		<input type="text" name="attr_abilityDirectHit" class="sheet-block-a" placeholder="Deals an additional 1d6 damage.">
+		<span name="attr_abilityDirectHit" class="sheet-block-b"></span>
+	<!-- </div> -->
+	<!-- <div class="sheet-block-attack-hide">
+		<span>Effect:</span>
+		<input type="text" name="attr_abilityBaseEffectDescription" class="sheet-block-a" placeholder="Inflicts Enmity to the target. Combo: Storm's Path">
+	</div> -->
+	<br>
+	<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit">Edit Toggle</button>
+</fieldset>
+<br>
+
+
+<h2>Secondary Abilities</h2>
+<fieldset class="repeating_secondaryability">
+	<span>Ability Name</span>
+	<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
+	<input type="text" name="attr_abilityname" placeholder="Rampart" class="sheet-block-a">
+	<span name="attr_abilityname" class="sheet-block-b"></span>
+	<br>
+	<span>Secondary, </span>
+	<select name="attr_abilitydamagetype" class="sheet-block-a">
+		<option value="Physical">Physical</option>
+		<option value="Magical">Magical</option>
+	</select>
+	<span name="attr_abilitydamagetype" class="sheet-block-b"></span>
+	<br>
+	<span>Target:</span>
+	<input type="text" name="attr_abilitytarget" class="sheet-block-a" placeholder="Self">
+	<span name="attr_abilitytarget" class="sheet-block-b"></span>
+	<!-- Exclude if nothing is here -->
+	<span>Range:</span>
+	<input type="number" name="attr_abilityrange" min=1 class="sheet-block-a" placeholder="1">
+	<span name="attr_abilityrange" class="sheet-block-b"></span>
+	<br>
+	<span>Base Effect:</span>
+	<input type="text" name="attr_abilitybaseeffect" class="sheet-block-a" placeholder="Reduce the damage you take from all abilities by 2 until the start of your next turn.">
+	<span name="attr_abilitybaseeffect" class="sheet-block-b"></span>
+	<br>
+	<span>Limitation:</span>
+	<input type="text" name="attr_abilitydirecthit" class="sheet-block-a" placeholder="Once per Phase">
+	<span name="attr_abilitydirecthit" class="sheet-block-b"></span>
+	<br>
+	<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit">Edit Toggle</button>
+</fieldset>
+<br>
+
+
+<h2>Reaction Abilities</h2>
+<fieldset class="repeating_reactionability">
+	<span>Ability Name</span>
+	<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
+	<input type="text" name="attr_abilityname" class="sheet-block-a" placeholder="Reprisal">
+	<span class="sheet-block-b" name="attr_abilityname"></span>
+	<br>
+	<span>Reaction</span>
+	<br>
+	<span>Trigger:</span>
+	<input type="text" name="attr_abilitytrigger" class="sheet-block-a" placeholder="Immediately before an ability used by an enemy within 2 squares is resolved.">
+	<span name="attr_abilitytrigger" class="sheet-block-b"></span>
+	<span>Target:</span>
+	<input type="text" name="attr_abilitytarget" class="sheet-block-a" placeholder="All enemies within range.">
+	<span name="attr_abilitytarget" class="sheet-block-b"></span>
+	<span>Range:</span>
+	<input type="number" name="attr_abilityrange" min=1 class="sheet-block-a" placeholder="5">
+	<span name="attr_abilityrange" class="sheet-block-b"></span>
+	<br>
+	<span>Base Effect:</span>
+	<input type="text" name="attr_abilitybaseeffect" class="sheet-block-a" placeholder="Reduce the damage you take from all abilities by 2 until the start of your next turn.">
+	<span class="sheet-block-b" name="attr_abilitybaseeffect"></span>
+	<br>
+	<span>Limitation:</span>
+	<input type="text" name="attr_abilitydirecthit" class="sheet-block-a" placeholder="Once per turn.">
+	<span name="attr_abilitydirecthit" class="sheet-block-b"></span>
+	<br>
+	<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit">Edit Toggle</button>
+</fieldset>
+
+<!-- Roll Template in FFXIV Style -->
+<rolltemplate class="sheet-rolltemplate-ffxivmain">
+	<div class="sheet-template-container">
+		<div class="sheet-template-masterheader">
+			<div class=sheet-template-header>
+				{{#name}}
+				<div class="sheet-header">{{name}}</div>
+				{{/name}}
+			</div>
+			<div class="sheet-template-row">
+				{{#tags}}
+				<div class="sheet-tags">{{tags}}</div>
+				{{/tags}}
+			</div>
+		</div>
+		<hr class="sheet-line">
+		<div class="sheet-template-header">
+			{{#allprops() rolltype name tags basedamage directdamage effect}}
+    		<div class="sheet-value">{{value}}</div>
+ 			{{/allprops() rolltype name tags basedamage directdamage effect}}
+ 			<div class="sheet-info">
+ 				<!-- {{#rolltype}} <div>{{rolltype}}</div> {{/rolltype}} -->
+ 				<span>ABILITY CHECK</span>
+ 			</div>
+		</div>
+		<hr class="sheet-line">
+		<div class="sheet-template-header">
+			<div class="sheet-value">
+				{{#basedamage}}
+				<span class="inlinerollresult" style="color:white;font-family: 'Bebas Neue, sans-serif';padding-bottom:'2px">{{basedamage}}</span>
+				{{/basedamage}}
+			</div>
+			<div class="sheet-info">
+				<span>DAMAGE</span>
+			</div>
+		</div>
+		{{#effect}}
+		<div class="sheet-template-row">
+			<div class="sheet-tags">{{effect}}</div>
+		</div>
+		{{/effect}}
+		<hr class="sheet-line">
+		{{directdamage}}
+	</div>
+</rolltemplate>
+
+<!-- Damage Roll Template in FFXIV Style -->
+<rolltemplate class="sheet-rolltemplate-ffxivdamage">
+	<div class="sheet-template-container">
+		<div class="sheet-template-header">
+			{{#name}}
+			<div class="sheet-header">{{name}}</div>
+			{{/name}}
+		</div>
+		<div class="sheet-template-row">
+			<div class="sheet-tags">DIRECT HIT</div>
+		</div>
+		<hr class="sheet-line">
+		<div class="sheet-template-header">
+			{{#allprops() name}}
+			<div class="sheet-value">{{value}}</div>
+			{{/allprops() name}}
+		</div>
+		<div class="sheet-template-row">
+			<div class="sheet-tags-2">DAMAGE</div>
+		</div>
+	</div>
+</rolltemplate>
+
+
+
+
+<script type="text/worker">
+	// Adjusts vigilance stat as mind stat changes
+	on("change:char_mind", function() {
+		getAttrs(["char_mind"], function(values) {
+			let mind = parseInt(values.char_mind)||0;
+
+			let vigil = 10 + mind;
+
+			setAttrs({
+				char_vigilance: vigil
+			});
+		});
+	});
+
+	// Change Physical & Magical deefnse as class changes
+	on("change:class", function() {
+		getAttrs(["class"], function(value) {
+			let newClassValue = parseInt(value.class)||0;
+			let newPhysicalDefense = 10;
+			let newMagicalDefense = 10;
+			let newRole = "";
+			let newModifier = "";
+
+			switch (newClassValue) {
+				case 0: // Paladin
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Tank";
+					newModifier = "@{char_strength}";
+					break;
+				case 1: // Warrior
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Tank";
+					newModifier = "@{char_strength}";
+					break;
+				case 2: // Dark Knight
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Tank";
+					newModifier = "@{char_strength}";
+					break;
+				case 3: // Gunbreaker
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Tank";
+					newModifier = "@{char_strength}";
+					break;
+				case 4: // Monk
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Damage Dealer";
+					newModifier = "@{char_strength}";
+					break;
+				case 5: // Dragoon
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Damage Dealer";
+					newModifier = "@{char_strength}";
+					break;
+				case 6: // Ninja
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Damage Dealer";
+					newModifier = "@{char_strength}";
+					break;
+				case 7: // Samurai
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Damage Dealer";
+					newModifier = "@{char_strength}";
+					break;
+				case 8: // Reaper
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Damage Dealer";
+					newModifier = "@{char_strength}";
+					break;
+				case 9: // White Mage
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Healer";
+					newModifier = "INT";
+					break;
+				case 10: // Scholar
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Healer";
+					newModifier = "INT";
+					break;
+				case 11: // Astrologian
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Healer";
+					newModifier = "INT";
+					break;
+				case 12: // Sage
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Healer";
+					newModifier = "INT";
+					break;
+				case 13: // Bard
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Damage Dealer";
+					newModifier = "DEX";
+					break;
+				case 14: // Machinist
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Damage Dealer";
+					newModifier = "DEX";
+					break;
+				case 15: // Dancer
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Damage Dealer";
+					newModifier = "DEX";
+					break;
+				case 16: // Black mage
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Damage Dealer";
+					newModifier = "INT";
+					break;
+				case 17: // Summoner
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Damage Dealer";
+					newModifier = "INT";
+					break;
+				case 18: // Red Mage
+					newPhysicalDefense = 13;
+					newMagicalDefense = 13;
+					newRole = "Damage Dealer";
+					newModifier = "INT";
+					break;
+				case 19: // Blue Mage
+					newPhysicalDefense = 9;
+					newMagicalDefense = 9;
+					newRole = "Limited";
+					newModifier = "INT";
+					break;
+				default:
+			}
+
+			setAttrs({
+				"physical_defense": newPhysicalDefense,
+				"magical_defense": newMagicalDefense,
+				"role": newRole,
+				"char_modifier": newModifier
+			});
+		});
+	});
+
+	// Edit Button Functionality (For Primary)
+	on("clicked:repeating_primaryability:edit", function() {
+		getAttrs(["repeating_primaryability_abilityname", "repeating_primaryability_blockswitch", "repeating_primaryability_tagphysical", "repeating_primaryability_tagmagical", "repeating_primaryability_tagice", "repeating_primaryability_tagfire", "repeating_primaryability_tagthunder"], function(values) {
+			let name = values.repeating_primaryability_abilityname;
+			let switchToggle = values.repeating_primaryability_blockswitch;
+			switchToggle = 1 - switchToggle;
+
+			// Tag Builder
+			var tags = [];
+			tags.push(values.repeating_primaryability_tagphysical, values.repeating_primaryability_tagmagical, values.repeating_primaryability_tagice, values.repeating_primaryability_tagfire, values.repeating_primaryability_tagthunder);
+			tags = removeItemAll(tags, "0")
+			tags.unshift("Primary")
+			const tagString = tags.join(', ');
+
+			setAttrs({
+				repeating_primaryability_blockswitch: switchToggle,
+				repeating_primaryability_tags: tagString
+			});
+		});
+	});
+
+	// Edit Button Functionality (For Secondary)
+	on("clicked:repeating_reactionability:edit", function() {
+		getAttrs(["repeating_reactionability_abilityname", "repeating_reactionability_blockswitch"], function(values) {
+			let name = values.repeating_reactionability_abilityname;
+			let switchToggle = values.repeating_reactionability_blockswitch;
+			switchToggle = 1 - switchToggle;
+			setAttrs({
+				repeating_reactionability_blockswitch: switchToggle
+			});
+		});
+	});
+
+	// Edit Button Functionality (For Reaction)
+	on("clicked:repeating_secondaryability:edit", function() {
+		getAttrs(["repeating_secondaryability_abilityname", "repeating_secondaryability_blockswitch"], function(values) {
+			let name = values.repeating_secondaryability_abilityname;
+			let switchToggle = values.repeating_secondaryability_blockswitch;
+			switchToggle = 1 - switchToggle;
+			setAttrs({
+				repeating_secondaryability_blockswitch: switchToggle
+			});
+		});
+	});
+
+	// Checkbox for Attack
+	on("clicked:repeating_primaryability:attackcheckbox", function() {
+		getAttrs(["repeating_primaryability_attackcheckbox"], function(values) {
+			let switchToggle = values.repeating_primaryability_attackcheckbox;
+			switchToggle = 1 - switchToggle;
+			setAttrs({
+				repeating_primaryability_attackcheckbox: switchToggle
+			});
+		});
+	});
+
+	// Convert abilitycheck to rollable value (DEFUNCT)
+	on("change:repeating_primaryability:abilitycheck", function() {
+		getAttrs(["repeating_primaryability_abilitycheck"], function(values) {
+			let newAbilityCheckValue = values.repeating_primaryability_abilitycheck;
+			let newAbilityCheck = newAbilityCheckValue;
+			console.log(newAbilityCheck)
+			setAttrs({
+				repeating_primaryability_convertedAbilityCheck: newAbilityCheck
+			});
+		});
+	});
+
+	// Convert abilitycheck to rollable value from Selector
+	on("change:repeating_primaryability:abilityselector", function() {
+		getAttrs(["repeating_primaryability_abilityselector", "char_strength", "char_dexterity", "char_intelligence", "char_mind"], function(values) {
+			let newAbility = values.repeating_primaryability_abilityselector;
+			switch (newAbility) {
+				case "STR":
+					newAbility = "1d20+" + values.char_strength;
+					break;
+				case "DEX":
+					newAbility = "1d20+" + values.char_dexterity;
+					break;
+				case "INT":
+					newAbility = "1d20+" + values.char_intelligence;
+					break;
+				case "MND":
+					newAbility = "1d20+" + values.char_mind;
+					break;
+			}
+			setAttrs({
+				repeating_primaryability_convertedAbilityCheckSelector: newAbility
+			});
+		})
+	});
+
+	function removeItemAll(arr, value) {
+	  var i = 0;
+	  while (i < arr.length) {
+	    if (arr[i] === value) {
+	      arr.splice(i, 1);
+	    } else {
+	      ++i;
+	    }
+	  }
+	  return arr;
+	}
+
+</script>
