@@ -21,6 +21,7 @@ MaxMP<input type="number" name="attr_char_maxMP" value="5" readonly/>
 <br>
 <div name="Role Selection">
 	<select name="attr_class">
+		<option value="-1">Select</option>
 		<option value="0">Paladin</option>
 		<option value="1">Warrior</option>
 		<option value="2">Dark Knight</option>
@@ -82,7 +83,7 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 
 
 	<input type="text" name="attr_abilityname" class="sheet-block-a" placeholder="Storm's Path">
-	<button type='roll' value="&{template:ffxivmain} {{rolltype=@{abilityselector} }} {{name=@{abilityname} }} {{tags=@{tags} }} {{basedamage=@{abilityBaseEffectNumber} }} {{directdamage=[ROLL DIRECT HIT](~repeating_primaryability_directDamageRoll) }} {{effect=@{abilityBaseEffectDescription} }} {{Attack = [[@{convertedAbilityCheckSelector}]]}}" name="roll_abilityCheckSelector" class="sheet-block-b"><span name="attr_abilityname"></span></button>
+	<button type='roll' value="&{template:ffxivmain} {{rolltype=@{abilityselector} }} {{name=@{abilityname} }} {{tags=@{tags} }} {{basedamage=@{abilityBaseEffectNumber} }} {{directdamage=[ROLL DIRECT HIT](~repeating_primaryability_directDamageRoll) }} {{effect=@{abilityBaseEffectDescription} }} {{Attack = [[@{abilityselector}]]}}" name="roll_abilityCheckSelector" class="sheet-block-b"><span name="attr_abilityname"></span></button>
 	<br>
 
 	<span>Tags</span>
@@ -121,50 +122,36 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 	<span class="sheet-block-b" name="attr_abilityrange"></span>
 	<br>
 
-	<span>Attack?</span><input type="checkbox" name="attr_attackcheckbox" class="sheet-block-attack-switch sheet-block-a">
+	<span>Check:</span>
+	<span>Ability Modifier: </span>
+	<input type="text" name="attr_convertedAbilityCheckSelector" hidden>
+	<span class="sheet-block-b" name="attr_convertedAbilityCheckSelector"></span>
+	<select class="sheet-block-a" name="attr_abilityselector">
+		<option value="1d20 + @{char_strength}">STR</option>
+		<option value="1d20 + @{char_dexterity}">DEX</option>
+		<option value="1d20 + @{char_intelligence}">INT</option>
+		<option value="1d20 + @{char_mind}">MND</option>
+	</select>
+	<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilityDirectHit}]] }}">Hide</button>
+	<br>
 
-	<!-- <div class="sheet-block-attack-show"> -->
-		<span>Check:</span>
-		<span>Ability Modifier: </span>
-		<input type="text" name="attr_convertedAbilityCheckSelector" hidden>
-		<span class="sheet-block-b" name="attr_convertedAbilityCheckSelector"></span>
-		<select class="sheet-block-a" name="attr_abilityselector">
-			<option value="STR">STR</option>
-			<option value="DEX">DEX</option>
-			<option value="INT">INT</option>
-			<option value="MND">MND</option>
-			<option value="OTHER">OTHER</option>
-		</select>
-		<br>
-		<span>Other:</span>
-		<input type="text" name="attr_abilitycheck" class="sheet-block-a" placeholder="1d20+1">
-		<span class="sheet-block-b" name="attr_abilitycheck" class="sheet-block-b"></span>
-		<input type="text" name="attr_convertedAbilityCheck" hidden>
-		<button type='roll' value="@{convertedAbilityCheck}" name=roll_abilityCheck class="sheet-block-b"></button>
-		<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilityDirectHit}]] }}">Hide</button>
-		<br>
+	<span>CR:</span>
+	<input type="text" name="attr_abilitycr" class="sheet-block-a" placeholder="Target's P. Defense">
+	<span class="sheet-block-b" name="attr_abilitycr"></span>
+	<br>
 
-		<span>CR:</span>
-		<input type="text" name="attr_abilitycr" class="sheet-block-a" placeholder="Target's P. Defense">
-		<span class="sheet-block-b" name="attr_abilitycr"></span>
-		<br>
-
-		<span>Base Effect:</span>
-		<br>
-		<span>Damage:</span>
-		<input type="number" name="attr_abilityBaseEffectNumber" class="sheet-block-a" placeholder="2">
-		<span name="attr_abilityBaseEffectNumber" class="sheet-block-b"></span>
-		<span>Effect:</span>
-		<input type="text" name="attr_abilityBaseEffectDescription" class="sheet-block-a" placeholder="Inflicts Enmity to the target. Combo: Storm's Path">
-		<span name="attr_abilityBaseEffectDescription" class="sheet-block-b"></span>
-		<span>Direct Hit:</span>
-		<input type="text" name="attr_abilityDirectHit" class="sheet-block-a" placeholder="Deals an additional 1d6 damage.">
-		<span name="attr_abilityDirectHit" class="sheet-block-b"></span>
-	<!-- </div> -->
-	<!-- <div class="sheet-block-attack-hide">
-		<span>Effect:</span>
-		<input type="text" name="attr_abilityBaseEffectDescription" class="sheet-block-a" placeholder="Inflicts Enmity to the target. Combo: Storm's Path">
-	</div> -->
+	<span>Base Effect:</span>
+	<br>
+	<span>Damage:</span>
+	<input type="number" name="attr_abilityBaseEffectNumber" class="sheet-block-a" placeholder="2">
+	<span name="attr_abilityBaseEffectNumber" class="sheet-block-b"></span>
+	<span>Effect:</span>
+	<input type="text" name="attr_abilityBaseEffectDescription" class="sheet-block-a" placeholder="Inflicts Enmity to the target. Combo: Storm's Path">
+	<span name="attr_abilityBaseEffectDescription" class="sheet-block-b"></span>
+	<span>Direct Hit:</span>
+	<input type="text" name="attr_abilityDirectHit" class="sheet-block-a" placeholder="1d6.">
+	<span name="attr_abilityDirectHit" class="sheet-block-b"></span>
+	</div>
 	<br>
 	<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit">Edit Toggle</button>
 </fieldset>
@@ -518,42 +505,6 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 				repeating_primaryability_attackcheckbox: switchToggle
 			});
 		});
-	});
-
-	// Convert abilitycheck to rollable value (DEFUNCT)
-	on("change:repeating_primaryability:abilitycheck", function() {
-		getAttrs(["repeating_primaryability_abilitycheck"], function(values) {
-			let newAbilityCheckValue = values.repeating_primaryability_abilitycheck;
-			let newAbilityCheck = newAbilityCheckValue;
-			console.log(newAbilityCheck)
-			setAttrs({
-				repeating_primaryability_convertedAbilityCheck: newAbilityCheck
-			});
-		});
-	});
-
-	// Convert abilitycheck to rollable value from Selector
-	on("change:repeating_primaryability:abilityselector", function() {
-		getAttrs(["repeating_primaryability_abilityselector", "char_strength", "char_dexterity", "char_intelligence", "char_mind"], function(values) {
-			let newAbility = values.repeating_primaryability_abilityselector;
-			switch (newAbility) {
-				case "STR":
-					newAbility = "1d20+" + values.char_strength;
-					break;
-				case "DEX":
-					newAbility = "1d20+" + values.char_dexterity;
-					break;
-				case "INT":
-					newAbility = "1d20+" + values.char_intelligence;
-					break;
-				case "MND":
-					newAbility = "1d20+" + values.char_mind;
-					break;
-			}
-			setAttrs({
-				repeating_primaryability_convertedAbilityCheckSelector: newAbility
-			});
-		})
 	});
 
 	function removeItemAll(arr, value) {
