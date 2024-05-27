@@ -1,3 +1,4 @@
+/*Font Import*/
 .bebas-neue-regular {
   font-family: "Bebas Neue", sans-serif;
   font-weight: 400;
@@ -10,7 +11,14 @@
   font-style: normal;
 }
 
-
+.jura {
+  font-family: "Jura", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+/*End of Font Import*/
+/*Toggles*/
 .sheet-block-a,
 .charsheet .sheet-block-switch:checked ~ .sheet-block-b {
   display: block;
@@ -31,16 +39,128 @@
   display: none;
 }
 
-.repcontainer .repitem{
+.repcontainer .repitem {
   padding-bottom: 25px;
 }
 
 .hide {
   display: none;
 }
+/*End of Toggles*/
+
+
+
+/*Header Section*/
+.charsheet .headerbar {
+  display: flex;
+}
+
+.charsheet .headerbar img {
+  width: 30%;
+}
+
+.charsheet .headerbar .headerbar-right {
+  width: 70%;
+  margin-left: 10px;
+  margin-bottom: 3px;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(40,40,40);
+  background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(74,74,74,1) 10%, rgba(74,74,74,1) 90%, rgba(97,97,97,1) 100%);
+  color: white;
+}
+/*End of Header Section*/
+
+/*Roll Bar Section*/
+.charsheet .rolebar {
+  display: flex;
+  height: 7em;
+  font-family: "Jura", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
+}
+
+.charsheet .rolebar .rolebar-left {
+  background-color: blue;
+  width: 50%;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(0,80,162);
+background: linear-gradient(0deg, rgba(0,80,162,1) 0%, rgba(0,121,244,1) 50%, rgba(0,121,244,1) 80%, rgba(69,157,246,1) 100%);
+}
+
+.charsheet .rolebar .rolebar-middle {
+  margin-left: 4px;
+  background-color: green;
+  width: 30%;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(0,156,10);
+  background: linear-gradient(0deg, rgba(0,102,7,1) 0%, rgba(0,192,12,1) 50%, rgba(0,192,12,1) 70%, rgba(75,232,85,1) 100%);
+}
+
+.charsheet .rolebar .rolebar-right {
+  margin-left: 4px;
+  background-color: purple;
+  width: 20%;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(89,45,115);
+  background: linear-gradient(0deg, rgba(89,45,115,1) 0%, rgba(171,81,224,1) 50%, rgba(171,81,224,1) 80%, rgba(193,134,228,1) 100%);
+}
+
+.charsheet .rolebar .rolebar-left-top {
+  display: flex;
+  height: 40%;
+}
+
+.charsheet .rolebar .rolebar-left-bottom {
+  display: flex;
+  height: 60%;
+}
+
+.charsheet .rolebar .rolebar1 {
+  width: 25%;
+}
+
+.charsheet .rolebar .rolebar2 {
+  width: 25%;
+}
+
+.charsheet .rolebar .rolebar3 {
+  width: 5%;
+}
+
+.charsheet .rolebar .rolebar4 {
+  width: 45%;
+}
+/*End of Role Bar Section*/
+
+
 
 /*FFXIV Main Roll Container*/
-
 .sheet-rolltemplate-ffxivmain .sheet-header {
   color: white;
   font-family: "Bebas Neue", sans-serif;
@@ -153,9 +273,10 @@
   margin-bottom: 5px;
   font-weight: 600;
 }
+/*End of FFXIV Main Roll Container*/
+
 
 /*FFXIV Damage Roll Template*/
-
 .sheet-rolltemplate-ffxivdamage div.sheet-template-container {
   position: relative;
   border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
@@ -269,3 +390,4 @@
   padding-top: 1px;
   padding-bottom: 4px;
 }
+/*End of FFXIV Damage Roll Template*/
