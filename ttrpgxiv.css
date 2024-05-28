@@ -1,6 +1,10 @@
 /*Font Import*/
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Romanesco&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+
 .bebas-neue-regular {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Bebas Neue";
   font-weight: 400;
   font-style: normal;
 }
@@ -11,12 +15,12 @@
   font-style: normal;
 }
 
-.jura {
-  font-family: "Jura", sans-serif;
-  font-optical-sizing: auto;
+.jura-regular {
+  font-family: "Jura";
   font-weight: 400;
   font-style: normal;
 }
+
 /*End of Font Import*/
 /*Toggles*/
 .sheet-block-a,
@@ -79,12 +83,12 @@
 /*Roll Bar Section*/
 .charsheet .rolebar {
   display: flex;
-  height: 7em;
-  font-family: "Jura", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
+  font-family: "Jura";
+  font-weight: 700;
   font-style: normal;
+  font-size: 1.5em;
   color: white;
+  text-transform: uppercase;
 }
 
 .charsheet .rolebar .rolebar-left {
@@ -98,7 +102,9 @@
   border-radius: 3px 3px 3px 3px;
   outline: 2px solid #000 !important;
   background: rgb(0,80,162);
-background: linear-gradient(0deg, rgba(0,80,162,1) 0%, rgba(0,121,244,1) 50%, rgba(0,121,244,1) 80%, rgba(69,157,246,1) 100%);
+  background: linear-gradient(0deg, rgba(0,80,162,1) 0%, rgba(0,121,244,1) 50%, rgba(0,121,244,1) 80%, rgba(69,157,246,1) 100%);
+  padding-left: 5px;
+  padding-right: 10px;
 }
 
 .charsheet .rolebar .rolebar-middle {
@@ -133,29 +139,64 @@ background: linear-gradient(0deg, rgba(0,80,162,1) 0%, rgba(0,121,244,1) 50%, rg
 
 .charsheet .rolebar .rolebar-left-top {
   display: flex;
-  height: 40%;
+  font-size: 0.7em;
+  padding: 0px;
+  height: 15px;
 }
 
 .charsheet .rolebar .rolebar-left-bottom {
   display: flex;
-  height: 60%;
+  font-size: 1.3em;
+  padding: 0px;
+  height: 45px;
 }
 
 .charsheet .rolebar .rolebar1 {
-  width: 25%;
+  display: flex;
+  width: 17%;
+}
+
+.charsheet .rolebar .rolebar1 input {
+  border: none;
+  appearance: none;
+  background: transparent;
+  font-size: 0.9em;
+  color: white;
+  padding-bottom: 15px;
 }
 
 .charsheet .rolebar .rolebar2 {
-  width: 25%;
+  width: 45%;
+}
+
+.charsheet .rolebar .rolebar2 .role-select {
+  background: transparent;
+  color: white;
+  border: none;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .charsheet .rolebar .rolebar3 {
-  width: 5%;
+  width: 3%;
 }
 
 .charsheet .rolebar .rolebar4 {
-  width: 45%;
+  width: 35%;
 }
+
+.charsheet .rolebar .rolebar4 .job-select {
+  border: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
+
+
 /*End of Role Bar Section*/
 
 
