@@ -17,58 +17,45 @@
 	<div class="rolebar">
 		<div class="rolebar-left">
 			<!-- ROLE SELECTION -->
-			<div class="rolebar-left-top">
-				<div class="rolebar1"></div>
-				<div class="rolebar2">
-					<span>Role</span>
-				</div>
-				<div class="rolebar3"></div>
-				<div class="rolebar4">
-					<span>Job</span>
-				</div>
+			<div class="stacking-element-font" style="position: relative; top: 8px">
+				<span style="position: relative; right: 60px">ROLE</span>
+				<span style="position: relative; left: 15px;">JOB</span>
 			</div>
-			<div class="rolebar-left-bottom">
-				<div class="rolebar1">
-					<span>LV.</span>
-					<input type="number" name="attr_char_level" class="character-level" step="10" min="0" max="50">
-				</div>
-				<div class="rolebar2"> <input type="text" name="attr_role" class="role-select" readonly> </div>
-				<div class="rolebar3"> <span>/</span> </div>
-				<div class="rolebar4">
-					<div name="Role Selection">
-						<select name="attr_class" class="job-select">
-							<option style="color:gray" value="-1">Select</option>
-							<option style="color:gray" value="0">Paladin</option>
-							<option style="color:gray" value="1">Warrior</option>
-							<option style="color:gray" value="2">Dark Knight</option>
-							<option style="color:gray" value="3">Gunbreaker</option>
-							<option style="color:gray" value="4">Monk</option>
-							<option style="color:gray" value="5">Dragoon</option>
-							<option style="color:gray" value="6">Ninja</option>
-							<option style="color:gray" value="7">Samurai</option>
-							<option style="color:gray" value="8">Reaper</option>
-							<option style="color:gray" value="9">White Mage</option>
-							<option style="color:gray" value="10">Scholar</option>
-							<option style="color:gray" value="11">Astrologian</option>
-							<option style="color:gray" value="12">Sage</option>
-							<option style="color:gray" value="13">Bard</option>
-							<option style="color:gray" value="14">Machinist</option>
-							<option style="color:gray" value="15">Dancer</option>
-							<option style="color:gray" value="16">Black Mage</option>
-							<option style="color:gray" value="17">Summoner</option>
-							<option style="color:gray" value="18">Red Mage</option>
-							<option style="color:gray" value="19">Blue Mage</option>
-						</select>
-					</div>
-				</div>
+			<div>
+				<span style="position: relative; font-size: 20px">LV</span>
+				<input type="number" name="attr_char_level" step="10" min="0" max="50" style="position: relative; bottom: 6px;">
+				<select name="attr_class" style="position: relative; width: 280px; height: 40px; font-size: 24px; font-weight: 600;">
+					<option style="color: black;" value="-1">Select</option>
+					<option style="color: black;" value="0">Tank / Paladin</option>
+					<option style="color: black;" value="1">Tank / Warrior</option>
+					<option style="color: black;" value="2">Tank / Dark Knight</option>
+					<option style="color: black;" value="3">Tank / Gunbreaker</option>
+					<option style="color: black;" value="4">Healer / White Mage</option>
+					<option style="color: black;" value="5">Healer / Scholar</option>
+					<option style="color: black;" value="6">Healer / Astrologian</option>
+					<option style="color: black;" value="7">Healer / Sage</option>
+					<option style="color: black;" value="8">DPS / Monk</option>
+					<option style="color: black;" value="9">DPS / Dragoon</option>
+					<option style="color: black;" value="10">DPS / Ninja</option>
+					<option style="color: black;" value="11">DPS / Samurai</option>
+					<option style="color: black;" value="12">DPS / Reaper</option>
+					<option style="color: black;" value="13">DPS / Bard</option>
+					<option style="color: black;" value="14">DPS / Machinist</option>
+					<option style="color: black;" value="15">DPS / Dancer</option>
+					<option style="color: black;" value="16">DPS / Black Mage</option>
+					<option style="color: black;" value="17">DPS / Summoner</option>
+					<option style="color: black;" value="18">DPS / Red Mage</option>
+					<option style="color: black;" value="19">DPS / Blue Mage</option>
+				</select>
 			</div>
+			
 		</div>
 
 		<div class="rolebar-middle">
 			<!-- HP BAR -->
 			<span style="font-size: 2em; position: relative; left: 18px">HP</span>
 			<input type="number" name="attr_char_HP" min="0" style="position: relative; left: 18px; width: 80px; height: 60px; font-size: 50px;">
-			<span class="dividing-line" style="position: relative; right: 8px">/</span>
+			<span class="dividing-line" style="position: relative;">/</span>
 			<div class="stacking-element">
 				<span class="stacking-element-font" style="position: relative; right: 8px">MAX</span>
 				<input type="number" name="attr_char_maxHP" min="0" style="position: relative; left: 2px">
@@ -83,7 +70,7 @@
 		<div class="rolebar-right">
 			<!-- MP BAR -->
 			<span style="font-size: 2em;">MP</span>
-			<input type="number" name="attr_char_MP" min="0" max="5" style="position: relative; left: 0px; width: 45px; height: 60px; font-size: 50px;"/>
+			<input type="number" name="attr_char_MP" min="0" max="5" style="position: relative; width: 45px; height: 60px; font-size: 50px;"/>
 			<span class="dividing-line" style="position: relative; right: 13px">/</span>
 			<div class="stacking-element" style="position: relative; right: 5px">
 				<span class="stacking-element-font">MAX</span>
