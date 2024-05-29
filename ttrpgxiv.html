@@ -6,73 +6,85 @@
 
 <input type="text" name="attr_char_modifier" hidden>
 
+<div class="page">
+	<div class="headerbar">
+		<img src="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/main/images/logo_text.png" />
+		<div class="headerbar-right">
 
-<div class="headerbar">
-	<img src="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/main/images/logo_text.png" />
-	<div class="headerbar-right">
-
-	</div>
-</div>
-
-<div class="rolebar">
-	<div class="rolebar-left">
-		<!-- ROLE SELECTION -->
-		<div class="rolebar-left-top">
-			<div class="rolebar1"></div>
-			<div class="rolebar2">
-				<span>Role</span>
-			</div>
-			<div class="rolebar3"></div>
-			<div class="rolebar4">
-				<span>Job</span>
-			</div>
 		</div>
-		<div class="rolebar-left-bottom">
-			<div class="rolebar1">
-				<span>LV.</span>
-				<input type="number" name="attr_char_level" class="character-level" step="10" min="0" max="50">
+	</div>
+
+	<div class="rolebar">
+		<div class="rolebar-left">
+			<!-- ROLE SELECTION -->
+			<div class="rolebar-left-top">
+				<div class="rolebar1"></div>
+				<div class="rolebar2">
+					<span>Role</span>
+				</div>
+				<div class="rolebar3"></div>
+				<div class="rolebar4">
+					<span>Job</span>
+				</div>
 			</div>
-			<div class="rolebar2"> <input type="text" name="attr_role" class="role-select" readonly> </div>
-			<div class="rolebar3"> <span>/</span> </div>
-			<div class="rolebar4">
-				<div name="Role Selection">
-					<select name="attr_class" class="job-select">
-						<option style="color:gray" value="-1">Select</option>
-						<option style="color:gray" value="0">Paladin</option>
-						<option style="color:gray" value="1">Warrior</option>
-						<option style="color:gray" value="2">Dark Knight</option>
-						<option style="color:gray" value="3">Gunbreaker</option>
-						<option style="color:gray" value="4">Monk</option>
-						<option style="color:gray" value="5">Dragoon</option>
-						<option style="color:gray" value="6">Ninja</option>
-						<option style="color:gray" value="7">Samurai</option>
-						<option style="color:gray" value="8">Reaper</option>
-						<option style="color:gray" value="9">White Mage</option>
-						<option style="color:gray" value="10">Scholar</option>
-						<option style="color:gray" value="11">Astrologian</option>
-						<option style="color:gray" value="12">Sage</option>
-						<option style="color:gray" value="13">Bard</option>
-						<option style="color:gray" value="14">Machinist</option>
-						<option style="color:gray" value="15">Dancer</option>
-						<option style="color:gray" value="16">Black Mage</option>
-						<option style="color:gray" value="17">Summoner</option>
-						<option style="color:gray" value="18">Red Mage</option>
-						<option style="color:gray" value="19">Blue Mage</option>
-					</select>
+			<div class="rolebar-left-bottom">
+				<div class="rolebar1">
+					<span>LV.</span>
+					<input type="number" name="attr_char_level" class="character-level" step="10" min="0" max="50">
+				</div>
+				<div class="rolebar2"> <input type="text" name="attr_role" class="role-select" readonly> </div>
+				<div class="rolebar3"> <span>/</span> </div>
+				<div class="rolebar4">
+					<div name="Role Selection">
+						<select name="attr_class" class="job-select">
+							<option style="color:gray" value="-1">Select</option>
+							<option style="color:gray" value="0">Paladin</option>
+							<option style="color:gray" value="1">Warrior</option>
+							<option style="color:gray" value="2">Dark Knight</option>
+							<option style="color:gray" value="3">Gunbreaker</option>
+							<option style="color:gray" value="4">Monk</option>
+							<option style="color:gray" value="5">Dragoon</option>
+							<option style="color:gray" value="6">Ninja</option>
+							<option style="color:gray" value="7">Samurai</option>
+							<option style="color:gray" value="8">Reaper</option>
+							<option style="color:gray" value="9">White Mage</option>
+							<option style="color:gray" value="10">Scholar</option>
+							<option style="color:gray" value="11">Astrologian</option>
+							<option style="color:gray" value="12">Sage</option>
+							<option style="color:gray" value="13">Bard</option>
+							<option style="color:gray" value="14">Machinist</option>
+							<option style="color:gray" value="15">Dancer</option>
+							<option style="color:gray" value="16">Black Mage</option>
+							<option style="color:gray" value="17">Summoner</option>
+							<option style="color:gray" value="18">Red Mage</option>
+							<option style="color:gray" value="19">Blue Mage</option>
+						</select>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="rolebar-middle">
-		
-	</div>
+		<div class="rolebar-middle">
+			<!-- HP BAR -->
+			<span style="font-size: 2em; position: relative; left: 18px">HP</span>
+			<input type="number" name="attr_char_HP" min="0" style="position: relative; left: 15px; width: 80px; height: 60px; font-size: 50px;">
+			<span class="dividing-line" style="position: relative; right: 8px">/</span>
+			<div class="stacking-element">
+				<span class="stacking-element-font" style="position: relative; right: 8px">MAX</span>
+				<input type="number" name="attr_char_maxHP" min="0" style="position: relative; left: 2px">
+			</div>
+			<span class="dividing-line" style="position: relative; right: 13px">|</span>
+			<div class="stacking-element">
+				<span class="stacking-element-font" style="position: relative; right: 12px">BARRIER</span>
+				<input type="number" name="attr_char_tempHP" min="0" style="position: relative; left: 5px;">
+			</div>
+		</div>
 
-	<div class="rolebar-right">
-		
+		<div class="rolebar-right">
+			
+		</div>
 	</div>
 </div>
-
 
 
 <!-- OLD CHARACTER SHEET INFORMATION  -->
