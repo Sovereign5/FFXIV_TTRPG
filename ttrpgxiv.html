@@ -14,6 +14,7 @@
 		</div>
 	</div>
 
+	<!-- ROLE BAR + HP + MP -->
 	<div class="rolebar">
 		<div class="rolebar-left">
 			<!-- ROLE SELECTION -->
@@ -22,8 +23,8 @@
 				<span style="position: relative; left: 15px;">JOB</span>
 			</div>
 			<div>
-				<span style="position: relative; font-size: 20px">LV</span>
-				<input type="number" name="attr_char_level" step="10" min="0" max="50" style="position: relative; bottom: 6px;">
+				<span style="position: relative; font-size: 20px;">LV</span>
+				<input type="number" name="attr_char_level" step="10" min="0" max="50" style="position: relative; bottom: 6px; text-decoration: underline;">
 				<select name="attr_class" style="position: relative; width: 280px; height: 40px; font-size: 24px; font-weight: 600;">
 					<option style="color: black;" value="-1">Select</option>
 					<option style="color: black;" value="0">Tank / Paladin</option>
@@ -76,6 +77,68 @@
 				<span class="stacking-element-font">MAX</span>
 				<span>5</span>
 			</div>
+		</div>
+	</div>
+	<!-- END OF ROLE BAR + HP + MP -->
+
+	<!-- THE BODY -->
+	<div class="body">
+		<div class="body-left">
+			<div class="grid-item">
+				<label>Main Status</label>
+				
+			</div>
+			<div class="grid-item">
+				<label>Sub Status</label>
+			</div>
+			<div class="grid-item">
+				<div class="grid-rollable">
+					<span>STR</span>
+					<input type="number" name="attr_char_strength">
+					<button type='roll' value="/roll 1d20 + @{char_strength}" name=roll_strCheck></button>
+					<hr>
+				</div>
+			</div>
+			<div class="grid-item"></div>
+			<div class="grid-item">
+				<div class="grid-rollable">
+					<span>DEX</span>
+					<input type="number" name="attr_char_dexterity">
+					<button type='roll' value="/roll 1d20 + @{char_dexterity}" name=roll_dexCheck></button>
+					<hr>
+				</div>
+			</div>
+			<div class="grid-item"></div>
+			<div class="grid-item">
+				<div class="grid-rollable">
+					<span>VIT</span>
+					<input type="number" name="attr_char_vitality">
+					<button type='roll' value="/roll 1d20 + @{char_vitality}" name=roll_vitCheck></button>
+					<hr>
+				</div>
+			</div>
+			<div class="grid-item"></div>
+			<div class="grid-item">
+				<div class="grid-rollable">
+					<span>INT</span>
+					<input type="number" name="attr_char_intelligence">
+					<button type='roll' value="/roll 1d20 + @{char_intelligence}" name=roll_intCheck></button>
+					<hr>
+				</div>
+			</div>
+			<div class="grid-item"></div>
+			<div class="grid-item">
+				<div class="grid-rollable">
+					<span>MND</span>
+					<input type="number" name="attr_char_mind">
+					<button type='roll' value="/roll 1d20 + @{char_mind}" name=roll_mndCheck></button>
+					<hr>
+				</div>
+			</div>
+			<div class="grid-item"></div>
+		</div>
+		<div class="body-right">
+			
 		</div>
 	</div>
 </div>

@@ -106,7 +106,7 @@
   align-items: center;
   text-align: center;
   justify-content: center;
-  width: 50%;
+  width: 53%;
   position: relative;
   border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
   border-width: 3px;
@@ -192,10 +192,95 @@
   color: white;
   text-transform: uppercase;
 }
-
-
 /*End of Role Bar Section*/
 
+/*Body Section*/
+.charsheet .body {
+  display: flex;
+  text-transform: uppercase;
+  font-family: "Jura";
+  font-weight: 700;
+  font-style: normal;
+}
+
+.charsheet .body .body-left {
+  width: 50%;
+  height: auto;
+  margin-top: 4px;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(0,80,162);
+  background: linear-gradient(0deg, rgba(0,80,162,1) 0%, rgba(0,121,244,1) 50%, rgba(0,121,244,1) 80%, rgba(69,157,246,1) 100%);
+  display: grid;
+  grid-template-columns: 220px auto;
+  grid-template-rows: 50px 50px 50px 50px 50px 50px;
+  color: white;
+}
+
+.charsheet .body .body-left .grid-item {
+  font-size: 24px;
+}
+
+.charsheet .body .body-left .grid-item span {
+  display: inline-block;
+  width: 50px;
+}
+
+.charsheet .body .body-left .grid-item label {
+  color: white;
+  font-size: 24px;
+}
+
+.charsheet .body .body-left .grid-item hr {
+  width: 70%;
+  border-top: 2px solid white;
+  text-align: left;
+  position: relative;
+  bottom: 28px;
+  right: 32px;
+}
+
+.charsheet .body .body-left input {
+  position: relative;
+  bottom: 2px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: right;
+  width: 110px;
+}
+
+.charsheet .body .body-left button {
+  width: 25px;
+  height: 25px;
+  align-content: center;
+}
+
+.charsheet .body .body-right {
+  width: 50%;
+  height: auto;
+  margin-left: 4px;
+  margin-top: 4px;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(40,40,40);
+  background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(74,74,74,1) 10%, rgba(74,74,74,1) 90%, rgba(97,97,97,1) 100%);
+  color: white;
+}
+
+/*End of Body Section*/
 
 /*FFXIV Main Roll Container*/
 .sheet-rolltemplate-ffxivmain .sheet-header {
