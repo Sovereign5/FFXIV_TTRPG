@@ -51,6 +51,16 @@
   display: none;
 }
 
+.sheet-traits-hide,
+.charsheet .sheet-traits-switch:checked ~ .sheet-traits-show {
+  display: block;
+}
+
+.charsheet .sheet-traits-show,
+.charsheet .sheet-traits-switch:checked ~ .sheet-traits-hide {
+  display: none;
+}
+
 .repcontainer .repitem {
   padding-bottom: 25px;
 }
@@ -86,6 +96,7 @@
   background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(74,74,74,1) 10%, rgba(74,74,74,1) 90%, rgba(97,97,97,1) 100%);
   color: white;
 }
+
 /*End of Header Section*/
 
 /*Roll Bar Section*/
@@ -284,6 +295,7 @@
 }
 
 .charsheet .body .body-right {
+  text-transform: none;
   width: 50%;
   height: auto;
   margin-left: 4px;
@@ -300,12 +312,42 @@
   color: white;
 }
 
+.charsheet .body .body-right:hover > .edittraitbutton {
+  display: block;
+}
+
 .charsheet .body .body-right label {
+  text-transform: uppercase;
   color: white;
   font-size: 18px;
   position: relative;
   left: 10px;
   top: 10px;
+}
+
+.charsheet .body .body-right textarea {
+  font-weight: 400;
+  width: 95%;
+  height: 85%;
+/*  background-color: rgba(255,255,255,.25);*/
+  background-color: white;
+  appearance: none;
+  border: none;
+  color: black;
+}
+
+.charsheet .body .body-right .edittraitbutton {
+  color: black;
+  position: absolute;
+  left: 340px;
+  top: 6px;
+  background-color: rgba(255,255,255,.1);
+  border: none;
+  display: none;
+}
+
+.charsheet .body .body-right .edittraitbutton:hover {
+  background-color: rgba(255,255,255,1);
 }
 
 /*End of Body Section*/

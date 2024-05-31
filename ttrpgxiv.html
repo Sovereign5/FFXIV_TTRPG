@@ -10,7 +10,8 @@
 	<div class="headerbar">
 		<img src="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/main/images/logo_text.png" />
 		<div class="headerbar-right">
-
+			<input type="text" name="attr_character_name" style="position: relative; font-size: 24px; font-family: Jura; background-color: transparent; appearance: none; border: none; color: white; width: 255px;">
+			<hr style="width: 255px; position: relative; right: 150px; bottom: 24px; border-top: 2px solid white;">
 		</div>
 	</div>
 
@@ -158,6 +159,11 @@
 		</div>
 		<div class="body-right">
 			<label>Traits & Other Effects</label>
+			<input type="checkbox" name="attr_traitswitch" class="sheet-traits-switch" value="1" hidden>
+			<button type="action" name="act_traitedit" class="edittraitbutton">Toggle</button>
+			<textarea name="attr_traitsandeffects" class="sheet-traits-show" style="position: relative; top: 5px;"></textarea>
+			<!-- <span style="position: relative; left: 5px" name="attr_traitsandeffects" class="sheet-traits-hide"></span> -->
+			<textarea name="attr_traitsandeffects" class="sheet-traits-hide lockedtextarea" style="position: relative; top: 5px; background-color: transparent; color: white; resize: none; pointer-events: none;" readonly></textarea>
 		</div>
 	</div>
 </div>
@@ -661,6 +667,17 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 			switchToggle = 1 - switchToggle;
 			setAttrs({
 				repeating_primaryability_attackcheckbox: switchToggle
+			});
+		});
+	});
+
+	// Toggle for Traits & Other Effects
+	on("clicked:traitedit", function() {
+		getAttrs(["traitswitch"], function(values) {
+			let switchToggle = values.traitswitch;
+			switchToggle = 1 - switchToggle;
+			setAttrs({
+				traitswitch: switchToggle
 			});
 		});
 	});
