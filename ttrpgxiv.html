@@ -27,26 +27,26 @@
 				<input type="number" name="attr_char_level" step="10" min="0" max="50" style="position: relative; bottom: 6px; text-decoration: underline;">
 				<select name="attr_class" style="position: relative; width: 280px; height: 40px; font-size: 24px; font-weight: 600;">
 					<option style="color: black;" value="-1">Select</option>
-					<option style="color: black;" value="0">Tank / Paladin</option>
-					<option style="color: black;" value="1">Tank / Warrior</option>
-					<option style="color: black;" value="2">Tank / Dark Knight</option>
-					<option style="color: black;" value="3">Tank / Gunbreaker</option>
-					<option style="color: black;" value="4">Healer / White Mage</option>
-					<option style="color: black;" value="5">Healer / Scholar</option>
-					<option style="color: black;" value="6">Healer / Astrologian</option>
-					<option style="color: black;" value="7">Healer / Sage</option>
-					<option style="color: black;" value="8">DPS / Monk</option>
-					<option style="color: black;" value="9">DPS / Dragoon</option>
-					<option style="color: black;" value="10">DPS / Ninja</option>
-					<option style="color: black;" value="11">DPS / Samurai</option>
-					<option style="color: black;" value="12">DPS / Reaper</option>
-					<option style="color: black;" value="13">DPS / Bard</option>
-					<option style="color: black;" value="14">DPS / Machinist</option>
-					<option style="color: black;" value="15">DPS / Dancer</option>
-					<option style="color: black;" value="16">DPS / Black Mage</option>
-					<option style="color: black;" value="17">DPS / Summoner</option>
-					<option style="color: black;" value="18">DPS / Red Mage</option>
-					<option style="color: black;" value="19">DPS / Blue Mage</option>
+					<option style="color: black;" value="Paladin">Tank / Paladin</option>
+					<option style="color: black;" value="Warrior">Tank / Warrior</option>
+					<option style="color: black;" value="DarkKnight">Tank / Dark Knight</option>
+					<option style="color: black;" value="Gunbreaker">Tank / Gunbreaker</option>
+					<option style="color: black;" value="WhiteMage">Healer / White Mage</option>
+					<option style="color: black;" value="Scholar">Healer / Scholar</option>
+					<option style="color: black;" value="Astrologian">Healer / Astrologian</option>
+					<option style="color: black;" value="Sage">Healer / Sage</option>
+					<option style="color: black;" value="Monk">DPS / Monk</option>
+					<option style="color: black;" value="Dragoon">DPS / Dragoon</option>
+					<option style="color: black;" value="Ninja">DPS / Ninja</option>
+					<option style="color: black;" value="Samurai">DPS / Samurai</option>
+					<option style="color: black;" value="Reaper">DPS / Reaper</option>
+					<option style="color: black;" value="Bard">DPS / Bard</option>
+					<option style="color: black;" value="Machinist">DPS / Machinist</option>
+					<option style="color: black;" value="Dancer">DPS / Dancer</option>
+					<option style="color: black;" value="BlackMage">DPS / Black Mage</option>
+					<option style="color: black;" value="Summoner">DPS / Summoner</option>
+					<option style="color: black;" value="RedMage">DPS / Red Mage</option>
+					<option style="color: black;" value="BlueMage">DPS / Blue Mage</option>
 				</select>
 			</div>
 			
@@ -84,12 +84,13 @@
 	<!-- THE BODY -->
 	<div class="body">
 		<div class="body-left">
-			<div class="grid-item">
+			<div class="grid-item" style="position: relative; top: 13px;">
 				<label>Main Status</label>
-				
+				<hr style="position: relative; bottom: 19px;">
 			</div>
-			<div class="grid-item">
+			<div class="grid-item" style="position: relative; top: 13px;">
 				<label>Sub Status</label>
+				<hr style="position: relative; bottom: 19px; width: 88%; right: 10px;">
 			</div>
 			<div class="grid-item">
 				<div class="grid-rollable">
@@ -99,7 +100,11 @@
 					<hr>
 				</div>
 			</div>
-			<div class="grid-item"></div>
+			<div class="grid-item">
+				<span class="span-longer">Defense</span>
+				<input class="input-shorter" type="number" name="attr_physical_defense" value="10" readonly>
+				<hr style="width: 88%; position: relative; right: 10px; bottom: 25px;">
+			</div>
 			<div class="grid-item">
 				<div class="grid-rollable">
 					<span>DEX</span>
@@ -108,7 +113,11 @@
 					<hr>
 				</div>
 			</div>
-			<div class="grid-item"></div>
+			<div class="grid-item">
+				<span class="span-longer">M. Defense</span>
+				<input class="input-shorter" type="number" name="attr_magical_defense" value="10" readonly>
+				<hr style="width: 88%; position: relative; right: 10px; bottom: 25px;">
+			</div>
 			<div class="grid-item">
 				<div class="grid-rollable">
 					<span>VIT</span>
@@ -117,7 +126,11 @@
 					<hr>
 				</div>
 			</div>
-			<div class="grid-item"></div>
+			<div class="grid-item">
+				<span class="span-longer">Vigilance</span>
+				<input class="input-shorter" type="number" name="attr_char_vigilance" readonly />
+				<hr style="width: 88%; position: relative; right: 10px; bottom: 25px;">
+			</div>
 			<div class="grid-item">
 				<div class="grid-rollable">
 					<span>INT</span>
@@ -126,7 +139,12 @@
 					<hr>
 				</div>
 			</div>
-			<div class="grid-item"></div>
+			<div class="grid-item">
+				<span class="span-longer" style="width: 55px">Speed</span>
+				<span class="input-shorter" style="position: relative; right: 10px">5</span>
+				<span class="input-shorter" style="font-size: 14px; position: relative; right:15px">squares</span>
+				<hr style="width: 88%; position: relative; right: 10px; bottom: 24px;">
+			</div>
 			<div class="grid-item">
 				<div class="grid-rollable">
 					<span>MND</span>
@@ -451,128 +469,128 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 	// Change Physical & Magical deefnse as class changes
 	on("change:class", function() {
 		getAttrs(["class"], function(value) {
-			let newClassValue = parseInt(value.class)||0;
+			let newClassValue = value.class;
 			let newPhysicalDefense = 10;
 			let newMagicalDefense = 10;
 			let newRole = "";
 			let newModifier = "";
 
 			switch (newClassValue) {
-				case 0: // Paladin
+				case "Paladin": // Paladin
+					newPhysicalDefense = 16;
+					newMagicalDefense = 13;
+					newRole = "Tank";
+					newModifier = "@{char_strength}";
+					break;
+				case "Warrior": // Warrior
+					newPhysicalDefense = 15;
+					newMagicalDefense = 13;
+					newRole = "Tank";
+					newModifier = "@{char_strength}";
+					break;
+				case "DarkKnight": // Dark Knight
+					newPhysicalDefense = 15;
+					newMagicalDefense = 14;
+					newRole = "Tank";
+					newModifier = "@{char_strength}";
+					break;
+				case "Gunbreaker": // Gunbreaker
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Tank";
 					newModifier = "@{char_strength}";
 					break;
-				case 1: // Warrior
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Tank";
-					newModifier = "@{char_strength}";
-					break;
-				case 2: // Dark Knight
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Tank";
-					newModifier = "@{char_strength}";
-					break;
-				case 3: // Gunbreaker
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Tank";
-					newModifier = "@{char_strength}";
-					break;
-				case 4: // Monk
+				case "Monk": // Monk
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "@{char_strength}";
 					break;
-				case 5: // Dragoon
+				case "Dragoon": // Dragoon
+					newPhysicalDefense = 15;
+					newMagicalDefense = 12;
+					newRole = "Damage Dealer";
+					newModifier = "@{char_strength}";
+					break;
+				case "Ninja": // Ninja
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "@{char_strength}";
 					break;
-				case 6: // Ninja
+				case "Samurai": // Samurai
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "@{char_strength}";
 					break;
-				case 7: // Samurai
+				case "Reaper": // Reaper
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "@{char_strength}";
 					break;
-				case 8: // Reaper
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Damage Dealer";
-					newModifier = "@{char_strength}";
+				case "WhiteMage": // White Mage
+					newPhysicalDefense = 11;
+					newMagicalDefense = 14;
+					newRole = "Healer";
+					newModifier = "INT";
 					break;
-				case 9: // White Mage
+				case "Scholar": // Scholar
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Healer";
 					newModifier = "INT";
 					break;
-				case 10: // Scholar
+				case "Astrologian": // Astrologian
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Healer";
 					newModifier = "INT";
 					break;
-				case 11: // Astrologian
+				case "Sage": // Sage
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Healer";
 					newModifier = "INT";
 					break;
-				case 12: // Sage
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Healer";
-					newModifier = "INT";
-					break;
-				case 13: // Bard
+				case "Bard": // Bard
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "DEX";
 					break;
-				case 14: // Machinist
+				case "Machinist": // Machinist
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "DEX";
 					break;
-				case 15: // Dancer
+				case "Dancer": // Dancer
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "DEX";
 					break;
-				case 16: // Black mage
+				case "BlackMage": // Black mage
+					newPhysicalDefense = 11;
+					newMagicalDefense = 15;
+					newRole = "Damage Dealer";
+					newModifier = "INT";
+					break;
+				case "Summoner": // Summoner
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "INT";
 					break;
-				case 17: // Summoner
+				case "RedMage": // Red Mage
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "INT";
 					break;
-				case 18: // Red Mage
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Damage Dealer";
-					newModifier = "INT";
-					break;
-				case 19: // Blue Mage
+				case "BlueMage": // Blue Mage
 					newPhysicalDefense = 9;
 					newMagicalDefense = 9;
 					newRole = "Limited";

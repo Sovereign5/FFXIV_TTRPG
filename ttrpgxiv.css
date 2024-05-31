@@ -223,6 +223,7 @@
 
 .charsheet .body .body-left .grid-item {
   font-size: 24px;
+  padding: 2px;
 }
 
 .charsheet .body .body-left .grid-item span {
@@ -230,9 +231,28 @@
   width: 50px;
 }
 
+.charsheet .body .body-left .grid-item .span-longer {
+  font-size: 20px;
+  display: inline-block;
+  width: 130px;
+}
+
+.charsheet .body .body-left .grid-item .input-shorter {
+  position: relative;
+  bottom: 2px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: right;
+  width: 45px;
+}
+
 .charsheet .body .body-left .grid-item label {
   color: white;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .charsheet .body .body-left .grid-item hr {
