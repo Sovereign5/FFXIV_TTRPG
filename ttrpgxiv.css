@@ -300,6 +300,14 @@
   color: white;
 }
 
+.charsheet .body .body-right label {
+  color: white;
+  font-size: 18px;
+  position: relative;
+  left: 10px;
+  top: 10px;
+}
+
 /*End of Body Section*/
 
 /*FFXIV Main Roll Container*/
