@@ -159,11 +159,30 @@
 		</div>
 		<div class="body-right">
 			<label>Traits & Other Effects</label>
-			<input type="checkbox" name="attr_traitswitch" class="sheet-traits-switch" value="1" hidden>
-			<button type="action" name="act_traitedit" class="edittraitbutton">Toggle</button>
-			<textarea name="attr_traitsandeffects" class="sheet-traits-show" style="position: relative; top: 5px;"></textarea>
-			<!-- <span style="position: relative; left: 5px" name="attr_traitsandeffects" class="sheet-traits-hide"></span> -->
-			<textarea name="attr_traitsandeffects" class="sheet-traits-hide lockedtextarea" style="position: relative; top: 5px; background-color: transparent; color: white; resize: none; pointer-events: none;" readonly></textarea>
+			<fieldset class="repeating_traits">
+				<div class="traitdiv">
+					<input type="checkbox" name="attr_traitswitch" class="sheet-traits-switch" value="1" hidden>
+					<button type="action" name="act_traitedit" class="edittraitbutton"><span style="font-family:Pictos;">y</span></button>
+					<div class="sheet-traits-hide">
+						<span>Name:</span> <input type="text" name="attr_traitname"><br>
+						<span>Effect:</span> <input type="text" name="attr_traiteffect"><br>
+						<span>Description</span>
+					<textarea name="attr_traitdescription"></textarea>
+					</div>
+
+
+
+					<div class="sheet-traits-show">
+						<div class="traits-headerbar">
+							<button type='roll' value="&{template:info} {{name=@{traitname} }} {{trait=@{traiteffect} }} {{desc=@{traitdescription} }}" name="roll_traitdisplay" style="position: relative; top: -2px;">
+								<span name="attr_traitname"></span>
+							</button>
+							<span name="attr_traiteffect" style="position: relative; left: 250px; bottom: 0px;"></span>
+						</div>
+						<span name="attr_traitdescription"></span>
+					</div>	
+				</div>
+			</fieldset>
 		</div>
 	</div>
 </div>
@@ -456,6 +475,39 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 	</div>
 </rolltemplate>
 
+<rolltemplate class="sheet-rolltemplate-info">
+	<div class="sheet-template-container">
+		<div class="sheet-header">
+			{{#name}}
+			<span>{{name}}</span>
+			{{/name}}
+		</div>
+		<div class="sheet-tag">
+			{{#trait}}
+			<span>{{trait}}</span>
+			{{/trait}}
+		</div>
+		<div class="sheet-desc">
+			{{#desc}}
+			<span>{{desc}}</span>
+			{{/desc}}
+		</div>
+
+	</div>
+</rolltemplate>
+
+
+<!-- RECYCLE MATERIAL -->
+<!-- EDITABLE TEXT FIELD FOR PROFILE SECTION -->
+<!-- <label>Traits & Other Effects</label>
+			<input type="checkbox" name="attr_traitswitch" class="sheet-traits-switch" value="1" hidden>
+			<button type="action" name="act_traitedit" class="edittraitbutton">Toggle</button>
+			<textarea name="attr_traitsandeffects" class="sheet-traits-show" style="position: relative; top: 5px;"></textarea> -->
+			<!-- <span style="position: relative; left: 5px" name="attr_traitsandeffects" class="sheet-traits-hide"></span> -->
+			<!-- <textarea name="attr_traitsandeffects" class="sheet-traits-hide lockedtextarea" style="position: relative; top: 5px; background-color: transparent; color: white; resize: none; pointer-events: none;" readonly></textarea> -->
+
+
+
 
 
 
@@ -672,12 +724,12 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 	});
 
 	// Toggle for Traits & Other Effects
-	on("clicked:traitedit", function() {
-		getAttrs(["traitswitch"], function(values) {
-			let switchToggle = values.traitswitch;
+	on("clicked:repeating_traits:traitedit", function() {
+		getAttrs(["repeating_traits_traitswitch"], function(values) {
+			let switchToggle = values.repeating_traits_traitswitch;
 			switchToggle = 1 - switchToggle;
 			setAttrs({
-				traitswitch: switchToggle
+				repeating_traits_traitswitch: switchToggle
 			});
 		});
 	});

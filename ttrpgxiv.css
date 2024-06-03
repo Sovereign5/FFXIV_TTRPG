@@ -312,8 +312,56 @@
   color: white;
 }
 
-.charsheet .body .body-right:hover > .edittraitbutton {
+/*.charsheet .body .body-right:hover > .edittraitbutton {
   display: block;
+}
+
+.charsheet .body .body-right .edittraitbutton {
+  color: black;
+  position: absolute;
+  left: 340px;
+  top: 6px;
+  background-color: rgba(255,255,255,.1);
+  border: none;
+  display: none;
+}
+
+.charsheet .body .body-right .edittraitbutton:hover {
+  background-color: rgba(255,255,255,1);
+}*/
+
+.charsheet .body .body-right .edittraitbutton {
+  display: none;
+  color: rgba(255,255,255,0.5);
+  position: absolute;
+  left: 375px;
+  top: -10px;
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .body .body-right .traitdiv:hover > .edittraitbutton {
+  display: block;
+}
+
+.charsheet .body .body-right .traitdiv .edittraitbutton:hover {
+  color: rgba(255,255,255,1);
+}
+
+.charsheet .body .body-right .traitdiv {
+  display: block;
+  padding: 5px;
+}
+
+.charsheet .body .body-right .traitdiv .traits-headerbar {
+  background: lightgray;
+  color: black;
+  border-top: 2px solid black;
+  padding-top: 5px;
+}
+
+.charsheet .body .body-right .traitdiv .traits-headerbar  {
+  background-image: none;
 }
 
 .charsheet .body .body-right label {
@@ -329,25 +377,10 @@
   font-weight: 400;
   width: 95%;
   height: 85%;
-/*  background-color: rgba(255,255,255,.25);*/
   background-color: white;
   appearance: none;
   border: none;
   color: black;
-}
-
-.charsheet .body .body-right .edittraitbutton {
-  color: black;
-  position: absolute;
-  left: 340px;
-  top: 6px;
-  background-color: rgba(255,255,255,.1);
-  border: none;
-  display: none;
-}
-
-.charsheet .body .body-right .edittraitbutton:hover {
-  background-color: rgba(255,255,255,1);
 }
 
 /*End of Body Section*/
@@ -583,3 +616,41 @@
   padding-bottom: 4px;
 }
 /*End of FFXIV Damage Roll Template*/
+
+
+
+/*FFXIV Info Template*/
+.sheet-rolltemplate-info div.sheet-template-container {
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 4px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(57,57,57);
+  background: linear-gradient(180deg, rgba(92,92,92,1) 0%, rgba(29,29,29,1) 10%, rgba(29,29,29,1) 50%, rgba(29,29,29,1) 90%, rgba(0,0,0,1) 100%);
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.sheet-rolltemplate-info .sheet-header {
+  font-size: 1.7em;
+  text-transform: uppercase;
+  transform: scale(0.7, 1);
+  text-align: center;
+}
+
+.sheet-rolltemplate-info .sheet-tag {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  font-style: italic;
+  transform: scale(0.7, 1);
+  text-align: center;
+}
+
+.sheet-rolltemplate-info .sheet-desc {
+  padding-top: 8px;
+  font-size: 1.0em;
+}
+/*End of FFXIV Info Template*/
