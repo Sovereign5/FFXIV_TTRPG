@@ -103,7 +103,7 @@
 			</div>
 			<div class="grid-item">
 				<span class="span-longer">Defense</span>
-				<input class="input-shorter" type="number" name="attr_physical_defense" value="10" readonly>
+				<input class="input-shorter" type="number" name="attr_physical_defense" value="10">
 				<hr style="width: 88%; position: relative; right: 10px; bottom: 25px;">
 			</div>
 			<div class="grid-item">
@@ -116,7 +116,7 @@
 			</div>
 			<div class="grid-item">
 				<span class="span-longer">M. Defense</span>
-				<input class="input-shorter" type="number" name="attr_magical_defense" value="10" readonly>
+				<input class="input-shorter" type="number" name="attr_magical_defense" value="10">
 				<hr style="width: 88%; position: relative; right: 10px; bottom: 25px;">
 			</div>
 			<div class="grid-item">
@@ -266,11 +266,11 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 
 
 	<input type="text" name="attr_abilityname" class="sheet-block-a" placeholder="Storm's Path">
-	<button type='roll' value="&{template:ffxivmain} {{rolltype=@{abilityselector} }} {{name=@{abilityname} }} {{tags=@{tags} }} {{basedamage=@{abilityBaseEffectNumber} }} {{directdamage=[ROLL DIRECT HIT](~repeating_primaryability_directDamageRoll) }} {{effect=@{abilityBaseEffectDescription} }} {{Attack = [[@{abilityselector}]]}}" name="roll_abilityCheckSelector" class="sheet-block-b"><span name="attr_abilityname"></span></button>
+	<button type='roll' value="&{template:ffxivmain} {{rolltype=@{abilityselector} }} {{name=@{abilityname} }} {{tags=@{tags} }} {{basedamage=[[@{abilityBaseEffectNumber}]] }} {{directdamage=[ROLL DIRECT HIT](~repeating_primaryability_directDamageRoll) }} {{effect=@{abilityBaseEffectDescription} }} {{Attack = [[@{abilityselector}]]}}" name="roll_abilityCheckSelector" class="sheet-block-b"><span name="attr_abilityname"></span></button>
 	<br>
 
 	<span>Tags</span>
-	<div class="sheet-block-a">
+	<!-- <div class="sheet-block-a">
 		<div >
 			<span>Physical</span>
 			<input type="checkbox" name="attr_tagphysical" value="Physical">
@@ -280,19 +280,36 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 			<input type="checkbox" name="attr_tagmagical" value="Magical">
 		</div>
 		<div>
-			<span>Ice</span>
-			<input type="checkbox" name="attr_tagice" value="Ice">
+			<span>Ice-aspected</span>
+			<input type="checkbox" name="attr_tagice" value="Ice-aspected">
 		</div>
 		<div>
-			<span>Fire</span>
-			<input type="checkbox" name="attr_tagfire" value="Fire">
+			<span>Fire-aspected</span>
+			<input type="checkbox" name="attr_tagfire" value="Fire-aspected">
 		</div>
 		<div>
-			<span>Thunder</span>
-			<input type="checkbox" name="attr_tagthunder" value="Thunder">
+			<span>Thunder-aspected</span>
+			<input type="checkbox" name="attr_tagthunder" value="Thunder-aspected">
 		</div>
-	</div>
-	<input type="text" name="attr_tags" class="sheet-block-b" class="sheet-block-b" readonly>
+		<div>
+			<span>Wind-aspected</span>
+			<input type="checkbox" name="attr_tagwind" value="Wind-aspected">
+		</div>
+		<div>
+			<span>Earth-aspected</span>
+			<input type="checkbox" name="attr_tagearth" value="Earth-aspected">
+		</div>
+		<div>
+			<span>Water-aspected</span>
+			<input type="checkbox" name="attr_tagwater" value="Water-aspected">
+		</div>
+		<div>
+			<span>Invoked</span>
+			<input type="checkbox" name="attr_taginvoked" value="Inoked">
+		</div>
+	</div> -->
+	<input type="text" name="attr_tags" class="sheet-block-a" style="width: auto;">
+	<input type="text" name="attr_tags" class="sheet-block-b" style="width: auto;" readonly>
 	<br>
 
 	<span>Target:</span>
@@ -301,7 +318,7 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 	<br>
 
 	<span>Range:</span>
-	<input type="number" name="attr_abilityrange" min=1 class="sheet-block-a" placeholder="5">
+	<input type="text" name="attr_abilityrange" class="sheet-block-a" placeholder="5">
 	<span class="sheet-block-b" name="attr_abilityrange"></span>
 	<br>
 
@@ -326,7 +343,7 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 	<span>Base Effect:</span>
 	<br>
 	<span>Damage:</span>
-	<input type="number" name="attr_abilityBaseEffectNumber" class="sheet-block-a" placeholder="2">
+	<input type="text" name="attr_abilityBaseEffectNumber" class="sheet-block-a" placeholder="3">
 	<span name="attr_abilityBaseEffectNumber" class="sheet-block-b"></span>
 	<span>Effect:</span>
 	<input type="text" name="attr_abilityBaseEffectDescription" class="sheet-block-a" placeholder="Inflicts Enmity to the target. Combo: Storm's Path">
@@ -525,165 +542,23 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 		});
 	});
 
-	// Change Physical & Magical deefnse as class changes
-	on("change:class", function() {
-		getAttrs(["class"], function(value) {
-			let newClassValue = value.class;
-			let newPhysicalDefense = 10;
-			let newMagicalDefense = 10;
-			let newRole = "";
-			let newModifier = "";
-
-			switch (newClassValue) {
-				case "Paladin": // Paladin
-					newPhysicalDefense = 16;
-					newMagicalDefense = 13;
-					newRole = "Tank";
-					newModifier = "@{char_strength}";
-					break;
-				case "Warrior": // Warrior
-					newPhysicalDefense = 15;
-					newMagicalDefense = 13;
-					newRole = "Tank";
-					newModifier = "@{char_strength}";
-					break;
-				case "DarkKnight": // Dark Knight
-					newPhysicalDefense = 15;
-					newMagicalDefense = 14;
-					newRole = "Tank";
-					newModifier = "@{char_strength}";
-					break;
-				case "Gunbreaker": // Gunbreaker
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Tank";
-					newModifier = "@{char_strength}";
-					break;
-				case "Monk": // Monk
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Damage Dealer";
-					newModifier = "@{char_strength}";
-					break;
-				case "Dragoon": // Dragoon
-					newPhysicalDefense = 15;
-					newMagicalDefense = 12;
-					newRole = "Damage Dealer";
-					newModifier = "@{char_strength}";
-					break;
-				case "Ninja": // Ninja
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Damage Dealer";
-					newModifier = "@{char_strength}";
-					break;
-				case "Samurai": // Samurai
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Damage Dealer";
-					newModifier = "@{char_strength}";
-					break;
-				case "Reaper": // Reaper
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Damage Dealer";
-					newModifier = "@{char_strength}";
-					break;
-				case "WhiteMage": // White Mage
-					newPhysicalDefense = 11;
-					newMagicalDefense = 14;
-					newRole = "Healer";
-					newModifier = "INT";
-					break;
-				case "Scholar": // Scholar
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Healer";
-					newModifier = "INT";
-					break;
-				case "Astrologian": // Astrologian
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Healer";
-					newModifier = "INT";
-					break;
-				case "Sage": // Sage
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Healer";
-					newModifier = "INT";
-					break;
-				case "Bard": // Bard
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Damage Dealer";
-					newModifier = "DEX";
-					break;
-				case "Machinist": // Machinist
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Damage Dealer";
-					newModifier = "DEX";
-					break;
-				case "Dancer": // Dancer
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Damage Dealer";
-					newModifier = "DEX";
-					break;
-				case "BlackMage": // Black mage
-					newPhysicalDefense = 11;
-					newMagicalDefense = 15;
-					newRole = "Damage Dealer";
-					newModifier = "INT";
-					break;
-				case "Summoner": // Summoner
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Damage Dealer";
-					newModifier = "INT";
-					break;
-				case "RedMage": // Red Mage
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Damage Dealer";
-					newModifier = "INT";
-					break;
-				case "BlueMage": // Blue Mage
-					newPhysicalDefense = 9;
-					newMagicalDefense = 9;
-					newRole = "Limited";
-					newModifier = "INT";
-					break;
-				default:
-			}
-
-			setAttrs({
-				"physical_defense": newPhysicalDefense,
-				"magical_defense": newMagicalDefense,
-				"role": newRole,
-				"char_modifier": newModifier
-			});
-		});
-	});
-
 	// Edit Button Functionality (For Primary)
 	on("clicked:repeating_primaryability:edit", function() {
-		getAttrs(["repeating_primaryability_abilityname", "repeating_primaryability_blockswitch", "repeating_primaryability_tagphysical", "repeating_primaryability_tagmagical", "repeating_primaryability_tagice", "repeating_primaryability_tagfire", "repeating_primaryability_tagthunder"], function(values) {
+		getAttrs(["repeating_primaryability_abilityname", "repeating_primaryability_blockswitch", "repeating_primaryability_tagphysical", "repeating_primaryability_tagmagical", "repeating_primaryability_tagice", "repeating_primaryability_tagfire", "repeating_primaryability_tagthunder", "repeating_primaryability_tagwind", "repeating_primaryability_tagearth", "repeating_primaryability_tagwater", "repeating_primaryability_taginvoked"], function(values) {
 			let name = values.repeating_primaryability_abilityname;
 			let switchToggle = values.repeating_primaryability_blockswitch;
 			switchToggle = 1 - switchToggle;
 
 			// Tag Builder
-			var tags = [];
-			tags.push(values.repeating_primaryability_tagphysical, values.repeating_primaryability_tagmagical, values.repeating_primaryability_tagice, values.repeating_primaryability_tagfire, values.repeating_primaryability_tagthunder);
-			tags = removeItemAll(tags, "0")
-			tags.unshift("Primary")
-			const tagString = tags.join(', ');
+			// var tags = [];
+			// tags.push(values.repeating_primaryability_tagphysical, values.repeating_primaryability_tagmagical, values.repeating_primaryability_tagice, values.repeating_primaryability_tagfire, values.repeating_primaryability_tagthunder, values.repeating_primaryability_tagwind, values.repeating_primaryability_tagearth, values.repeating_primaryability_tagwater, values.repeating_primaryability_taginvoked);
+			// tags = removeItemAll(tags, "0")
+			// tags.unshift("Primary")
+			// const tagString = tags.join(', ');
 
 			setAttrs({
 				repeating_primaryability_blockswitch: switchToggle,
-				repeating_primaryability_tags: tagString
+				//repeating_primaryability_tags: tagString
 			});
 		});
 	});
