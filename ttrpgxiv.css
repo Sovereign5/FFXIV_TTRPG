@@ -1,5 +1,10 @@
+/*Font Import*/
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Romanesco&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+
 .bebas-neue-regular {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Bebas Neue";
   font-weight: 400;
   font-style: normal;
 }
@@ -10,7 +15,22 @@
   font-style: normal;
 }
 
+.jura-regular {
+  font-family: "Jura";
+  font-weight: 400;
+  font-style: normal;
+}
 
+/*End of Font Import*/
+
+.charsheet .page {
+  display: block;
+  margin: 0px;
+  padding: 0px;
+  width: 830px;
+}
+
+/*Toggles*/
 .sheet-block-a,
 .charsheet .sheet-block-switch:checked ~ .sheet-block-b {
   display: block;
@@ -31,16 +51,341 @@
   display: none;
 }
 
-.repcontainer .repitem{
+.sheet-traits-hide,
+.charsheet .sheet-traits-switch:checked ~ .sheet-traits-show {
+  display: block;
+}
+
+.charsheet .sheet-traits-show,
+.charsheet .sheet-traits-switch:checked ~ .sheet-traits-hide {
+  display: none;
+}
+
+.repcontainer .repitem {
   padding-bottom: 25px;
 }
 
 .hide {
   display: none;
 }
+/*End of Toggles*/
+
+
+
+/*Header Section*/
+.charsheet .headerbar {
+  display: flex;
+}
+
+.charsheet .headerbar img {
+  width: 30%;
+}
+
+.charsheet .headerbar .headerbar-right {
+  width: 70%;
+  margin-left: 10px;
+  margin-bottom: 3px;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(40,40,40);
+  background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(74,74,74,1) 10%, rgba(74,74,74,1) 90%, rgba(97,97,97,1) 100%);
+  color: white;
+}
+
+/*End of Header Section*/
+
+/*Roll Bar Section*/
+.charsheet .rolebar {
+  display: flex;
+  font-family: "Jura";
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.5em;
+  color: white;
+  text-transform: uppercase;
+  width: 100%;
+  height: 70px;
+}
+
+.charsheet .rolebar .rolebar-left {
+  display: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 53%;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(0,80,162);
+  background: linear-gradient(0deg, rgba(0,80,162,1) 0%, rgba(0,121,244,1) 50%, rgba(0,121,244,1) 80%, rgba(69,157,246,1) 100%);
+  padding-left: 5px;
+  padding-right: 10px;
+}
+
+.charsheet .rolebar .rolebar-middle {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-left: 4px;
+  background-color: green;
+  width: 30%;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(0,156,10);
+  background: linear-gradient(0deg, rgba(0,102,7,1) 0%, rgba(0,192,12,1) 50%, rgba(0,192,12,1) 70%, rgba(75,232,85,1) 100%);
+}
+
+.charsheet .rolebar .rolebar-right {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-left: 4px;
+  background-color: purple;
+  width: 20%;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(89,45,115);
+  background: linear-gradient(0deg, rgba(89,45,115,1) 0%, rgba(171,81,224,1) 50%, rgba(171,81,224,1) 80%, rgba(193,134,228,1) 100%);
+}
+
+.charsheet .rolebar .stacking-element {
+  display: grid;
+}
+
+.charsheet .rolebar .stacking-element-font {
+  font-size: 0.6em;
+}
+
+.charsheet .rolebar .dividing-line {
+  height: 100%;
+  font-size: 2.1em;
+  font-weight: 400;
+  transform: scale(1, 1.3);
+}
+
+.charsheet .rolebar input[type=number] {
+  z-index: 2;
+  width: 55px;
+  height: 30px;
+  font-size: 30px;
+  padding: 0px;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.charsheet .rolebar select {
+  z-index: 2;
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+}
+/*End of Role Bar Section*/
+
+/*Body Section*/
+.charsheet .body {
+  display: flex;
+  text-transform: uppercase;
+  font-family: "Jura";
+  font-weight: 700;
+  font-style: normal;
+}
+
+.charsheet .body .body-left {
+  width: 50%;
+  height: auto;
+  margin-top: 4px;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(0,80,162);
+  background: linear-gradient(0deg, rgba(0,80,162,1) 0%, rgba(0,121,244,1) 50%, rgba(0,121,244,1) 80%, rgba(69,157,246,1) 100%);
+  display: grid;
+  grid-template-columns: 220px auto;
+  grid-template-rows: 50px 50px 50px 50px 50px 50px;
+  color: white;
+}
+
+.charsheet .body .body-left .grid-item {
+  font-size: 24px;
+  padding: 2px;
+}
+
+.charsheet .body .body-left .grid-item span {
+  display: inline-block;
+  width: 50px;
+}
+
+.charsheet .body .body-left .grid-item .span-longer {
+  font-size: 20px;
+  display: inline-block;
+  width: 130px;
+}
+
+.charsheet .body .body-left .grid-item .input-shorter {
+  position: relative;
+  bottom: 2px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: right;
+  width: 45px;
+}
+
+.charsheet .body .body-left .grid-item label {
+  color: white;
+  font-size: 18px;
+}
+
+.charsheet .body .body-left .grid-item hr {
+  width: 70%;
+  border-top: 2px solid white;
+  text-align: left;
+  position: relative;
+  bottom: 28px;
+  right: 32px;
+}
+
+.charsheet .body .body-left input {
+  position: relative;
+  bottom: 2px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: right;
+  width: 110px;
+}
+
+.charsheet .body .body-left button {
+  width: 25px;
+  height: 25px;
+  align-content: center;
+}
+
+.charsheet .body .body-right {
+  text-transform: none;
+  width: 50%;
+  height: auto;
+  margin-left: 4px;
+  margin-top: 4px;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(40,40,40);
+  background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(74,74,74,1) 10%, rgba(74,74,74,1) 90%, rgba(97,97,97,1) 100%);
+  color: white;
+}
+
+/*.charsheet .body .body-right:hover > .edittraitbutton {
+  display: block;
+}
+
+.charsheet .body .body-right .edittraitbutton {
+  color: black;
+  position: absolute;
+  left: 340px;
+  top: 6px;
+  background-color: rgba(255,255,255,.1);
+  border: none;
+  display: none;
+}
+
+.charsheet .body .body-right .edittraitbutton:hover {
+  background-color: rgba(255,255,255,1);
+}*/
+
+.charsheet .body .body-right .edittraitbutton {
+  display: none;
+  color: rgba(255,255,255,0.5);
+  position: absolute;
+  left: 375px;
+  top: -10px;
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .body .body-right .traitdiv:hover > .edittraitbutton {
+  display: block;
+}
+
+.charsheet .body .body-right .traitdiv .edittraitbutton:hover {
+  color: rgba(255,255,255,1);
+}
+
+.charsheet .body .body-right .traitdiv {
+  display: block;
+  padding: 5px;
+}
+
+.charsheet .body .body-right .traitdiv .traits-headerbar {
+  background: lightgray;
+  color: black;
+  border-top: 2px solid black;
+  padding-top: 5px;
+}
+
+.charsheet .body .body-right .traitdiv .traits-headerbar  {
+  background-image: none;
+}
+
+.charsheet .body .body-right label {
+  text-transform: uppercase;
+  color: white;
+  font-size: 18px;
+  position: relative;
+  left: 10px;
+  top: 10px;
+}
+
+.charsheet .body .body-right textarea {
+  font-weight: 400;
+  width: 95%;
+  height: 85%;
+  background-color: white;
+  appearance: none;
+  border: none;
+  color: black;
+}
+
+/*End of Body Section*/
 
 /*FFXIV Main Roll Container*/
-
 .sheet-rolltemplate-ffxivmain .sheet-header {
   color: white;
   font-family: "Bebas Neue", sans-serif;
@@ -153,9 +498,10 @@
   margin-bottom: 5px;
   font-weight: 600;
 }
+/*End of FFXIV Main Roll Container*/
+
 
 /*FFXIV Damage Roll Template*/
-
 .sheet-rolltemplate-ffxivdamage div.sheet-template-container {
   position: relative;
   border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
@@ -269,3 +615,42 @@
   padding-top: 1px;
   padding-bottom: 4px;
 }
+/*End of FFXIV Damage Roll Template*/
+
+
+
+/*FFXIV Info Template*/
+.sheet-rolltemplate-info div.sheet-template-container {
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 4px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(57,57,57);
+  background: linear-gradient(180deg, rgba(92,92,92,1) 0%, rgba(29,29,29,1) 10%, rgba(29,29,29,1) 50%, rgba(29,29,29,1) 90%, rgba(0,0,0,1) 100%);
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.sheet-rolltemplate-info .sheet-header {
+  font-size: 1.7em;
+  text-transform: uppercase;
+  transform: scale(0.7, 1);
+  text-align: center;
+}
+
+.sheet-rolltemplate-info .sheet-tag {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  font-style: italic;
+  transform: scale(0.7, 1);
+  text-align: center;
+}
+
+.sheet-rolltemplate-info .sheet-desc {
+  padding-top: 8px;
+  font-size: 1.0em;
+}
+/*End of FFXIV Info Template*/

@@ -2,10 +2,193 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Romanesco&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Jura:wght@300..700&display=swap" rel="stylesheet">
 
 <input type="text" name="attr_char_modifier" hidden>
 
+<div class="page">
+	<div class="headerbar">
+		<img src="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/main/images/logo_text.png" />
+		<div class="headerbar-right">
+			<input type="text" name="attr_character_name" style="position: relative; font-size: 24px; font-family: Jura; background-color: transparent; appearance: none; border: none; color: white; width: 255px;">
+			<hr style="width: 255px; position: relative; right: 150px; bottom: 24px; border-top: 2px solid white;">
+		</div>
+	</div>
 
+	<!-- ROLE BAR + HP + MP -->
+	<div class="rolebar">
+		<div class="rolebar-left">
+			<!-- ROLE SELECTION -->
+			<div class="stacking-element-font" style="position: relative; top: 8px">
+				<span style="position: relative; right: 60px">ROLE</span>
+				<span style="position: relative; left: 15px;">JOB</span>
+			</div>
+			<div>
+				<span style="position: relative; font-size: 20px;">LV</span>
+				<input type="number" name="attr_char_level" step="10" min="0" max="50" style="position: relative; bottom: 6px; text-decoration: underline;">
+				<select name="attr_class" style="position: relative; width: 280px; height: 40px; font-size: 24px; font-weight: 600;">
+					<option style="color: black;" value="-1">Select</option>
+					<option style="color: black;" value="Paladin">Tank / Paladin</option>
+					<option style="color: black;" value="Warrior">Tank / Warrior</option>
+					<option style="color: black;" value="DarkKnight">Tank / Dark Knight</option>
+					<option style="color: black;" value="Gunbreaker">Tank / Gunbreaker</option>
+					<option style="color: black;" value="WhiteMage">Healer / White Mage</option>
+					<option style="color: black;" value="Scholar">Healer / Scholar</option>
+					<option style="color: black;" value="Astrologian">Healer / Astrologian</option>
+					<option style="color: black;" value="Sage">Healer / Sage</option>
+					<option style="color: black;" value="Monk">DPS / Monk</option>
+					<option style="color: black;" value="Dragoon">DPS / Dragoon</option>
+					<option style="color: black;" value="Ninja">DPS / Ninja</option>
+					<option style="color: black;" value="Samurai">DPS / Samurai</option>
+					<option style="color: black;" value="Reaper">DPS / Reaper</option>
+					<option style="color: black;" value="Bard">DPS / Bard</option>
+					<option style="color: black;" value="Machinist">DPS / Machinist</option>
+					<option style="color: black;" value="Dancer">DPS / Dancer</option>
+					<option style="color: black;" value="BlackMage">DPS / Black Mage</option>
+					<option style="color: black;" value="Summoner">DPS / Summoner</option>
+					<option style="color: black;" value="RedMage">DPS / Red Mage</option>
+					<option style="color: black;" value="BlueMage">DPS / Blue Mage</option>
+				</select>
+			</div>
+			
+		</div>
+
+		<div class="rolebar-middle">
+			<!-- HP BAR -->
+			<span style="font-size: 2em; position: relative; left: 18px">HP</span>
+			<input type="number" name="attr_char_HP" min="0" style="position: relative; left: 18px; width: 80px; height: 60px; font-size: 50px;">
+			<span class="dividing-line" style="position: relative;">/</span>
+			<div class="stacking-element">
+				<span class="stacking-element-font" style="position: relative; right: 8px">MAX</span>
+				<input type="number" name="attr_char_maxHP" min="0" style="position: relative; left: 2px">
+			</div>
+			<span class="dividing-line" style="position: relative; right: 13px">|</span>
+			<div class="stacking-element">
+				<span class="stacking-element-font" style="position: relative; right: 12px">BARRIER</span>
+				<input type="number" name="attr_char_tempHP" min="0" style="position: relative; left: 5px;">
+			</div>
+		</div>
+
+		<div class="rolebar-right">
+			<!-- MP BAR -->
+			<span style="font-size: 2em;">MP</span>
+			<input type="number" name="attr_char_MP" min="0" max="5" style="position: relative; width: 45px; height: 60px; font-size: 50px;"/>
+			<span class="dividing-line" style="position: relative; right: 13px">/</span>
+			<div class="stacking-element" style="position: relative; right: 5px">
+				<span class="stacking-element-font">MAX</span>
+				<span>5</span>
+			</div>
+		</div>
+	</div>
+	<!-- END OF ROLE BAR + HP + MP -->
+
+	<!-- THE BODY -->
+	<div class="body">
+		<div class="body-left">
+			<div class="grid-item" style="position: relative; top: 13px;">
+				<label>Main Status</label>
+				<hr style="position: relative; bottom: 19px;">
+			</div>
+			<div class="grid-item" style="position: relative; top: 13px;">
+				<label>Sub Status</label>
+				<hr style="position: relative; bottom: 19px; width: 88%; right: 10px;">
+			</div>
+			<div class="grid-item">
+				<div class="grid-rollable">
+					<span>STR</span>
+					<input type="number" name="attr_char_strength">
+					<button type='roll' value="/roll 1d20 + @{char_strength}" name=roll_strCheck></button>
+					<hr>
+				</div>
+			</div>
+			<div class="grid-item">
+				<span class="span-longer">Defense</span>
+				<input class="input-shorter" type="number" name="attr_physical_defense" value="10" readonly>
+				<hr style="width: 88%; position: relative; right: 10px; bottom: 25px;">
+			</div>
+			<div class="grid-item">
+				<div class="grid-rollable">
+					<span>DEX</span>
+					<input type="number" name="attr_char_dexterity">
+					<button type='roll' value="/roll 1d20 + @{char_dexterity}" name=roll_dexCheck></button>
+					<hr>
+				</div>
+			</div>
+			<div class="grid-item">
+				<span class="span-longer">M. Defense</span>
+				<input class="input-shorter" type="number" name="attr_magical_defense" value="10" readonly>
+				<hr style="width: 88%; position: relative; right: 10px; bottom: 25px;">
+			</div>
+			<div class="grid-item">
+				<div class="grid-rollable">
+					<span>VIT</span>
+					<input type="number" name="attr_char_vitality">
+					<button type='roll' value="/roll 1d20 + @{char_vitality}" name=roll_vitCheck></button>
+					<hr>
+				</div>
+			</div>
+			<div class="grid-item">
+				<span class="span-longer">Vigilance</span>
+				<input class="input-shorter" type="number" name="attr_char_vigilance" readonly />
+				<hr style="width: 88%; position: relative; right: 10px; bottom: 25px;">
+			</div>
+			<div class="grid-item">
+				<div class="grid-rollable">
+					<span>INT</span>
+					<input type="number" name="attr_char_intelligence">
+					<button type='roll' value="/roll 1d20 + @{char_intelligence}" name=roll_intCheck></button>
+					<hr>
+				</div>
+			</div>
+			<div class="grid-item">
+				<span class="span-longer" style="width: 55px">Speed</span>
+				<span class="input-shorter" style="position: relative; right: 10px">5</span>
+				<span class="input-shorter" style="font-size: 14px; position: relative; right:15px">squares</span>
+				<hr style="width: 88%; position: relative; right: 10px; bottom: 24px;">
+			</div>
+			<div class="grid-item">
+				<div class="grid-rollable">
+					<span>MND</span>
+					<input type="number" name="attr_char_mind">
+					<button type='roll' value="/roll 1d20 + @{char_mind}" name=roll_mndCheck></button>
+					<hr>
+				</div>
+			</div>
+			<!-- Purposefully Left Empty for Spacing -->
+			<div class="grid-item"></div>
+		</div>
+		<div class="body-right">
+			<label>Traits & Other Effects</label>
+			<fieldset class="repeating_traits">
+				<div class="traitdiv">
+					<input type="checkbox" name="attr_traitswitch" class="sheet-traits-switch" value="1" hidden>
+					<button type="action" name="act_traitedit" class="edittraitbutton"><span style="font-family:Pictos;">y</span></button>
+					<div class="sheet-traits-hide">
+						<span>Name:</span> <input type="text" name="attr_traitname"><br>
+						<span>Effect:</span> <input type="text" name="attr_traiteffect"><br>
+						<span>Description</span>
+					<textarea name="attr_traitdescription"></textarea>
+					</div>
+
+
+
+					<div class="sheet-traits-show">
+						<div class="traits-headerbar">
+							<button type='roll' value="&{template:info} {{name=@{traitname} }} {{trait=@{traiteffect} }} {{desc=@{traitdescription} }}" name="roll_traitdisplay" style="position: relative; top: -2px;">
+								<span name="attr_traitname"></span>
+							</button>
+							<span name="attr_traiteffect" style="position: relative; right: -200px; bottom: 0px; text-align: right;"></span>
+						</div>
+						<span name="attr_traitdescription"></span>
+					</div>	
+				</div>
+			</fieldset>
+		</div>
+	</div>
+</div>
+
+
+<!-- OLD CHARACTER SHEET INFORMATION  -->
 <div name="char_name_box">
 	<span>Character Name</span>
 	<input type="text" name="attr_character_name">
@@ -292,6 +475,39 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 	</div>
 </rolltemplate>
 
+<rolltemplate class="sheet-rolltemplate-info">
+	<div class="sheet-template-container">
+		<div class="sheet-header">
+			{{#name}}
+			<span>{{name}}</span>
+			{{/name}}
+		</div>
+		<div class="sheet-tag">
+			{{#trait}}
+			<span>{{trait}}</span>
+			{{/trait}}
+		</div>
+		<div class="sheet-desc">
+			{{#desc}}
+			<span>{{desc}}</span>
+			{{/desc}}
+		</div>
+
+	</div>
+</rolltemplate>
+
+
+<!-- RECYCLE MATERIAL -->
+<!-- EDITABLE TEXT FIELD FOR PROFILE SECTION -->
+<!-- <label>Traits & Other Effects</label>
+			<input type="checkbox" name="attr_traitswitch" class="sheet-traits-switch" value="1" hidden>
+			<button type="action" name="act_traitedit" class="edittraitbutton">Toggle</button>
+			<textarea name="attr_traitsandeffects" class="sheet-traits-show" style="position: relative; top: 5px;"></textarea> -->
+			<!-- <span style="position: relative; left: 5px" name="attr_traitsandeffects" class="sheet-traits-hide"></span> -->
+			<!-- <textarea name="attr_traitsandeffects" class="sheet-traits-hide lockedtextarea" style="position: relative; top: 5px; background-color: transparent; color: white; resize: none; pointer-events: none;" readonly></textarea> -->
+
+
+
 
 
 
@@ -312,128 +528,128 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 	// Change Physical & Magical deefnse as class changes
 	on("change:class", function() {
 		getAttrs(["class"], function(value) {
-			let newClassValue = parseInt(value.class)||0;
+			let newClassValue = value.class;
 			let newPhysicalDefense = 10;
 			let newMagicalDefense = 10;
 			let newRole = "";
 			let newModifier = "";
 
 			switch (newClassValue) {
-				case 0: // Paladin
+				case "Paladin": // Paladin
+					newPhysicalDefense = 16;
+					newMagicalDefense = 13;
+					newRole = "Tank";
+					newModifier = "@{char_strength}";
+					break;
+				case "Warrior": // Warrior
+					newPhysicalDefense = 15;
+					newMagicalDefense = 13;
+					newRole = "Tank";
+					newModifier = "@{char_strength}";
+					break;
+				case "DarkKnight": // Dark Knight
+					newPhysicalDefense = 15;
+					newMagicalDefense = 14;
+					newRole = "Tank";
+					newModifier = "@{char_strength}";
+					break;
+				case "Gunbreaker": // Gunbreaker
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Tank";
 					newModifier = "@{char_strength}";
 					break;
-				case 1: // Warrior
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Tank";
-					newModifier = "@{char_strength}";
-					break;
-				case 2: // Dark Knight
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Tank";
-					newModifier = "@{char_strength}";
-					break;
-				case 3: // Gunbreaker
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Tank";
-					newModifier = "@{char_strength}";
-					break;
-				case 4: // Monk
+				case "Monk": // Monk
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "@{char_strength}";
 					break;
-				case 5: // Dragoon
+				case "Dragoon": // Dragoon
+					newPhysicalDefense = 15;
+					newMagicalDefense = 12;
+					newRole = "Damage Dealer";
+					newModifier = "@{char_strength}";
+					break;
+				case "Ninja": // Ninja
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "@{char_strength}";
 					break;
-				case 6: // Ninja
+				case "Samurai": // Samurai
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "@{char_strength}";
 					break;
-				case 7: // Samurai
+				case "Reaper": // Reaper
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "@{char_strength}";
 					break;
-				case 8: // Reaper
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Damage Dealer";
-					newModifier = "@{char_strength}";
+				case "WhiteMage": // White Mage
+					newPhysicalDefense = 11;
+					newMagicalDefense = 14;
+					newRole = "Healer";
+					newModifier = "INT";
 					break;
-				case 9: // White Mage
+				case "Scholar": // Scholar
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Healer";
 					newModifier = "INT";
 					break;
-				case 10: // Scholar
+				case "Astrologian": // Astrologian
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Healer";
 					newModifier = "INT";
 					break;
-				case 11: // Astrologian
+				case "Sage": // Sage
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Healer";
 					newModifier = "INT";
 					break;
-				case 12: // Sage
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Healer";
-					newModifier = "INT";
-					break;
-				case 13: // Bard
+				case "Bard": // Bard
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "DEX";
 					break;
-				case 14: // Machinist
+				case "Machinist": // Machinist
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "DEX";
 					break;
-				case 15: // Dancer
+				case "Dancer": // Dancer
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "DEX";
 					break;
-				case 16: // Black mage
+				case "BlackMage": // Black mage
+					newPhysicalDefense = 11;
+					newMagicalDefense = 15;
+					newRole = "Damage Dealer";
+					newModifier = "INT";
+					break;
+				case "Summoner": // Summoner
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "INT";
 					break;
-				case 17: // Summoner
+				case "RedMage": // Red Mage
 					newPhysicalDefense = 13;
 					newMagicalDefense = 13;
 					newRole = "Damage Dealer";
 					newModifier = "INT";
 					break;
-				case 18: // Red Mage
-					newPhysicalDefense = 13;
-					newMagicalDefense = 13;
-					newRole = "Damage Dealer";
-					newModifier = "INT";
-					break;
-				case 19: // Blue Mage
+				case "BlueMage": // Blue Mage
 					newPhysicalDefense = 9;
 					newMagicalDefense = 9;
 					newRole = "Limited";
@@ -503,6 +719,17 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 			switchToggle = 1 - switchToggle;
 			setAttrs({
 				repeating_primaryability_attackcheckbox: switchToggle
+			});
+		});
+	});
+
+	// Toggle for Traits & Other Effects
+	on("clicked:repeating_traits:traitedit", function() {
+		getAttrs(["repeating_traits_traitswitch"], function(values) {
+			let switchToggle = values.repeating_traits_traitswitch;
+			switchToggle = 1 - switchToggle;
+			setAttrs({
+				repeating_traits_traitswitch: switchToggle
 			});
 		});
 	});
