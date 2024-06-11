@@ -23,7 +23,7 @@
 
 /*End of Font Import*/
 
-.charsheet .page {
+.charsheet .sheet-mainpage {
   display: block;
   margin: 0px;
   padding: 0px;
@@ -67,6 +67,17 @@
 
 .hide {
   display: none;
+}
+
+.charsheet .sheet-mainpage,
+.charsheet .sheet-abilitiespage {
+    display: none;
+}
+
+/* show the selected tab */
+.charsheet .sheet-tabstoggle[value="character"] ~ div.sheet-mainpage,
+.charsheet .sheet-tabstoggle[value="abilities"] ~ div.sheet-abilitiespage {
+    display: block;
 }
 /*End of Toggles*/
 
@@ -384,6 +395,101 @@
 }
 
 /*End of Body Section*/
+
+
+/*Abilities Page Section*/
+.charsheet .sheet-abilitiespage {
+
+}
+
+.charsheet .ability-limitbreak {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 3px;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(40,40,40);
+  background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(74,74,74,1) 10%, rgba(74,74,74,1) 90%, rgba(97,97,97,1) 100%);
+  color: white;
+}
+
+.charsheet .sheet-abilities {
+  width: 100%;
+  display: flex;
+  height: auto;
+  color: white;
+}
+
+.charsheet .sheet-abilitiespage label {
+  color: white;
+  font-family: "Jura";
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.5em;
+  transform: scale(1, 0.8);
+}
+
+.charsheet .sheet-abilitiespage input[type=text] {
+  width: 95%;
+}
+
+.charsheet .sheet-abilities .abilities-primary {
+  width: 33%;
+  display: block;
+  margin-bottom: 3px;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(221,69,120);
+  background: linear-gradient(0deg, rgba(221,69,120,1) 0%, rgba(221,69,120,1) 10%, rgba(238,109,148,1) 90%, rgba(238,109,148,1) 100%);
+}
+
+.charsheet .sheet-abilities .abilities-secondary {
+  width: 33%;
+  display: block;
+  margin-left: 3px;
+  margin-bottom: 3px;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(75,166,159);
+  background: linear-gradient(0deg, rgba(75,166,159,1) 0%, rgba(75,166,159,1) 10%, rgba(107,197,188,1) 90%, rgba(107,197,188,1) 100%);
+}
+
+.charsheet .sheet-abilities .abilities-instant {
+  width: 33%;
+  display: block;
+  margin-left: 3px;
+  margin-bottom: 3px;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(98,131,176);
+  background: linear-gradient(0deg, rgba(98,131,176,1) 0%, rgba(98,131,176,1) 10%, rgba(138,157,199,1) 90%, rgba(138,157,199,1) 100%);
+}
+
+
+
+/*End of Abilities Page Section*/
+
+
 
 /*FFXIV Main Roll Container*/
 .sheet-rolltemplate-ffxivmain .sheet-header {

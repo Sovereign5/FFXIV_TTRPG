@@ -5,8 +5,13 @@
 <link href="https://fonts.googleapis.com/css?family=Jura:wght@300..700&display=swap" rel="stylesheet">
 
 <input type="text" name="attr_char_modifier" hidden>
+<input type="hidden" class="sheet-tabstoggle" name="attr_sheetTab"  value="character"  />
+<div>
+    <button type="action" name="act_character" >Character</button>
+    <button type="action" name="act_abilities" >Abilites</button>
+</div>
 
-<div class="page">
+<div class="sheet-mainpage">
 	<div class="headerbar">
 		<img src="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/main/images/logo_text.png" />
 		<div class="headerbar-right">
@@ -183,6 +188,80 @@
 					</div>	
 				</div>
 			</fieldset>
+		</div>
+	</div>
+</div>
+
+<!-- SECOND PAGE - ABILITIES -->
+<div class=sheet-abilitiespage>
+	<div class=ability-limitbreak>
+		<label>LIMIT BREAK</label>
+	</div>
+
+	<div class="sheet-abilities">
+		<div class=abilities-primary>
+			<label>PRIMARY ABILITIES</label>
+			<fieldset class=repeating_primaryability>
+				<span>Ability Name</span>
+				<input type="text" name="attr_abilityname">
+				<br>
+
+				<span>Ability Tags</span>
+				<input type="text" name="attr_tags">
+				<br>
+
+				<input type="checkbox" name="attr_requirementcheckbox"> <span>Requirement</span>
+				<input type="text" name="attr_abilityrequirement">
+				<br>
+				<input type="checkbox" name="attr_triggercheckbox"> <span>Trigger</span>
+				<input type="text" name="attr_abilitytrigger">
+				<br>
+
+				<input type="checkbox" name="attr_costcheckbox"> <span>Cost</span>
+				<input type="text" name="attr_abilitycost">
+				<br>
+
+				<input type="checkbox" name="attr_targetcheckbox"> <span>Target</span>
+				<input type="text" name="attr_abilitytarget">
+				<br>
+
+				<input type="checkbox" name="attr_rangecheckbox"> <span>Range</span>
+				<input type="text" name="attr_abilityrange">
+				<br>
+
+				<input type="checkbox" name="attr_checkcheckbox"> <span>Check</span>
+				<input type="text" name="attr_abilitycheck">
+				<br>
+
+				<span>Base Effect</span>
+				<input type="text" name="attr_abilitybaseeffect">
+				<br>
+
+				<input type="checkbox" name="attr_baseeffectdamagecheckbox"> <span>Base Effect Damage</span>
+				<input type="text" name="attr_abilitybaseeffectdamage">
+				<br>
+
+				<input type="checkbox" name="attr_baseeffectextraeffect"> <span>Base Effect Extra Effect</span>
+				<input type="text" name="attr_abilitybaseeffectextraeffect">
+				<br>
+
+				<input type="checkbox" name="attr_directhitcheckbox"> <span>Direct Hit</span>
+				<input type="text" name="attr_abilitydirecthit">
+				<br>
+
+				<input type="checkbox" name="attr_directhitdamagecheckbox"> <span>Direct Hit Damage</span>
+				<input type="text" name="attr_abilitydirecthitdamage">
+				<br>
+
+				<input type="checkbox" name="attr_directhitextraeffect"> <span>Direct Hit Extra Effect</span>
+				<input type="text" name="attr_abilitydirecthitextraeffect">
+			</fieldset>
+		</div>
+		<div class=abilities-secondary>
+			<label>SECONDARY ABILITIES</label>
+		</div>
+		<div class="abilities-instant">
+			<label>INSTANT ABILITIES</label>
 		</div>
 	</div>
 </div>
@@ -608,6 +687,15 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 			});
 		});
 	});
+
+	const buttonlist = ["character","abilities"];
+    buttonlist.forEach(button => {
+        on(`clicked:${button}`, function() {
+            setAttrs({
+                sheetTab: button
+            });
+        });
+    });
 
 	function removeItemAll(arr, value) {
 	  var i = 0;
