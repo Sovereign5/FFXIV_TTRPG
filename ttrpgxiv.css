@@ -61,6 +61,14 @@
   display: none;
 }
 
+.charsheet .sheet-requirementfield {
+  display: none;
+}
+
+.charsheet .sheet-requirementcheckbox:checked ~ .sheet-requirementfield {
+  display: block;
+}
+
 .repcontainer .repitem {
   padding-bottom: 25px;
 }

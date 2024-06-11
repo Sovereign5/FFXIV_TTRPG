@@ -202,59 +202,119 @@
 		<div class=abilities-primary>
 			<label>PRIMARY ABILITIES</label>
 			<fieldset class=repeating_primaryability>
-				<span>Ability Name</span>
-				<input type="text" name="attr_abilityname">
-				<br>
+				<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
+				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit">Edit Toggle</button><br>
 
-				<span>Ability Tags</span>
-				<input type="text" name="attr_tags">
-				<br>
+				<!-- EDITING MODE -->
+				<div class="sheet-block-a">
+					<span>Ability Name</span>
+					<input type="text" name="attr_abilityname">
+					<br>
 
-				<input type="checkbox" name="attr_requirementcheckbox"> <span>Requirement</span>
-				<input type="text" name="attr_abilityrequirement">
-				<br>
-				<input type="checkbox" name="attr_triggercheckbox"> <span>Trigger</span>
-				<input type="text" name="attr_abilitytrigger">
-				<br>
+					<span>Ability Tags</span>
+					<input type="text" name="attr_abilitytags">
+					<br>
 
-				<input type="checkbox" name="attr_costcheckbox"> <span>Cost</span>
-				<input type="text" name="attr_abilitycost">
-				<br>
+					<input type="checkbox" name="attr_requirementcheckbox" class="sheet-requirementcheckbox"> <span>Requirement</span>
+					<input type="text" name="attr_abilityrequirement">
+					<br>
+					<input type="checkbox" name="attr_triggercheckbox"> <span>Trigger</span>
+					<input type="text" name="attr_abilitytrigger">
+					<br>
 
-				<input type="checkbox" name="attr_targetcheckbox"> <span>Target</span>
-				<input type="text" name="attr_abilitytarget">
-				<br>
+					<input type="checkbox" name="attr_costcheckbox"> <span>Cost</span>
+					<input type="text" name="attr_abilitycost">
+					<br>
 
-				<input type="checkbox" name="attr_rangecheckbox"> <span>Range</span>
-				<input type="text" name="attr_abilityrange">
-				<br>
+					<input type="checkbox" name="attr_targetcheckbox"> <span>Target</span>
+					<input type="text" name="attr_abilitytarget">
+					<br>
 
-				<input type="checkbox" name="attr_checkcheckbox"> <span>Check</span>
-				<input type="text" name="attr_abilitycheck">
-				<br>
+					<input type="checkbox" name="attr_rangecheckbox"> <span>Range</span>
+					<input type="text" name="attr_abilityrange">
+					<br>
 
-				<span>Base Effect</span>
-				<input type="text" name="attr_abilitybaseeffect">
-				<br>
+					<input type="checkbox" name="attr_checkcheckbox"> <span>Check</span>
+					<input type="text" name="attr_abilitycheck">
+					<br>
 
-				<input type="checkbox" name="attr_baseeffectdamagecheckbox"> <span>Base Effect Damage</span>
-				<input type="text" name="attr_abilitybaseeffectdamage">
-				<br>
+					<span>Base Effect</span>
+					<input type="text" name="attr_abilitybaseeffect">
+					<br>
 
-				<input type="checkbox" name="attr_baseeffectextraeffect"> <span>Base Effect Extra Effect</span>
-				<input type="text" name="attr_abilitybaseeffectextraeffect">
-				<br>
+					<input type="checkbox" name="attr_baseeffectdamagecheckbox"> <span>Base Effect Damage</span>
+					<div style="display: flex;">
+						<input type="text" name="attr_abilitybaseeffectdamage">
+						<span>+</span>
+						<input type="text" name="attr_abilitybaseeffectmodifier">
+						<span>=</span>
+						<input type="text" name="attr_abilitybaseeffectdamageorhealing">
+					</div>
+					<br>
 
-				<input type="checkbox" name="attr_directhitcheckbox"> <span>Direct Hit</span>
-				<input type="text" name="attr_abilitydirecthit">
-				<br>
+					<input type="checkbox" name="attr_baseeffectextraeffect"> <span>Base Effect Extra Effect</span>
+					<input type="text" name="attr_abilitybaseeffectextraeffect">
+					<br>
 
-				<input type="checkbox" name="attr_directhitdamagecheckbox"> <span>Direct Hit Damage</span>
-				<input type="text" name="attr_abilitydirecthitdamage">
-				<br>
+					<input type="checkbox" name="attr_directhitcheckbox"> <span>Direct Hit</span>
+					<input type="text" name="attr_abilitydirecthit">
+					<br>
 
-				<input type="checkbox" name="attr_directhitextraeffect"> <span>Direct Hit Extra Effect</span>
-				<input type="text" name="attr_abilitydirecthitextraeffect">
+					<input type="checkbox" name="attr_directhitdamagecheckbox"> <span>Direct Hit Damage</span>
+					<div style="display: flex;">
+						<input type="text" name="attr_abilitydirecthitdamage">
+						<span>+</span>
+						<input type="text" name="attr_abilitydirecteffectmodifier">
+						<span>=</span>
+						<input type="text" name="attr_abilitydirecteffectdamageorhealing">
+					</div>
+					<br>
+
+					<input type="checkbox" name="attr_directhitextraeffect"> <span>Direct Hit Extra Effect</span>
+					<input type="text" name="attr_abilitydirecthitextraeffect">
+				</div>
+
+				<!-- DISPLAY MODE -->
+				<div class="sheet-block-b">
+					<button type="roll" value="[[1d10]]" name="roll_abilityCheck"> <span name="attr_abilityname"></span> </button><br>
+					<span name="attr_abilitytags" style="font-style: italic;"></span>
+					<div class="sheet-requirementfield">
+						<span style="font-weight: 700;">Requirement: </span>
+						<span name="attr_abilityrequirement"></span>
+					</div>
+					<div>
+						<span style="font-weight: 700;">Trigger: </span>
+						<span name="attr_abilitytrigger"></span>
+					</div>
+					<div>
+						<span style="font-weight: 700;">Cost: </span>
+						<span name="attr_abilitycost"></span>
+					</div>
+					<div>
+						<span style="font-weight: 700;">Target: </span>
+						<span name="attr_abilitytarget"></span>
+					</div>
+					<div>
+						<span style="font-weight: 700;">Range: </span>
+						<span name="attr_abilityrange"></span>
+					</div>
+					<div>
+						<span style="font-weight: 700;">Target: </span>
+						<span name="attr_abilitytarget"></span>
+					</div>
+					<div>
+						<span style="font-weight: 700;">Check: </span>
+						<span name="attr_abilitycheck"></span>
+					</div>
+					<div>
+						<span style="font-weight: 700;">Base Effect: </span>
+						<span name="attr_abilitybaseeffect"></span>
+					</div>
+					<div>
+						<span style="font-weight: 700;">Direct Hit Effect: </span>
+						<span name="attr_abilitydirecthit"></span>
+					</div>
+				</div>
 			</fieldset>
 		</div>
 		<div class=abilities-secondary>
