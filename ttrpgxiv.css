@@ -69,6 +69,38 @@
   display: flex;
 }
 
+.charsheet .sheet-triggerfield {
+  display: none;
+}
+
+.charsheet .sheet-triggercheckbox:checked ~ .sheet-triggerfield {
+  display: flex;
+}
+
+.charsheet .sheet-costfield {
+  display: none;
+}
+
+.charsheet .sheet-costcheckbox:checked ~ .sheet-costfield {
+  display: flex;
+}
+
+.charsheet .sheet-targetfield {
+  display: none;
+}
+
+.charsheet .sheet-targetcheckbox:checked ~ .sheet-targetfield {
+  display: flex;
+}
+
+.charsheet .sheet-rangefield {
+  display: none;
+}
+
+.charsheet .sheet-rangecheckbox:checked ~ .sheet-rangefield {
+  display: flex;
+}
+
 .repcontainer .repitem {
   padding-bottom: 25px;
 }
@@ -495,6 +527,9 @@
 
 .charsheet .sheet-abilities .displaymode {
   display: flex;
+}
+
+.charsheet .sheet-abilities .sheet-diceroll {
 }
 
 

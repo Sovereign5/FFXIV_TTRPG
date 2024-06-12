@@ -203,13 +203,15 @@
 			<label>PRIMARY ABILITIES</label>
 			<fieldset class=repeating_primaryability>
 				<input type="checkbox" name="attr_requirementcheckbox" class="sheet-requirementcheckbox" hidden>
+				<input type="checkbox" name="attr_triggercheckbox" class="sheet-triggercheckbox" hidden>
 				<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
-
+				<input type="checkbox" name="attr_costcheckbox" class="sheet-costcheckbox" hidden>
+				<input type="checkbox" name="attr_targetcheckbox" class="sheet-targetcheckbox" hidden>
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit">Edit Toggle</button><br>
 
 				<!-- EDITING MODE -->
-				<div class="sheet-block-a">
+				<div class="sheet-block-a" style="padding: 3px;">
 					<span>Ability Name</span>
 					<input type="text" name="attr_abilityname">
 					<br>
@@ -221,15 +223,15 @@
 					<input type="checkbox" name="attr_requirementcheckbox" class="sheet-requirementcheckbox"> <span>Requirement</span>
 					<input type="text" name="attr_abilityrequirement">
 					<br>
-					<input type="checkbox" name="attr_triggercheckbox"> <span>Trigger</span>
+					<input type="checkbox" name="attr_triggercheckbox" class="sheet-triggercheckbox"> <span>Trigger</span>
 					<input type="text" name="attr_abilitytrigger">
 					<br>
 
-					<input type="checkbox" name="attr_costcheckbox"> <span>Cost</span>
+					<input type="checkbox" name="attr_costcheckbox" class="sheet-costcheckbox"> <span>Cost</span>
 					<input type="text" name="attr_abilitycost">
 					<br>
 
-					<input type="checkbox" name="attr_targetcheckbox"> <span>Target</span>
+					<input type="checkbox" name="attr_targetcheckbox" class="sheet-targetcheckbox"> <span>Target</span>
 					<input type="text" name="attr_abilitytarget">
 					<br>
 
@@ -279,32 +281,31 @@
 
 				<!-- DISPLAY MODE -->
 				<div class="sheet-block-b" style="padding: 3px;">
-					<button type="roll" value="[[1d10]]" name="roll_abilityCheck"> <span name="attr_abilityname"></span> </button><br>
+					<button type="roll" class="sheet-diceroll" value="&{template:ffxivmain} {{rolltype=@{abilityselector} }} {{name=@{abilityname} }} {{tags=@{tags} }} {{basedamage=[[@{abilityBaseEffectNumber}]] }} {{directdamage=[ROLL DIRECT HIT](~repeating_primaryability_directDamageRoll) }} {{effect=@{abilityBaseEffectDescription} }} {{Attack = [[@{abilityselector}]]}}" name="roll_abilityCheck"> <span name="attr_abilityname"></span> </button><br>
 					<span name="attr_abilitytags" style="font-style: italic;"></span>
 					<div class="displaymode">
 						<input type="checkbox" name="attr_requirementcheckbox" class="sheet-requirementcheckbox" hidden>
 						<span style="font-weight: 700;" class="sheet-requirementfield">Requirement:</span>
 						<span name="attr_abilityrequirement" class="sheet-requirementfield"></span>
 					</div>
-					<div>
-						<span style="font-weight: 700;">Trigger: </span>
-						<span name="attr_abilitytrigger"></span>
+					<div class="displaymode">
+						<input type="checkbox" name="attr_triggercheckbox" class="sheet-triggercheckbox" hidden>
+						<span style="font-weight: 700;" class="sheet-triggerfield">Trigger: </span>
+						<span name="attr_abilitytrigger" class="sheet-triggerfield"></span>
 					</div>
-					<div>
-						<span style="font-weight: 700;">Cost: </span>
-						<span name="attr_abilitycost"></span>
+					<div class="displaymode">
+						<input type="checkbox" name="attr_costcheckbox" class="sheet-costcheckbox" hidden>
+						<span style="font-weight: 700;" class="sheet-costfield">Cost: </span>
+						<span name="attr_abilitycost" class="sheet-costfield"></span>
 					</div>
-					<div>
-						<span style="font-weight: 700;">Target: </span>
-						<span name="attr_abilitytarget"></span>
+					<div class="displaymode">
+						<input type="checkbox" name="attr_targetcheckbox" class="sheet-targetcheckbox" hidden>
+						<span style="font-weight: 700;" class="sheet-targetfield">Target: </span>
+						<span name="attr_abilitytarget" class="sheet-targetfield"></span>
 					</div>
 					<div>
 						<span style="font-weight: 700;">Range: </span>
 						<span name="attr_abilityrange"></span>
-					</div>
-					<div>
-						<span style="font-weight: 700;">Target: </span>
-						<span name="attr_abilitytarget"></span>
 					</div>
 					<div>
 						<span style="font-weight: 700;">Check: </span>
@@ -318,6 +319,7 @@
 						<span style="font-weight: 700;">Direct Hit Effect: </span>
 						<span name="attr_abilitydirecthit"></span>
 					</div>
+					<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilityDirectHit}]] }}">Hide</button>
 				</div>
 			</fieldset>
 		</div>
