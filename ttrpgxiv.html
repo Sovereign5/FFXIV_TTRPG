@@ -202,7 +202,10 @@
 		<div class=abilities-primary>
 			<label>PRIMARY ABILITIES</label>
 			<fieldset class=repeating_primaryability>
+				<input type="checkbox" name="attr_requirementcheckbox" class="sheet-requirementcheckbox" hidden>
 				<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
+
+
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit">Edit Toggle</button><br>
 
 				<!-- EDITING MODE -->
@@ -275,12 +278,13 @@
 				</div>
 
 				<!-- DISPLAY MODE -->
-				<div class="sheet-block-b">
+				<div class="sheet-block-b" style="padding: 3px;">
 					<button type="roll" value="[[1d10]]" name="roll_abilityCheck"> <span name="attr_abilityname"></span> </button><br>
 					<span name="attr_abilitytags" style="font-style: italic;"></span>
-					<div class="sheet-requirementfield">
-						<span style="font-weight: 700;">Requirement: </span>
-						<span name="attr_abilityrequirement"></span>
+					<div class="displaymode">
+						<input type="checkbox" name="attr_requirementcheckbox" class="sheet-requirementcheckbox" hidden>
+						<span style="font-weight: 700;" class="sheet-requirementfield">Requirement:</span>
+						<span name="attr_abilityrequirement" class="sheet-requirementfield"></span>
 					</div>
 					<div>
 						<span style="font-weight: 700;">Trigger: </span>

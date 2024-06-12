@@ -66,7 +66,7 @@
 }
 
 .charsheet .sheet-requirementcheckbox:checked ~ .sheet-requirementfield {
-  display: block;
+  display: flex;
 }
 
 .repcontainer .repitem {
@@ -491,6 +491,10 @@
   outline: 2px solid #000 !important;
   background: rgb(98,131,176);
   background: linear-gradient(0deg, rgba(98,131,176,1) 0%, rgba(98,131,176,1) 10%, rgba(138,157,199,1) 90%, rgba(138,157,199,1) 100%);
+}
+
+.charsheet .sheet-abilities .displaymode {
+  display: flex;
 }
 
 
