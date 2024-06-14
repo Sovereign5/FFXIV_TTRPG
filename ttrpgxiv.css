@@ -101,6 +101,30 @@
   display: flex;
 }
 
+.charsheet .sheet-checkfield {
+  display: none;
+}
+
+.charsheet .sheet-checkcheckbox:checked ~ .sheet-checkfield {
+  display: flex;
+}
+
+.charsheet .sheet-crfield {
+  display: none;
+}
+
+.charsheet .sheet-crcheckbox:checked ~ .sheet-crfield {
+  display: flex;
+}
+
+.charsheet .sheet-directeffectfield {
+  display: none;
+}
+
+.charsheet .sheet-directeffectcheckbox:checked ~ .sheet-directeffectfield {
+  display: flex;
+}
+
 .repcontainer .repitem {
   padding-bottom: 25px;
 }

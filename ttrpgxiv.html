@@ -207,6 +207,11 @@
 				<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
 				<input type="checkbox" name="attr_costcheckbox" class="sheet-costcheckbox" hidden>
 				<input type="checkbox" name="attr_targetcheckbox" class="sheet-targetcheckbox" hidden>
+				<input type="checkbox" name="attr_rangecheckbox" class="sheet-rangecheckbox" hidden>
+				<input type="checkbox" name="attr_checkcheckbox" class="sheet-checkcheckbox" hidden>
+				<input type="checkbox" name="attr_crcheckbox" class="sheet-crcheckbox" hidden>
+				<input type="checkbox" name="attr_directhitcheckbox" class="sheet-directeffectcheckbox" hidden>
+				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit">Edit Toggle</button><br>
 
@@ -235,14 +240,16 @@
 					<input type="text" name="attr_abilitytarget">
 					<br>
 
-					<input type="checkbox" name="attr_rangecheckbox"> <span>Range</span>
+					<input type="checkbox" name="attr_rangecheckbox" class="sheet-rangecheckbox"> <span>Range</span>
 					<input type="text" name="attr_abilityrange">
 					<br>
 
-					<input type="checkbox" name="attr_checkcheckbox"> <span>Check</span>
+					<input type="checkbox" name="attr_checkcheckbox" class="sheet-checkcheckbox"> <span>Check</span>
 					<input type="text" name="attr_abilitycheck">
 					<br>
-
+					<input type="checkbox" name="attr_crcheckbox" class="sheet-crcheckbox"> <span>CR</span>
+					<input type="text" name="attr_abilitycr">
+					<br>
 					<span>Base Effect</span>
 					<input type="text" name="attr_abilitybaseeffect">
 					<br>
@@ -261,7 +268,7 @@
 					<input type="text" name="attr_abilitybaseeffectextraeffect">
 					<br>
 
-					<input type="checkbox" name="attr_directhitcheckbox"> <span>Direct Hit</span>
+					<input type="checkbox" name="attr_directhitcheckbox" class="sheet-directeffectcheckbox"> <span>Direct Hit</span>
 					<input type="text" name="attr_abilitydirecthit">
 					<br>
 
@@ -303,21 +310,29 @@
 						<span style="font-weight: 700;" class="sheet-targetfield">Target: </span>
 						<span name="attr_abilitytarget" class="sheet-targetfield"></span>
 					</div>
-					<div>
-						<span style="font-weight: 700;">Range: </span>
-						<span name="attr_abilityrange"></span>
+					<div class="displaymode">
+						<input type="checkbox" name="attr_rangecheckbox" class="sheet-rangecheckbox" hidden>
+						<span style="font-weight: 700;" class="sheet-rangefield">Range: </span>
+						<span name="attr_abilityrange" class="sheet-rangefield"></span>
 					</div>
-					<div>
-						<span style="font-weight: 700;">Check: </span>
-						<span name="attr_abilitycheck"></span>
+					<div class="displaymode">
+						<input type="checkbox" name="attr_checkcheckbox" class="sheet-checkcheckbox" hidden>
+						<span style="font-weight: 700;" class="sheet-checkfield">Check: </span>
+						<span name="attr_abilitycheck" class="sheet-checkfield"></span>
 					</div>
-					<div>
+					<div class="displaymode">
+						<input type="checkbox" name="attr_crcheckbox" class="sheet-crcheckbox" hidden>
+						<span style="font-weight: 700;" class="sheet-crfield">CR: </span>
+						<span name="attr_abilitycr" class="sheet-crfield"></span>
+					</div>
+					<div class="displaymode">
 						<span style="font-weight: 700;">Base Effect: </span>
 						<span name="attr_abilitybaseeffect"></span>
 					</div>
-					<div>
-						<span style="font-weight: 700;">Direct Hit Effect: </span>
-						<span name="attr_abilitydirecthit"></span>
+					<div class="displaymode">
+						<input type="checkbox" name="attr_directhitcheckbox" class="sheet-directeffectcheckbox" hidden>
+						<span style="font-weight: 700;" class="sheet-directeffectfield">Direct Hit Effect: </span>
+						<span name="attr_abilitydirecthit" class="sheet-directeffectfield"></span>
 					</div>
 					<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilityDirectHit}]] }}">Hide</button>
 				</div>
