@@ -754,6 +754,7 @@
   background-color: transparent;
   color: white;
   border: transparent;
+  border-color: transparent;
   font-family: "Romanesco";
   font-weight: 500;
   font-style: normal;
@@ -767,6 +768,10 @@
 .sheet-rolltemplate-ffxivdamage .inlinerollresult.fullcrit {
   border: transparent;
   color: #00ff24;
+}
+
+.sheet-rolltemplate-ffxivdamage .inlinerollresult.importantroll  {
+  border: transparent;
 }
 
 .sheet-rolltemplate-ffxivdamage a[href^="~"] {

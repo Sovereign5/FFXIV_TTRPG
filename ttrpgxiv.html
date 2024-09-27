@@ -245,7 +245,14 @@
 					<br>
 
 					<input type="checkbox" name="attr_checkcheckbox" class="sheet-checkcheckbox"> <span>Check</span>
-					<input type="text" name="attr_abilitycheck">
+					<input type="text" name="attr_abilitycheck" hidden>
+					<select class="sheet-checkcheckbox" name="attr_abilityselector">
+						<option value="1d20">Special</option>
+						<option value="1d20 + @{char_strength}">STR</option>
+						<option value="1d20 + @{char_dexterity}">DEX</option>
+						<option value="1d20 + @{char_intelligence}">INT</option>
+						<option value="1d20 + @{char_mind}">MND</option>
+					</select>
 					<br>
 					<input type="checkbox" name="attr_crcheckbox" class="sheet-crcheckbox"> <span>CR</span>
 					<input type="text" name="attr_abilitycr">
@@ -260,7 +267,11 @@
 						<span>+</span>
 						<input type="text" name="attr_abilitybaseeffectmodifier">
 						<span>=</span>
-						<input type="text" name="attr_abilitybaseeffectdamageorhealing">
+						<!-- <input type="text" name="attr_abilitybaseeffectdamageorhealing"> -->
+						<select name="attr_abilitybaseeffectdamageorhealing">
+							<option value="Damage">Damage</option>
+							<option value="Healing">Healing</option>
+						</select>
 					</div>
 					<br>
 
@@ -288,7 +299,7 @@
 
 				<!-- DISPLAY MODE -->
 				<div class="sheet-block-b" style="padding: 3px;">
-					<button type="roll" class="sheet-diceroll" value="&{template:ffxivmain} {{rolltype=@{abilityselector} }} {{name=@{abilityname} }} {{tags=@{tags} }} {{basedamage=[[@{abilityBaseEffectNumber}]] }} {{directdamage=[ROLL DIRECT HIT](~repeating_primaryability_directDamageRoll) }} {{effect=@{abilityBaseEffectDescription} }} {{Attack = [[@{abilityselector}]]}}" name="roll_abilityCheck"> <span name="attr_abilityname"></span> </button><br>
+					<button type="roll" class="sheet-diceroll" value="&{template:ffxivmain} {{rolltype=@{abilitycheck} }} {{name=@{abilityname} }} {{tags=@{abilitytags} }} {{basedamage=[[@{abilitybaseeffectdamage}]] }} {{directdamage=[ROLL DIRECT HIT](~repeating_primaryability_directDamageRoll) }} {{effect=@{abilitybaseeffectextraeffect} }} {{Attack = [[@{abilityselector}]]}}" name="roll_abilityCheck"> <span name="attr_abilityname"></span> </button><br>
 					<span name="attr_abilitytags" style="font-style: italic;"></span>
 					<div class="displaymode">
 						<input type="checkbox" name="attr_requirementcheckbox" class="sheet-requirementcheckbox" hidden>
@@ -334,7 +345,7 @@
 						<span style="font-weight: 700;" class="sheet-directeffectfield">Direct Hit Effect: </span>
 						<span name="attr_abilitydirecthit" class="sheet-directeffectfield"></span>
 					</div>
-					<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilityDirectHit}]] }}">Hide</button>
+					<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilitydirecthitdamage}]] }}">Hide</button>
 				</div>
 			</fieldset>
 		</div>
@@ -346,6 +357,106 @@
 		</div>
 	</div>
 </div>
+
+<!-- Roll Template in FFXIV Style -->
+<rolltemplate class="sheet-rolltemplate-ffxivmain">
+	<div class="sheet-template-container">
+		<div class="sheet-template-masterheader">
+			<div class=sheet-template-header>
+				{{#name}}
+				<div class="sheet-header">{{name}}</div>
+				{{/name}}
+			</div>
+			<div class="sheet-template-row">
+				{{#tags}}
+				<div class="sheet-tags">{{tags}}</div>
+				{{/tags}}
+			</div>
+		</div>
+		<hr class="sheet-line">
+		<div class="sheet-template-header">
+			{{#allprops() rolltype name tags basedamage directdamage effect}}
+    		<div class="sheet-value">{{value}}</div>
+ 			{{/allprops() rolltype name tags basedamage directdamage effect}}
+ 			<div class="sheet-info">
+ 				<!-- {{#rolltype}} <div>{{rolltype}}</div> {{/rolltype}} -->
+ 				<span>ABILITY CHECK</span>
+ 			</div>
+		</div>
+		<hr class="sheet-line">
+		<div class="sheet-template-header">
+			<div class="sheet-value">
+				{{#basedamage}}
+				<span class="inlinerollresult" style="color:white;font-family: 'Bebas Neue, sans-serif';padding-bottom:'2px">{{basedamage}}</span>
+				{{/basedamage}}
+			</div>
+			<div class="sheet-info">
+				<span>DAMAGE</span>
+			</div>
+		</div>
+		{{#effect}}
+		<div class="sheet-template-row">
+			<div class="sheet-tags">{{effect}}</div>
+		</div>
+		{{/effect}}
+		<hr class="sheet-line">
+		{{directdamage}}
+	</div>
+</rolltemplate>
+
+<!-- Damage Roll Template in FFXIV Style -->
+<rolltemplate class="sheet-rolltemplate-ffxivdamage">
+	<div class="sheet-template-container">
+		<div class="sheet-template-header">
+			{{#name}}
+			<div class="sheet-header">{{name}}</div>
+			{{/name}}
+		</div>
+		<div class="sheet-template-row">
+			<div class="sheet-tags">DIRECT HIT</div>
+		</div>
+		<hr class="sheet-line">
+		<div class="sheet-template-header">
+			{{#allprops() name}}
+			<div class="sheet-value">{{value}}</div>
+			{{/allprops() name}}
+		</div>
+		<div class="sheet-template-row">
+			<div class="sheet-tags-2">DAMAGE</div>
+		</div>
+	</div>
+</rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-info">
+	<div class="sheet-template-container">
+		<div class="sheet-header">
+			{{#name}}
+			<span>{{name}}</span>
+			{{/name}}
+		</div>
+		<div class="sheet-tag">
+			{{#trait}}
+			<span>{{trait}}</span>
+			{{/trait}}
+		</div>
+		<div class="sheet-desc">
+			{{#desc}}
+			<span>{{desc}}</span>
+			{{/desc}}
+		</div>
+
+	</div>
+</rolltemplate>
+
+
+<!-- RECYCLE MATERIAL -->
+<!-- EDITABLE TEXT FIELD FOR PROFILE SECTION -->
+<!-- <label>Traits & Other Effects</label>
+			<input type="checkbox" name="attr_traitswitch" class="sheet-traits-switch" value="1" hidden>
+			<button type="action" name="act_traitedit" class="edittraitbutton">Toggle</button>
+			<textarea name="attr_traitsandeffects" class="sheet-traits-show" style="position: relative; top: 5px;"></textarea> -->
+			<!-- <span style="position: relative; left: 5px" name="attr_traitsandeffects" class="sheet-traits-hide"></span> -->
+			<!-- <textarea name="attr_traitsandeffects" class="sheet-traits-hide lockedtextarea" style="position: relative; top: 5px; background-color: transparent; color: white; resize: none; pointer-events: none;" readonly></textarea> -->
 
 
 <!-- OLD CHARACTER SHEET INFORMATION  -->
@@ -492,7 +603,7 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 		<option value="1d20 + @{char_intelligence}">INT</option>
 		<option value="1d20 + @{char_mind}">MND</option>
 	</select>
-	<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilityDirectHit}]] }}">Hide</button>
+	<!-- <button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilityDirectHit}]] }}">Hide</button> -->
 	<br>
 
 	<span>CR:</span>
@@ -583,110 +694,6 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 	<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit">Edit Toggle</button>
 </fieldset>
 
-<!-- Roll Template in FFXIV Style -->
-<rolltemplate class="sheet-rolltemplate-ffxivmain">
-	<div class="sheet-template-container">
-		<div class="sheet-template-masterheader">
-			<div class=sheet-template-header>
-				{{#name}}
-				<div class="sheet-header">{{name}}</div>
-				{{/name}}
-			</div>
-			<div class="sheet-template-row">
-				{{#tags}}
-				<div class="sheet-tags">{{tags}}</div>
-				{{/tags}}
-			</div>
-		</div>
-		<hr class="sheet-line">
-		<div class="sheet-template-header">
-			{{#allprops() rolltype name tags basedamage directdamage effect}}
-    		<div class="sheet-value">{{value}}</div>
- 			{{/allprops() rolltype name tags basedamage directdamage effect}}
- 			<div class="sheet-info">
- 				<!-- {{#rolltype}} <div>{{rolltype}}</div> {{/rolltype}} -->
- 				<span>ABILITY CHECK</span>
- 			</div>
-		</div>
-		<hr class="sheet-line">
-		<div class="sheet-template-header">
-			<div class="sheet-value">
-				{{#basedamage}}
-				<span class="inlinerollresult" style="color:white;font-family: 'Bebas Neue, sans-serif';padding-bottom:'2px">{{basedamage}}</span>
-				{{/basedamage}}
-			</div>
-			<div class="sheet-info">
-				<span>DAMAGE</span>
-			</div>
-		</div>
-		{{#effect}}
-		<div class="sheet-template-row">
-			<div class="sheet-tags">{{effect}}</div>
-		</div>
-		{{/effect}}
-		<hr class="sheet-line">
-		{{directdamage}}
-	</div>
-</rolltemplate>
-
-<!-- Damage Roll Template in FFXIV Style -->
-<rolltemplate class="sheet-rolltemplate-ffxivdamage">
-	<div class="sheet-template-container">
-		<div class="sheet-template-header">
-			{{#name}}
-			<div class="sheet-header">{{name}}</div>
-			{{/name}}
-		</div>
-		<div class="sheet-template-row">
-			<div class="sheet-tags">DIRECT HIT</div>
-		</div>
-		<hr class="sheet-line">
-		<div class="sheet-template-header">
-			{{#allprops() name}}
-			<div class="sheet-value">{{value}}</div>
-			{{/allprops() name}}
-		</div>
-		<div class="sheet-template-row">
-			<div class="sheet-tags-2">DAMAGE</div>
-		</div>
-	</div>
-</rolltemplate>
-
-<rolltemplate class="sheet-rolltemplate-info">
-	<div class="sheet-template-container">
-		<div class="sheet-header">
-			{{#name}}
-			<span>{{name}}</span>
-			{{/name}}
-		</div>
-		<div class="sheet-tag">
-			{{#trait}}
-			<span>{{trait}}</span>
-			{{/trait}}
-		</div>
-		<div class="sheet-desc">
-			{{#desc}}
-			<span>{{desc}}</span>
-			{{/desc}}
-		</div>
-
-	</div>
-</rolltemplate>
-
-
-<!-- RECYCLE MATERIAL -->
-<!-- EDITABLE TEXT FIELD FOR PROFILE SECTION -->
-<!-- <label>Traits & Other Effects</label>
-			<input type="checkbox" name="attr_traitswitch" class="sheet-traits-switch" value="1" hidden>
-			<button type="action" name="act_traitedit" class="edittraitbutton">Toggle</button>
-			<textarea name="attr_traitsandeffects" class="sheet-traits-show" style="position: relative; top: 5px;"></textarea> -->
-			<!-- <span style="position: relative; left: 5px" name="attr_traitsandeffects" class="sheet-traits-hide"></span> -->
-			<!-- <textarea name="attr_traitsandeffects" class="sheet-traits-hide lockedtextarea" style="position: relative; top: 5px; background-color: transparent; color: white; resize: none; pointer-events: none;" readonly></textarea> -->
-
-
-
-
-
 
 <script type="text/worker">
 	// Adjusts vigilance stat as mind stat changes
@@ -765,6 +772,33 @@ Vigilance<input type="number" name="attr_char_vigilance" readonly />
 			switchToggle = 1 - switchToggle;
 			setAttrs({
 				repeating_traits_traitswitch: switchToggle
+			});
+		});
+	});
+
+	// On attribute change
+	on("change:repeating_primaryability:abilityselector", function() {
+		getAttrs(["repeating_primaryability_abilityselector"], function(values) {
+			let ability = values.repeating_primaryability_abilityselector;
+			var newAbility;
+			switch (ability) {
+				case '1d20 + @{char_strength}':
+					newAbility = "STR"
+					break;
+				case '1d20 + @{char_dexterity}':
+					newAbility = "DEX"
+					break;
+				case '1d20 + @{char_intelligence}':
+					newAbility = "INT"
+					break;
+				case '1d20 + @{char_mind}':
+					newAbility = "MND"
+					break;
+				default:
+					newAbility = "Special"
+			}
+			setAttrs({
+				repeating_primaryability_abilitycheck: newAbility
 			});
 		});
 	});
