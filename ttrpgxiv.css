@@ -463,7 +463,9 @@
 
 /*Abilities Page Section*/
 .charsheet .sheet-abilitiespage {
-
+  margin: 0px;
+  padding: 0px;
+  width: 860px;
 }
 
 .charsheet .ability-limitbreak {
@@ -556,6 +558,22 @@
 .charsheet .sheet-abilities .sheet-diceroll {
 }
 
+.charsheet .sheet-abilities .toggle_repeating_npcaction_edit {
+  position: absolute;
+  left: 250px;
+  top: 10px;
+  color: rgba(255,255,255,0.5);
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .sheet-abilities .abilities-primary:hover > .toggle_repeating_npcaction_edit {
+  display: block;
+}
+
+.charsheet .sheet-abilities .toggle_repeating_npcaction_edit:hover {
+  color: rgba(255,255,255,1);
+}
 
 
 /*End of Abilities Page Section*/
@@ -563,6 +581,12 @@
 
 
 /*FFXIV Main Roll Container*/
+.sheet-rolltemplate-ffxivmain div {
+  padding: 5px;
+  padding-top: 6px;
+  padding-bottom: 4px;
+}
+
 .sheet-rolltemplate-ffxivmain .sheet-header {
   color: white;
   font-family: "Bebas Neue", sans-serif;
@@ -582,51 +606,6 @@
   padding-top: 3px;
 }
 
-.sheet-rolltemplate-ffxivmain div.sheet-template-container {
-  position: relative;
-  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
-  border-width: 3px;
-  border-style: solid;
-  padding: 0px;
-  border-radius: 3px 3px 3px 3px;
-  outline: 2px solid #000 !important;
-  background: rgb(57,57,57);
-  background: linear-gradient(180deg, rgba(92,92,92,1) 0%, rgba(29,29,29,1) 10%, rgba(29,29,29,1) 50%, rgba(29,29,29,1) 90%, rgba(0,0,0,1) 100%);
-}
-
-.sheet-rolltemplate-ffxivmain .sheet-template-header {
-  color: #000;
-  padding: 2px;
-  font-size: 2.3em;
-}
-
-.sheet-rolltemplate-ffxivmain .sheet-template-row {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 1.2em;
-  transform: scale(0.8, 1.2);
-  font-weight: 500;
-  color: white;
-  text-align: center;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
-.sheet-rolltemplate-ffxivmain div {
-  padding: 5px;
-  padding-top: 6px;
-  padding-bottom: 4px;
-}
-
-.sheet-rolltemplate-ffxivmain .sheet-value {
-  text-align: center;
-}
-
-.sheet-rolltemplate-ffxivmain .sheet-template-masterheader {
-  background: rgb(246,162,187);
-  background: linear-gradient(180deg, rgba(246,162,187,1) 0%, rgba(216,87,126,1) 10%, rgba(216,87,126,1) 100%);
-  padding: 0px;
-}
-
 .sheet-rolltemplate-ffxivmain .sheet-line {
   margin: 5px;
   margin-left: 0px;
@@ -644,7 +623,73 @@
   padding: 1px;
   transform: scale(1, 1);
   text-align: center;
+}
 
+.sheet-rolltemplate-ffxivmain .sheet-info-larger {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 300;
+  color: white;
+  font-size: 1em;
+  padding: 1px;
+  transform: scale(1, 1);
+  text-align: center;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-header {
+  color: #000;
+  padding: 2px;
+  font-size: 2.3em;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-value {
+  text-align: center;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-row {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.2em;
+  transform: scale(0.8, 1.2);
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-masterheader-primary {
+  background: rgb(246,162,187);
+  background: linear-gradient(180deg, rgba(246,162,187,1) 0%, rgba(216,87,126,1) 10%, rgba(216,87,126,1) 100%);
+  padding: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-masterheader-secondary {
+  background: rgb(75,166,159);
+  background: linear-gradient(0deg, rgba(75,166,159,1) 10%, rgba(75,166,159,1) 95%, rgba(93,207,198,1) 100%);
+  padding: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-masterheader-instant {
+  background: rgb(98,131,176);
+  background: linear-gradient(0deg, rgba(98,131,176,1) 10%, rgba(98,131,176,1) 95%, rgba(125,168,227,1) 100%);
+  padding: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-masterheader-attribute {
+  background: rgb(0,121,244);
+  background: linear-gradient(0deg, rgba(0,121,244,1) 10%, rgba(0,121,244,1) 95%, rgba(84,169,255,1) 100%);
+  padding: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain div.sheet-template-container {
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(57,57,57);
+  background: linear-gradient(180deg, rgba(92,92,92,1) 0%, rgba(29,29,29,1) 10%, rgba(29,29,29,1) 50%, rgba(29,29,29,1) 90%, rgba(0,0,0,1) 100%);
 }
 
 .sheet-rolltemplate-ffxivmain .inlinerollresult {

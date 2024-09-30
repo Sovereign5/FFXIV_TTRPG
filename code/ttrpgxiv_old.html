@@ -1,0 +1,246 @@
+
+
+<!-- RECYCLE MATERIAL -->
+<!-- EDITABLE TEXT FIELD FOR PROFILE SECTION -->
+<!-- <label>Traits & Other Effects</label>
+			<input type="checkbox" name="attr_traitswitch" class="sheet-traits-switch" value="1" hidden>
+			<button type="action" name="act_traitedit" class="edittraitbutton">Toggle</button>
+			<textarea name="attr_traitsandeffects" class="sheet-traits-show" style="position: relative; top: 5px;"></textarea> -->
+			<!-- <span style="position: relative; left: 5px" name="attr_traitsandeffects" class="sheet-traits-hide"></span> -->
+			<!-- <textarea name="attr_traitsandeffects" class="sheet-traits-hide lockedtextarea" style="position: relative; top: 5px; background-color: transparent; color: white; resize: none; pointer-events: none;" readonly></textarea> -->
+
+
+<!-- OLD CHARACTER SHEET INFORMATION  -->
+<div name="char_name_box">
+	<span>Character Name</span>
+	<input type="text" name="attr_character_name">
+</div>
+Level<input type="number" name="attr_char_level" step="10" min="0" max="50">
+
+HP<input type="number" name="attr_char_HP" min="0"/>
+MaxHP<input type="number" name="attr_char_maxHP" min="0"/>
+Temp HP<input type="number" name="attr_temp_hp" min="0">
+
+MP<input type="number" name="attr_char_MP" min="0" max="5"/>
+MaxMP<input type="number" name="attr_char_maxMP" value="5" readonly/>
+<br>
+<div name="Role Selection">
+	<select name="attr_class">
+		<option value="-1">Select</option>
+		<option value="0">Paladin</option>
+		<option value="1">Warrior</option>
+		<option value="2">Dark Knight</option>
+		<option value="3">Gunbreaker</option>
+		<option value="4">Monk</option>
+		<option value="5">Dragoon</option>
+		<option value="6">Ninja</option>
+		<option value="7">Samurai</option>
+		<option value="8">Reaper</option>
+		<option value="9">White Mage</option>
+		<option value="10">Scholar</option>
+		<option value="11">Astrologian</option>
+		<option value="12">Sage</option>
+		<option value="13">Bard</option>
+		<option value="14">Machinist</option>
+		<option value="15">Dancer</option>
+		<option value="16">Black Mage</option>
+		<option value="17">Summoner</option>
+		<option value="18">Red Mage</option>
+		<option value="19">Blue Mage</option>
+	</select>
+	<span>Role</span>
+	<input type="text" name="attr_role" readonly>
+</div>
+<br>
+<br>
+STR<input type="number" name="attr_char_strength"/>
+<button type='roll' value="/roll 1d20 + @{char_strength}" name=roll_strCheck>STR</button>
+<br>
+DEX<input type="number" name="attr_char_dexterity"/>
+<button type='roll' value='/roll 1d20 + @{char_dexterity}' name=roll_strCheck>DEX</button>
+<br>
+VIT<input type="number" name="attr_char_vitality"/>
+<button type='roll' value='/roll 1d20 + @{char_vitality}' name=roll_strCheck>VIT</button>
+<br>
+INT<input type="number" name="attr_char_intelligence"/>
+<button type='roll' value='/roll 1d20 + @{char_intelligence}' name=roll_strCheck>INT</button>
+<br>
+MND<input type="number" name="attr_char_mind"/>
+<button type='roll' value='/roll 1d20 + @{char_mind}' name=roll_strCheck>MND</button>
+<br>
+<br>
+<span>Physical Defense</span>
+<input type="number" name="attr_physical_defense" value="10" readonly>
+<br>
+<span>Magical Defense</span>
+<input type="number" name="attr_magical_defense" value="10" readonly>
+<br>
+Vigilance<input type="number" name="attr_char_vigilance" readonly />
+<br>
+<span>Movement Squares</span>
+<input type="number" name="attr_movement">
+<br>
+<br>
+<h2>Primary Abilities</h2>
+<fieldset class="repeating_primaryability">
+	<span>Ability Name</span>
+	<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
+
+
+	<input type="text" name="attr_abilityname" class="sheet-block-a" placeholder="Storm's Path">
+	<button type='roll' value="&{template:ffxivmain} {{rolltype=@{abilityselector} }} {{name=@{abilityname} }} {{tags=@{tags} }} {{basedamage=[[@{abilityBaseEffectNumber}]] }} {{directdamage=[ROLL DIRECT HIT](~repeating_primaryability_directDamageRoll) }} {{effect=@{abilityBaseEffectDescription} }} {{Attack = [[@{abilityselector}]]}}" name="roll_abilityCheckSelector" class="sheet-block-b"><span name="attr_abilityname"></span></button>
+	<br>
+
+	<span>Tags</span>
+	<!-- <div class="sheet-block-a">
+		<div >
+			<span>Physical</span>
+			<input type="checkbox" name="attr_tagphysical" value="Physical">
+		</div>
+		<div>
+			<span>Magical</span>
+			<input type="checkbox" name="attr_tagmagical" value="Magical">
+		</div>
+		<div>
+			<span>Ice-aspected</span>
+			<input type="checkbox" name="attr_tagice" value="Ice-aspected">
+		</div>
+		<div>
+			<span>Fire-aspected</span>
+			<input type="checkbox" name="attr_tagfire" value="Fire-aspected">
+		</div>
+		<div>
+			<span>Thunder-aspected</span>
+			<input type="checkbox" name="attr_tagthunder" value="Thunder-aspected">
+		</div>
+		<div>
+			<span>Wind-aspected</span>
+			<input type="checkbox" name="attr_tagwind" value="Wind-aspected">
+		</div>
+		<div>
+			<span>Earth-aspected</span>
+			<input type="checkbox" name="attr_tagearth" value="Earth-aspected">
+		</div>
+		<div>
+			<span>Water-aspected</span>
+			<input type="checkbox" name="attr_tagwater" value="Water-aspected">
+		</div>
+		<div>
+			<span>Invoked</span>
+			<input type="checkbox" name="attr_taginvoked" value="Inoked">
+		</div>
+	</div> -->
+	<input type="text" name="attr_tags" class="sheet-block-a" style="width: auto;">
+	<input type="text" name="attr_tags" class="sheet-block-b" style="width: auto;" readonly>
+	<br>
+
+	<span>Target:</span>
+	<input type="text" name="attr_abilitytarget" class="sheet-block-a" placeholder="Single">
+	<span name="attr_abilitytarget" class="sheet-block-b"></span>
+	<br>
+
+	<span>Range:</span>
+	<input type="text" name="attr_abilityrange" class="sheet-block-a" placeholder="5">
+	<span class="sheet-block-b" name="attr_abilityrange"></span>
+	<br>
+
+	<span>Check:</span>
+	<span>Ability Modifier: </span>
+	<input type="text" name="attr_convertedAbilityCheckSelector" hidden>
+	<span class="sheet-block-b" name="attr_convertedAbilityCheckSelector"></span>
+	<select class="sheet-block-a" name="attr_abilityselector">
+		<option value="1d20 + @{char_strength}">STR</option>
+		<option value="1d20 + @{char_dexterity}">DEX</option>
+		<option value="1d20 + @{char_intelligence}">INT</option>
+		<option value="1d20 + @{char_mind}">MND</option>
+	</select>
+	<!-- <button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilityDirectHit}]] }}">Hide</button> -->
+	<br>
+
+	<span>CR:</span>
+	<input type="text" name="attr_abilitycr" class="sheet-block-a" placeholder="Target's P. Defense">
+	<span class="sheet-block-b" name="attr_abilitycr"></span>
+	<br>
+
+	<span>Base Effect:</span>
+	<br>
+	<span>Damage:</span>
+	<input type="text" name="attr_abilityBaseEffectNumber" class="sheet-block-a" placeholder="3">
+	<span name="attr_abilityBaseEffectNumber" class="sheet-block-b"></span>
+	<span>Effect:</span>
+	<input type="text" name="attr_abilityBaseEffectDescription" class="sheet-block-a" placeholder="Inflicts Enmity to the target. Combo: Storm's Path">
+	<span name="attr_abilityBaseEffectDescription" class="sheet-block-b"></span>
+	<span>Direct Hit:</span>
+	<input type="text" name="attr_abilityDirectHit" class="sheet-block-a" placeholder="1d6.">
+	<span name="attr_abilityDirectHit" class="sheet-block-b"></span>
+	</div>
+	<br>
+	<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit">Edit Toggle</button>
+</fieldset>
+<br>
+
+
+<h2>Secondary Abilities</h2>
+<fieldset class="repeating_secondaryability">
+	<span>Ability Name</span>
+	<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
+	<input type="text" name="attr_abilityname" placeholder="Rampart" class="sheet-block-a">
+	<span name="attr_abilityname" class="sheet-block-b"></span>
+	<br>
+	<span>Secondary, </span>
+	<select name="attr_abilitydamagetype" class="sheet-block-a">
+		<option value="Physical">Physical</option>
+		<option value="Magical">Magical</option>
+	</select>
+	<span name="attr_abilitydamagetype" class="sheet-block-b"></span>
+	<br>
+	<span>Target:</span>
+	<input type="text" name="attr_abilitytarget" class="sheet-block-a" placeholder="Self">
+	<span name="attr_abilitytarget" class="sheet-block-b"></span>
+	<!-- Exclude if nothing is here -->
+	<span>Range:</span>
+	<input type="number" name="attr_abilityrange" min=1 class="sheet-block-a" placeholder="1">
+	<span name="attr_abilityrange" class="sheet-block-b"></span>
+	<br>
+	<span>Base Effect:</span>
+	<input type="text" name="attr_abilitybaseeffect" class="sheet-block-a" placeholder="Reduce the damage you take from all abilities by 2 until the start of your next turn.">
+	<span name="attr_abilitybaseeffect" class="sheet-block-b"></span>
+	<br>
+	<span>Limitation:</span>
+	<input type="text" name="attr_abilitydirecthit" class="sheet-block-a" placeholder="Once per Phase">
+	<span name="attr_abilitydirecthit" class="sheet-block-b"></span>
+	<br>
+	<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit">Edit Toggle</button>
+</fieldset>
+<br>
+
+
+<h2>Reaction Abilities</h2>
+<fieldset class="repeating_reactionability">
+	<span>Ability Name</span>
+	<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
+	<input type="text" name="attr_abilityname" class="sheet-block-a" placeholder="Reprisal">
+	<span class="sheet-block-b" name="attr_abilityname"></span>
+	<br>
+	<span>Reaction</span>
+	<br>
+	<span>Trigger:</span>
+	<input type="text" name="attr_abilitytrigger" class="sheet-block-a" placeholder="Immediately before an ability used by an enemy within 2 squares is resolved.">
+	<span name="attr_abilitytrigger" class="sheet-block-b"></span>
+	<span>Target:</span>
+	<input type="text" name="attr_abilitytarget" class="sheet-block-a" placeholder="All enemies within range.">
+	<span name="attr_abilitytarget" class="sheet-block-b"></span>
+	<span>Range:</span>
+	<input type="number" name="attr_abilityrange" min=1 class="sheet-block-a" placeholder="5">
+	<span name="attr_abilityrange" class="sheet-block-b"></span>
+	<br>
+	<span>Base Effect:</span>
+	<input type="text" name="attr_abilitybaseeffect" class="sheet-block-a" placeholder="Reduce the damage you take from all abilities by 2 until the start of your next turn.">
+	<span class="sheet-block-b" name="attr_abilitybaseeffect"></span>
+	<br>
+	<span>Limitation:</span>
+	<input type="text" name="attr_abilitydirecthit" class="sheet-block-a" placeholder="Once per turn.">
+	<span name="attr_abilitydirecthit" class="sheet-block-b"></span>
+	<br>
+	<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit">Edit Toggle</button>
+</fieldset>
