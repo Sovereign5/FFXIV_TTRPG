@@ -61,6 +61,16 @@
   display: none;
 }
 
+.charsheet .sheet-limitbreak-a,
+.charsheet .sheet-limitbreak-switch:checked ~ .sheet-limitbreak-b {
+  display: block;
+}
+
+.charsheet .sheet-limitbreak-b,
+.charsheet .sheet-limitbreak-switch:checked ~ .sheet-limitbreak-a {
+  display: none;
+}
+
 .charsheet .sheet-requirementfield {
   display: none;
 }
@@ -125,6 +135,22 @@
   display: flex;
 }
 
+.charsheet .sheet-limitbreakTargetField {
+  display: none;
+}
+
+.charsheet .sheet-limitbreaktargetcheckbox:checked ~ .sheet-limitbreakTargetField {
+  display: flex;
+}
+
+.charsheet .sheet-limitbreakRangeField {
+  display: none;
+}
+
+.charsheet .sheet-limitbreakrangecheckbox:checked ~ .sheet-limitbreakRangeField {
+  display: flex;
+}
+
 .repcontainer .repitem {
   padding-bottom: 25px;
 }
@@ -148,6 +174,23 @@
 
 
 /*Header Section*/
+.charsheet .sheetTabs button {
+  font-family: "Jura";
+  font-weight: 700;
+  font-size: 1.3em;
+}
+
+.charsheet .sheetTabs button:hover {
+  color: darkgray;
+}
+
+.charsheet .sheetTabs {
+  position: absolute;
+  left: 675px;
+  top: 45px;
+  z-index: 5;
+}
+
 .charsheet .headerbar {
   display: flex;
 }
@@ -439,6 +482,26 @@
   background-image: none;
 }
 
+.charsheet .body .body-right .traitdiv .traitdisplay {
+  background: none;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  color: black;
+  font-family: "Jura";
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.2em;
+}
+
+.charsheet .body .body-right .traitdiv .traitdisplay:hover {
+  color: grey;
+}
+
+button[type=roll].traitdisplay::before {
+    font-size: 0em;
+}
+
 .charsheet .body .body-right label {
   text-transform: uppercase;
   color: white;
@@ -470,7 +533,7 @@
 
 .charsheet .ability-limitbreak {
   width: 100%;
-  height: 100px;
+  height: auto;
   margin-bottom: 3px;
   position: relative;
   border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
@@ -551,23 +614,66 @@
   background: linear-gradient(0deg, rgba(98,131,176,1) 0%, rgba(98,131,176,1) 10%, rgba(138,157,199,1) 90%, rgba(138,157,199,1) 100%);
 }
 
-.charsheet .sheet-abilities .displaymode {
+.charsheet .displaymode {
   display: flex;
 }
 
-.charsheet .sheet-abilities .sheet-diceroll {
+.charsheet .sheet-abilitiespage .sheet-diceroll {
+  background: none;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  color: white;
+  font-family: "Jura";
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.6em;
+  transform: scale(1, 0.8);
+  padding: 0px;
+  margin: 0px;
+  position: absolute;
+  top: 18px;
+  left: -7px;
+}
+.charsheet .sheet-abilitiespage .sheet-diceroll:hover {
+  color: grey;
+}
+
+button[type=roll].sheet-diceroll::before {
+    font-size: 0em;
+}
+
+.repcontainer[data-groupname="repeating_skills"] > .repitem {
+    background: none;
 }
 
 .charsheet .sheet-abilities .toggle_repeating_npcaction_edit {
+  display: none;
   position: absolute;
   left: 250px;
-  top: 10px;
+  top: 25px;
   color: rgba(255,255,255,0.5);
   border: none;
   background-color: transparent;
 }
 
-.charsheet .sheet-abilities .abilities-primary:hover > .toggle_repeating_npcaction_edit {
+.charsheet .ability-limitbreak .editlimitbreakbutton {
+  display: block;
+  position: absolute;
+  left: 800px;
+  top: 0px;
+  color: rgba(255,255,255,0.5);
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_primaryability"]> .repitem:hover> .toggle_repeating_npcaction_edit {
+  display: block;
+}
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_secondaryability"]> .repitem:hover> .toggle_repeating_npcaction_edit {
+  display: block;
+}
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_instantability"]> .repitem:hover> .toggle_repeating_npcaction_edit {
   display: block;
 }
 
@@ -699,6 +805,11 @@
   font-family: "Romanesco";
   font-weight: 500;
   font-style: normal;
+}
+
+.sheet-rolltemplate-ffxivmain.sheet-rolltemplate-darkmode .inlinerollresult{
+  background-color: transparent;
+  border-color: transparent;
 }
 
 .sheet-rolltemplate-ffxivmain .inlinerollresult.fullfail {
