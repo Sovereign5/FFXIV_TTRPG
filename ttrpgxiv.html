@@ -147,7 +147,7 @@
 			</div>
 			<div class="grid-item">
 				<span class="span-longer" style="width: 55px">Speed</span>
-				<span class="input-shorter" style="position: relative; right: 10px">5</span>
+				<input type="number" name="attr_speed" value="5" placeholder="5" step="1" class="input-shorter" required>
 				<span class="input-shorter" style="font-size: 14px; position: relative; right:15px">squares</span>
 				<hr style="width: 88%; position: relative; right: 10px; bottom: 24px;">
 			</div>
@@ -207,12 +207,14 @@
 		<div>
 			<!-- GLOBAL VARIABLES LIMIT BREAK --> 
 			<input type="checkbox" name="attr_limitbreakswitch" class="sheet-limitbreak-switch" value="0" hidden>
-			<button type="action" name="act_limitbreakedit" class="editlimitbreakbutton"><span style="font-family:Pictos;">y</span></button>
+			<button type="action" name="act_limitbreakedit" class="editlimitbreakbutton"><span style="font-family:Pictos; z-index: 99;">y</span></button>
+			<input type="text" name="attr_limitbreakRollValue" value="&{template:ffxivmain} {{header=limitbreak}} {{baseeffect=@{limitbreakBaseEffect} }} {{name=@{limitbreakName} }} {{tags=@{limitbreakTags} }} {{damagetype=@{limitbreakDamageOrHealing} }}" hidden>
 
 
 			<!-- DISPLAY MODE LIMIT BREAK -->
 			<div class="sheet-limitbreak-a">
-				<button type="roll" class="sheet-diceroll" style="top: 20px; left: -10px;font-size: 2em;" value="&{template:ffxivmain} {{header=primary}} {{baseeffect=@{limitbreakBaseEffect} }} {{name=@{limitbreakName} }} {{tags=Limit Break}} {{basedamage=[[@{limitbreakBaseEffectDie}]] }}" name="roll_limitbreakdie"> <span name="attr_limitbreakName"></span> </button><br>
+				<button type="roll" class="sheet-diceroll" style="font-size: 2em;" value="@{limitbreakRollValue}" name="roll_limitbreakdie"> <span name="attr_limitbreakName"></span> </button><br>
+				<span name="attr_limitbreakTags" style="font-style: italic;"></span>
 				<div class="displaymode">
 					<span style="font-weight: 700;">Trigger:</span>
 					<span name="attr_limitbreakTrigger" class="sheet-limitbreakTriggerField"></span>
@@ -236,7 +238,8 @@
 
 			<!-- EDIT MODE LIMIT BREAK -->
 			<div class="sheet-limitbreak-b">
-				<span>Name: </span> <input type="text" name="attr_limitbreakName"><br>
+				<span>Name: </span> <input type="text" name="attr_limitbreakName" style="width: 780px;" ><br>
+				<span>Tags: </span> <input type="text" name="attr_limitbreakTags" style="width: 780px;"><br>
 				<span>Trigger: </span> <input type="text" name="attr_limitbreakTrigger"><br>
 
 				<input type="checkbox" name="attr_limitbreakTargetCheckbox" class="sheet-limitbreaktargetcheckbox"> <span>Target: </span>
@@ -245,10 +248,15 @@
 				<input type="checkbox" name="attr_limitbreakRangeCheckbox" class="sheet-limitbreakrangecheckbox"> <span>Range: </span> 
 				<input type="text" name="attr_limitbreakRange"><br>
 
-				<span> Base Effect: </span> <textarea name="attr_limitbreakBaseEffect"></textarea>
+				<span> Base Effect: </span> <textarea name="attr_limitbreakBaseEffect" style="width: 800px;"></textarea><br>
 
 				<input type="checkbox" name="attr_limitbreakBaseEffectDieCheckbox" class="sheet-limitbreakbaseeffectdie"> <span>Base Effect Dice: </span>
-				<input type="text" name="attr_limitbreakBaseEffectDie"><br>
+				<input type="text" name="attr_limitbreakBaseEffectDie" style="width: 200px;" >
+				<span>&nbsp;</span>
+				<select name="attr_limitbreakDamageOrHealing">
+					<option value="damage" selected>Damage</option>
+					<option value="healing">Healing</option>
+				</select>
 				<span></span>
 			</div>
 		</div>
@@ -304,9 +312,10 @@
 					<input type="checkbox" name="attr_checkcheckbox" class="sheet-checkcheckbox"> <span>Check</span>
 					<input type="text" name="attr_abilitycheck" hidden>
 					<select class="sheet-checkcheckbox" name="attr_abilityselector">
-						<option value="1d20">Special</option>
+						<option value="1d20" selected>Special</option>
 						<option value="1d20 + @{char_strength}">STR</option>
 						<option value="1d20 + @{char_dexterity}">DEX</option>
+						<option value="1d20 + @{char_vitality}">VIT</option>
 						<option value="1d20 + @{char_intelligence}">INT</option>
 						<option value="1d20 + @{char_mind}">MND</option>
 					</select>
@@ -320,11 +329,8 @@
 
 					<input type="checkbox" name="attr_baseeffectdamagecheckbox"> <span>Base Effect</span>
 					<div style="display: flex;">
-						<input type="text" name="attr_abilitybaseeffectdamage" value="0" placeholder="1d6" required>
-						<span>+</span>
-						<input type="text" name="attr_abilitybaseeffectmodifier" placeholder="0">
-						<span>=</span>
-						<!-- <input type="text" name="attr_abilitybaseeffectdamageorhealing"> -->
+						<input type="text" name="attr_abilitybaseeffectdamage" value="0" placeholder="1d6" style="width: 70px;" required>
+						<span>&nbsp;</span>
 						<select name="attr_abilitybaseeffectdamageorhealing">
 							<option value="Damage">Damage</option>
 							<option value="Healing">Healing</option>
@@ -342,10 +348,8 @@
 
 					<input type="checkbox" name="attr_directhitdamagecheckbox"> <span>Direct Hit Damage</span>
 					<div style="display: flex;">
-						<input type="text" name="attr_abilitydirecthitdamage" value="0" placeholder="2d6" required>
-						<span>+</span>
-						<input type="text" name="attr_abilitydirecteffectmodifier" placeholder="0">
-						<span>=</span>
+						<input type="text" name="attr_abilitydirecthitdamage" value="0" placeholder="2d6" style="width: 70px;" required>
+						<span>&nbsp;</span>
 						<select name="attr_abilitydirecteffectdamageorhealing">
 							<option value="Damage">Damage</option>
 							<option value="Healing">Healing</option>
@@ -462,9 +466,10 @@
 					<input type="checkbox" name="attr_checkcheckbox" class="sheet-checkcheckbox"> <span>Check</span>
 					<input type="text" name="attr_abilitycheck" hidden>
 					<select class="sheet-checkcheckbox" name="attr_abilityselector">
-						<option value="1d20">Special</option>
+						<option value="1d20" selected>Special</option>
 						<option value="1d20 + @{char_strength}">STR</option>
 						<option value="1d20 + @{char_dexterity}">DEX</option>
+						<option value="1d20 + @{char_vitality}">VIT</option>
 						<option value="1d20 + @{char_intelligence}">INT</option>
 						<option value="1d20 + @{char_mind}">MND</option>
 					</select>
@@ -478,11 +483,8 @@
 
 					<input type="checkbox" name="attr_baseeffectdamagecheckbox"> <span>Base Effect</span>
 					<div style="display: flex;">
-						<input type="text" name="attr_abilitybaseeffectdamage" value="0" placeholder="1d6" required>
-						<span>+</span>
-						<input type="text" name="attr_abilitybaseeffectmodifier" placeholder="0">
-						<span>=</span>
-						<!-- <input type="text" name="attr_abilitybaseeffectdamageorhealing"> -->
+						<input type="text" name="attr_abilitybaseeffectdamage" value="0" placeholder="1d6" style="width: 70px;" required>
+						<span>&nbsp;</span>
 						<select name="attr_abilitybaseeffectdamageorhealing">
 							<option value="Damage">Damage</option>
 							<option value="Healing">Healing</option>
@@ -500,10 +502,8 @@
 
 					<input type="checkbox" name="attr_directhitdamagecheckbox"> <span>Direct Hit Damage</span>
 					<div style="display: flex;">
-						<input type="text" name="attr_abilitydirecthitdamage" value="0" placeholder="2d6" required>
-						<span>+</span>
-						<input type="text" name="attr_abilitydirecteffectmodifier" placeholder="0">
-						<span>=</span>
+						<input type="text" name="attr_abilitydirecthitdamage" value="0" placeholder="2d6" style="width: 70px;" required>
+						<span>&nbsp;</span>
 						<select name="attr_abilitydirecteffectdamageorhealing">
 							<option value="Damage">Damage</option>
 							<option value="Healing">Healing</option>
@@ -621,9 +621,10 @@
 					<input type="checkbox" name="attr_checkcheckbox" class="sheet-checkcheckbox"> <span>Check</span>
 					<input type="text" name="attr_abilitycheck" hidden>
 					<select class="sheet-checkcheckbox" name="attr_abilityselector">
-						<option value="1d20">Special</option>
+						<option value="1d20" selected>Special</option>
 						<option value="1d20 + @{char_strength}">STR</option>
 						<option value="1d20 + @{char_dexterity}">DEX</option>
+						<option value="1d20 + @{char_vitality}">VIT</option>
 						<option value="1d20 + @{char_intelligence}">INT</option>
 						<option value="1d20 + @{char_mind}">MND</option>
 					</select>
@@ -637,11 +638,8 @@
 
 					<input type="checkbox" name="attr_baseeffectdamagecheckbox"> <span>Base Effect</span>
 					<div style="display: flex;">
-						<input type="text" name="attr_abilitybaseeffectdamage" value="0" placeholder="1d6" required>
-						<span>+</span>
-						<input type="text" name="attr_abilitybaseeffectmodifier" placeholder="0">
-						<span>=</span>
-						<!-- <input type="text" name="attr_abilitybaseeffectdamageorhealing"> -->
+						<input type="text" name="attr_abilitybaseeffectdamage" value="0" placeholder="1d6" style="width: 70px;" required>
+						<span>&nbsp;</span>
 						<select name="attr_abilitybaseeffectdamageorhealing">
 							<option value="Damage">Damage</option>
 							<option value="Healing">Healing</option>
@@ -659,10 +657,8 @@
 
 					<input type="checkbox" name="attr_directhitdamagecheckbox"> <span>Direct Hit Damage</span>
 					<div style="display: flex;">
-						<input type="text" name="attr_abilitydirecthitdamage" value="0" placeholder="2d6" required>
-						<span>+</span>
-						<input type="text" name="attr_abilitydirecteffectmodifier" placeholder="0">
-						<span>=</span>
+						<input type="text" name="attr_abilitydirecthitdamage" value="0" placeholder="2d6" style="width: 70px;" required>
+						<span>&nbsp;</span>
 						<select name="attr_abilitydirecteffectdamageorhealing">
 							<option value="Damage">Damage</option>
 							<option value="Healing">Healing</option>
@@ -957,6 +953,9 @@
 				case '1d20 + @{char_dexterity}':
 					newAbility = "DEX"
 					break;
+				case '1d20 + @{char_vitality}':
+					newAbility = "VIT"
+					break;
 				case '1d20 + @{char_intelligence}':
 					newAbility = "INT"
 					break;
@@ -1038,6 +1037,25 @@
 		});
 	});
 
+	// on Checkbox check - Limitbreak
+	on("change:limitbreakBaseEffectDieCheckbox", function() {
+		getAttrs(["limitbreakBaseEffectDieCheckbox", "limitbreakRollValue"], function(values) {
+			let toggle = values.limitbreakBaseEffectDieCheckbox;
+			let originalrollvalue = values.limitbreakRollValue;
+			var newrollvalue;
+
+			if (toggle == "on") {
+				newrollvalue = originalrollvalue.concat("{{basedamage=[[@{limitbreakBaseEffectDie}]] }}")
+			} else {
+				newrollvalue = originalrollvalue.replace("{{basedamage=[[@{limitbreakBaseEffectDie}]] }}", "")
+			}
+
+			setAttrs({
+				limitbreakRollValue: newrollvalue
+			});
+		});
+	});
+
 	// on DirectHit Check - Instant Ability
 	on("change:repeating_instantability:directhitcheckbox", function() {
 		getAttrs(["repeating_instantability_directhitcheckbox", "repeating_instantability_abilityRollValue"], function(values) {
@@ -1062,6 +1080,9 @@
 					break;
 				case '1d20 + @{char_dexterity}':
 					newAbility = "DEX"
+					break;
+				case '1d20 + @{char_vitality}':
+					newAbility = "VIT"
 					break;
 				case '1d20 + @{char_intelligence}':
 					newAbility = "INT"
@@ -1089,6 +1110,9 @@
 					break;
 				case '1d20 + @{char_dexterity}':
 					newAbility = "DEX"
+					break;
+				case '1d20 + @{char_vitality}':
+					newAbility = "VIT"
 					break;
 				case '1d20 + @{char_intelligence}':
 					newAbility = "INT"

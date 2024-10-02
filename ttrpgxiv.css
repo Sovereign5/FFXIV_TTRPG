@@ -334,7 +334,7 @@
 
 .charsheet .body .body-left {
   width: 50%;
-  height: auto;
+  height: 320px;
   margin-top: 4px;
   border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
   border-width: 3px;
@@ -548,7 +548,7 @@ button[type=roll].traitdisplay::before {
 }
 
 .charsheet .sheet-abilities {
-  width: 100%;
+  width: 866px;
   display: flex;
   height: auto;
   color: white;
@@ -614,6 +614,7 @@ button[type=roll].traitdisplay::before {
   background: linear-gradient(0deg, rgba(98,131,176,1) 0%, rgba(98,131,176,1) 10%, rgba(138,157,199,1) 90%, rgba(138,157,199,1) 100%);
 }
 
+
 .charsheet .displaymode {
   display: flex;
 }
@@ -631,9 +632,9 @@ button[type=roll].traitdisplay::before {
   transform: scale(1, 0.8);
   padding: 0px;
   margin: 0px;
-  position: absolute;
-  top: 18px;
-  left: -7px;
+  position: relative;
+  left: -10px;
+  text-wrap: pretty;
 }
 .charsheet .sheet-abilitiespage .sheet-diceroll:hover {
   color: grey;
@@ -650,7 +651,7 @@ button[type=roll].sheet-diceroll::before {
 .charsheet .sheet-abilities .toggle_repeating_npcaction_edit {
   display: none;
   position: absolute;
-  left: 250px;
+  left: 260px;
   top: 25px;
   color: rgba(255,255,255,0.5);
   border: none;
@@ -786,6 +787,12 @@ button[type=roll].sheet-diceroll::before {
   padding: 0px;
 }
 
+.sheet-rolltemplate-ffxivmain .sheet-template-masterheader-limitbreak {
+  background: rgb(255,0,0);
+  background: linear-gradient(0deg, rgba(255,0,0,1) 10%, rgba(255,0,0,1) 95%, rgba(255,94,94,1) 100%);
+  padding: 0px;
+}
+
 .sheet-rolltemplate-ffxivmain div.sheet-template-container {
   position: relative;
   border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
@@ -820,6 +827,10 @@ button[type=roll].sheet-diceroll::before {
 .sheet-rolltemplate-ffxivmain .inlinerollresult.fullcrit {
   border: transparent;
   color: #00ff24;
+}
+
+.sheet-rolltemplate-ffxivmain .inlinerollresult.importantroll  {
+  border: transparent;
 }
 
 .sheet-rolltemplate-ffxivmain a[href^="~"] {
