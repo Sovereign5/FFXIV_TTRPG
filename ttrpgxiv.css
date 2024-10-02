@@ -23,7 +23,7 @@
 
 /*End of Font Import*/
 
-.charsheet .page {
+.charsheet .sheet-mainpage {
   display: block;
   margin: 0px;
   padding: 0px;
@@ -61,6 +61,96 @@
   display: none;
 }
 
+.charsheet .sheet-limitbreak-a,
+.charsheet .sheet-limitbreak-switch:checked ~ .sheet-limitbreak-b {
+  display: block;
+}
+
+.charsheet .sheet-limitbreak-b,
+.charsheet .sheet-limitbreak-switch:checked ~ .sheet-limitbreak-a {
+  display: none;
+}
+
+.charsheet .sheet-requirementfield {
+  display: none;
+}
+
+.charsheet .sheet-requirementcheckbox:checked ~ .sheet-requirementfield {
+  display: flex;
+}
+
+.charsheet .sheet-triggerfield {
+  display: none;
+}
+
+.charsheet .sheet-triggercheckbox:checked ~ .sheet-triggerfield {
+  display: flex;
+}
+
+.charsheet .sheet-costfield {
+  display: none;
+}
+
+.charsheet .sheet-costcheckbox:checked ~ .sheet-costfield {
+  display: flex;
+}
+
+.charsheet .sheet-targetfield {
+  display: none;
+}
+
+.charsheet .sheet-targetcheckbox:checked ~ .sheet-targetfield {
+  display: flex;
+}
+
+.charsheet .sheet-rangefield {
+  display: none;
+}
+
+.charsheet .sheet-rangecheckbox:checked ~ .sheet-rangefield {
+  display: flex;
+}
+
+.charsheet .sheet-checkfield {
+  display: none;
+}
+
+.charsheet .sheet-checkcheckbox:checked ~ .sheet-checkfield {
+  display: flex;
+}
+
+.charsheet .sheet-crfield {
+  display: none;
+}
+
+.charsheet .sheet-crcheckbox:checked ~ .sheet-crfield {
+  display: flex;
+}
+
+.charsheet .sheet-directeffectfield {
+  display: none;
+}
+
+.charsheet .sheet-directeffectcheckbox:checked ~ .sheet-directeffectfield {
+  display: flex;
+}
+
+.charsheet .sheet-limitbreakTargetField {
+  display: none;
+}
+
+.charsheet .sheet-limitbreaktargetcheckbox:checked ~ .sheet-limitbreakTargetField {
+  display: flex;
+}
+
+.charsheet .sheet-limitbreakRangeField {
+  display: none;
+}
+
+.charsheet .sheet-limitbreakrangecheckbox:checked ~ .sheet-limitbreakRangeField {
+  display: flex;
+}
+
 .repcontainer .repitem {
   padding-bottom: 25px;
 }
@@ -68,11 +158,39 @@
 .hide {
   display: none;
 }
+
+.charsheet .sheet-mainpage,
+.charsheet .sheet-abilitiespage {
+    display: none;
+}
+
+/* show the selected tab */
+.charsheet .sheet-tabstoggle[value="character"] ~ div.sheet-mainpage,
+.charsheet .sheet-tabstoggle[value="abilities"] ~ div.sheet-abilitiespage {
+    display: block;
+}
 /*End of Toggles*/
 
 
 
 /*Header Section*/
+.charsheet .sheetTabs button {
+  font-family: "Jura";
+  font-weight: 700;
+  font-size: 1.3em;
+}
+
+.charsheet .sheetTabs button:hover {
+  color: darkgray;
+}
+
+.charsheet .sheetTabs {
+  position: absolute;
+  left: 675px;
+  top: 45px;
+  z-index: 5;
+}
+
 .charsheet .headerbar {
   display: flex;
 }
@@ -216,7 +334,7 @@
 
 .charsheet .body .body-left {
   width: 50%;
-  height: auto;
+  height: 320px;
   margin-top: 4px;
   border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
   border-width: 3px;
@@ -364,6 +482,26 @@
   background-image: none;
 }
 
+.charsheet .body .body-right .traitdiv .traitdisplay {
+  background: none;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  color: black;
+  font-family: "Jura";
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.2em;
+}
+
+.charsheet .body .body-right .traitdiv .traitdisplay:hover {
+  color: grey;
+}
+
+button[type=roll].traitdisplay::before {
+    font-size: 0em;
+}
+
 .charsheet .body .body-right label {
   text-transform: uppercase;
   color: white;
@@ -385,7 +523,177 @@
 
 /*End of Body Section*/
 
+
+/*Abilities Page Section*/
+.charsheet .sheet-abilitiespage {
+  margin: 0px;
+  padding: 0px;
+  width: 860px;
+}
+
+.charsheet .ability-limitbreak {
+  width: 100%;
+  height: auto;
+  margin-bottom: 3px;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(40,40,40);
+  background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(74,74,74,1) 10%, rgba(74,74,74,1) 90%, rgba(97,97,97,1) 100%);
+  color: white;
+}
+
+.charsheet .sheet-abilities {
+  width: 866px;
+  display: flex;
+  height: auto;
+  color: white;
+}
+
+.charsheet .sheet-abilitiespage label {
+  color: white;
+  font-family: "Jura";
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.5em;
+  transform: scale(1, 0.8);
+}
+
+.charsheet .sheet-abilitiespage input[type=text] {
+  width: 95%;
+}
+
+.charsheet .sheet-abilities .abilities-primary {
+  width: 33%;
+  display: block;
+  margin-bottom: 3px;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(221,69,120);
+  background: linear-gradient(0deg, rgba(221,69,120,1) 0%, rgba(221,69,120,1) 10%, rgba(238,109,148,1) 90%, rgba(238,109,148,1) 100%);
+}
+
+.charsheet .sheet-abilities .abilities-secondary {
+  width: 33%;
+  display: block;
+  margin-left: 3px;
+  margin-bottom: 3px;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(75,166,159);
+  background: linear-gradient(0deg, rgba(75,166,159,1) 0%, rgba(75,166,159,1) 10%, rgba(107,197,188,1) 90%, rgba(107,197,188,1) 100%);
+}
+
+.charsheet .sheet-abilities .abilities-instant {
+  width: 33%;
+  display: block;
+  margin-left: 3px;
+  margin-bottom: 3px;
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(98,131,176);
+  background: linear-gradient(0deg, rgba(98,131,176,1) 0%, rgba(98,131,176,1) 10%, rgba(138,157,199,1) 90%, rgba(138,157,199,1) 100%);
+}
+
+
+.charsheet .displaymode {
+  display: flex;
+}
+
+.charsheet .sheet-abilitiespage .sheet-diceroll {
+  background: none;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  color: white;
+  font-family: "Jura";
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.6em;
+  transform: scale(1, 0.8);
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+  left: -10px;
+  text-wrap: pretty;
+}
+.charsheet .sheet-abilitiespage .sheet-diceroll:hover {
+  color: grey;
+}
+
+button[type=roll].sheet-diceroll::before {
+    font-size: 0em;
+}
+
+.repcontainer[data-groupname="repeating_skills"] > .repitem {
+    background: none;
+}
+
+.charsheet .sheet-abilities .toggle_repeating_npcaction_edit {
+  display: none;
+  position: absolute;
+  left: 260px;
+  top: 25px;
+  color: rgba(255,255,255,0.5);
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .ability-limitbreak .editlimitbreakbutton {
+  display: block;
+  position: absolute;
+  left: 800px;
+  top: 0px;
+  color: rgba(255,255,255,0.5);
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_primaryability"]> .repitem:hover> .toggle_repeating_npcaction_edit {
+  display: block;
+}
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_secondaryability"]> .repitem:hover> .toggle_repeating_npcaction_edit {
+  display: block;
+}
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_instantability"]> .repitem:hover> .toggle_repeating_npcaction_edit {
+  display: block;
+}
+
+.charsheet .sheet-abilities .toggle_repeating_npcaction_edit:hover {
+  color: rgba(255,255,255,1);
+}
+
+
+/*End of Abilities Page Section*/
+
+
+
 /*FFXIV Main Roll Container*/
+.sheet-rolltemplate-ffxivmain div {
+  padding: 5px;
+  padding-top: 6px;
+  padding-bottom: 4px;
+}
+
 .sheet-rolltemplate-ffxivmain .sheet-header {
   color: white;
   font-family: "Bebas Neue", sans-serif;
@@ -405,51 +713,6 @@
   padding-top: 3px;
 }
 
-.sheet-rolltemplate-ffxivmain div.sheet-template-container {
-  position: relative;
-  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
-  border-width: 3px;
-  border-style: solid;
-  padding: 0px;
-  border-radius: 3px 3px 3px 3px;
-  outline: 2px solid #000 !important;
-  background: rgb(57,57,57);
-  background: linear-gradient(180deg, rgba(92,92,92,1) 0%, rgba(29,29,29,1) 10%, rgba(29,29,29,1) 50%, rgba(29,29,29,1) 90%, rgba(0,0,0,1) 100%);
-}
-
-.sheet-rolltemplate-ffxivmain .sheet-template-header {
-  color: #000;
-  padding: 2px;
-  font-size: 2.3em;
-}
-
-.sheet-rolltemplate-ffxivmain .sheet-template-row {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 1.2em;
-  transform: scale(0.8, 1.2);
-  font-weight: 500;
-  color: white;
-  text-align: center;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
-.sheet-rolltemplate-ffxivmain div {
-  padding: 5px;
-  padding-top: 6px;
-  padding-bottom: 4px;
-}
-
-.sheet-rolltemplate-ffxivmain .sheet-value {
-  text-align: center;
-}
-
-.sheet-rolltemplate-ffxivmain .sheet-template-masterheader {
-  background: rgb(246,162,187);
-  background: linear-gradient(180deg, rgba(246,162,187,1) 0%, rgba(216,87,126,1) 10%, rgba(216,87,126,1) 100%);
-  padding: 0px;
-}
-
 .sheet-rolltemplate-ffxivmain .sheet-line {
   margin: 5px;
   margin-left: 0px;
@@ -467,7 +730,79 @@
   padding: 1px;
   transform: scale(1, 1);
   text-align: center;
+}
 
+.sheet-rolltemplate-ffxivmain .sheet-info-larger {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 300;
+  color: white;
+  font-size: 1em;
+  padding: 1px;
+  transform: scale(1, 1);
+  text-align: center;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-header {
+  color: #000;
+  padding: 2px;
+  font-size: 2.3em;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-value {
+  text-align: center;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-row {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.2em;
+  transform: scale(0.8, 1.2);
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-masterheader-primary {
+  background: rgb(246,162,187);
+  background: linear-gradient(180deg, rgba(246,162,187,1) 0%, rgba(216,87,126,1) 10%, rgba(216,87,126,1) 100%);
+  padding: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-masterheader-secondary {
+  background: rgb(75,166,159);
+  background: linear-gradient(0deg, rgba(75,166,159,1) 10%, rgba(75,166,159,1) 95%, rgba(93,207,198,1) 100%);
+  padding: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-masterheader-instant {
+  background: rgb(98,131,176);
+  background: linear-gradient(0deg, rgba(98,131,176,1) 10%, rgba(98,131,176,1) 95%, rgba(125,168,227,1) 100%);
+  padding: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-masterheader-attribute {
+  background: rgb(0,121,244);
+  background: linear-gradient(0deg, rgba(0,121,244,1) 10%, rgba(0,121,244,1) 95%, rgba(84,169,255,1) 100%);
+  padding: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain .sheet-template-masterheader-limitbreak {
+  background: rgb(255,0,0);
+  background: linear-gradient(0deg, rgba(255,0,0,1) 10%, rgba(255,0,0,1) 95%, rgba(255,94,94,1) 100%);
+  padding: 0px;
+}
+
+.sheet-rolltemplate-ffxivmain div.sheet-template-container {
+  position: relative;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(57,57,57);
+  background: linear-gradient(180deg, rgba(92,92,92,1) 0%, rgba(29,29,29,1) 10%, rgba(29,29,29,1) 50%, rgba(29,29,29,1) 90%, rgba(0,0,0,1) 100%);
 }
 
 .sheet-rolltemplate-ffxivmain .inlinerollresult {
@@ -479,6 +814,11 @@
   font-style: normal;
 }
 
+.sheet-rolltemplate-ffxivmain.sheet-rolltemplate-darkmode .inlinerollresult{
+  background-color: transparent;
+  border-color: transparent;
+}
+
 .sheet-rolltemplate-ffxivmain .inlinerollresult.fullfail {
   border: transparent;
   color: red;
@@ -487,6 +827,10 @@
 .sheet-rolltemplate-ffxivmain .inlinerollresult.fullcrit {
   border: transparent;
   color: #00ff24;
+}
+
+.sheet-rolltemplate-ffxivmain .inlinerollresult.importantroll  {
+  border: transparent;
 }
 
 .sheet-rolltemplate-ffxivmain a[href^="~"] {
@@ -577,6 +921,7 @@
   background-color: transparent;
   color: white;
   border: transparent;
+  border-color: transparent;
   font-family: "Romanesco";
   font-weight: 500;
   font-style: normal;
@@ -590,6 +935,10 @@
 .sheet-rolltemplate-ffxivdamage .inlinerollresult.fullcrit {
   border: transparent;
   color: #00ff24;
+}
+
+.sheet-rolltemplate-ffxivdamage .inlinerollresult.importantroll  {
+  border: transparent;
 }
 
 .sheet-rolltemplate-ffxivdamage a[href^="~"] {
