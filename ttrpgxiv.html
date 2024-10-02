@@ -266,16 +266,8 @@
 		<div class=abilities-primary>
 			<label>PRIMARY ABILITIES</label>
 			<fieldset class=repeating_primaryability>
-				<input type="checkbox" name="attr_requirementcheckbox" class="sheet-requirementcheckbox" hidden>
-				<input type="checkbox" name="attr_triggercheckbox" class="sheet-triggercheckbox" hidden>
 				<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
-				<input type="checkbox" name="attr_costcheckbox" class="sheet-costcheckbox" hidden>
-				<input type="checkbox" name="attr_targetcheckbox" class="sheet-targetcheckbox" hidden>
-				<input type="checkbox" name="attr_rangecheckbox" class="sheet-rangecheckbox" hidden>
-				<input type="checkbox" name="attr_checkcheckbox" class="sheet-checkcheckbox" hidden>
-				<input type="checkbox" name="attr_crcheckbox" class="sheet-crcheckbox" hidden>
-				<input type="checkbox" name="attr_directhitcheckbox" class="sheet-directeffectcheckbox" hidden>
-				<input type="text" name="attr_abilityRollValue" value="&{template:ffxivmain} {{header=primary}} {{baseeffect=@{abilitybaseeffect} }} {{rolltype=@{abilitycheck} }} {{damagetype=@{abilitybaseeffectdamageorhealing} }} {{name=@{abilityname} }} {{tags=@{abilitytags} }} {{basedamage=[[@{abilitybaseeffectdamage}]] }}  {{effect=@{abilitybaseeffectextraeffect} }} {{Attack = [[@{abilityselector}]]}}" hidden>
+				<input type="text" name="attr_abilityRollValue" value="" hidden>
 				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit"><span style="font-family:Pictos;">y</button><br>
@@ -290,29 +282,38 @@
 					<input type="text" name="attr_abilitytags" placeholder="Primary, Physical">
 					<br>
 
-					<input type="checkbox" name="attr_requirementcheckbox" class="sheet-requirementcheckbox"> <span>Requirement</span>
+					<span>Limitation</span>
+					<select name="attr_limitation">
+						<option value="" selected>No Limitation</option>
+						<option value="1">Once per phase</option>
+						<option value="2">Two times per phase</option>
+						<option value="3">Three times per phase</option>
+					</select>
+					<br>
+
+					<span>Requirement</span>
 					<input type="text" name="attr_abilityrequirement">
 					<br>
-					<input type="checkbox" name="attr_triggercheckbox" class="sheet-triggercheckbox"> <span>Trigger</span>
+					<span>Trigger</span>
 					<input type="text" name="attr_abilitytrigger" placeholder="When an enemy within 10 squares begins their turn.">
 					<br>
 
-					<input type="checkbox" name="attr_costcheckbox" class="sheet-costcheckbox"> <span>Cost</span>
+					<span>Cost</span>
 					<input type="text" name="attr_abilitycost" placeholder="1 MP">
 					<br>
 
-					<input type="checkbox" name="attr_targetcheckbox" class="sheet-targetcheckbox"> <span>Target</span>
+					<span>Target</span>
 					<input type="text" name="attr_abilitytarget" placeholder="Single">
 					<br>
 
-					<input type="checkbox" name="attr_rangecheckbox" class="sheet-rangecheckbox"> <span>Range</span>
+					<span>Range</span>
 					<input type="text" name="attr_abilityrange" placeholder="5 Squares">
 					<br>
 
-					<input type="checkbox" name="attr_checkcheckbox" class="sheet-checkcheckbox"> <span>Check</span>
-					<input type="text" name="attr_abilitycheck" hidden>
-					<select class="sheet-checkcheckbox" name="attr_abilityselector">
-						<option value="1d20" selected>Special</option>
+					<span>Check</span>
+					<select class="sheet-checkcheckbox" name="attr_abilitycheck">
+						<option value="" selected="selected">No Check</option>
+						<option value="1d20">Special</option>
 						<option value="1d20 + @{char_strength}">STR</option>
 						<option value="1d20 + @{char_dexterity}">DEX</option>
 						<option value="1d20 + @{char_vitality}">VIT</option>
@@ -320,14 +321,14 @@
 						<option value="1d20 + @{char_mind}">MND</option>
 					</select>
 					<br>
-					<input type="checkbox" name="attr_crcheckbox" class="sheet-crcheckbox"> <span>CR</span>
+					<span>CR</span>
 					<input type="text" name="attr_abilitycr" placeholder="Target's Defense">
 					<br>
 					<span>Base Effect</span>
 					<input type="text" name="attr_abilitybaseeffect" placeholder="Deals 3 damage to the target" required>
 					<br>
 
-					<input type="checkbox" name="attr_baseeffectdamagecheckbox"> <span>Base Effect</span>
+					<span>Base Effect</span>
 					<div style="display: flex;">
 						<input type="text" name="attr_abilitybaseeffectdamage" value="0" placeholder="1d6" style="width: 70px;" required>
 						<span>&nbsp;</span>
@@ -338,15 +339,15 @@
 					</div>
 					<br>
 
-					<input type="checkbox" name="attr_baseeffectextraeffect"> <span>Base Effect Extra Effect</span>
+					<span>Base Effect Extra Effect</span>
 					<input type="text" name="attr_abilitybaseeffectextraeffect" placeholder="Combo: Storm's Path">
 					<br>
 
-					<input type="checkbox" name="attr_directhitcheckbox" class="sheet-directeffectcheckbox"> <span>Direct Hit</span>
+					<span>Direct Hit</span>
 					<input type="text" name="attr_abilitydirecthit" placeholder="Deals an additional 2d6 damage">
 					<br>
 
-					<input type="checkbox" name="attr_directhitdamagecheckbox"> <span>Direct Hit Damage</span>
+					<span>Direct Hit Damage</span>
 					<div style="display: flex;">
 						<input type="text" name="attr_abilitydirecthitdamage" value="0" placeholder="2d6" style="width: 70px;" required>
 						<span>&nbsp;</span>
@@ -357,58 +358,14 @@
 					</div>
 					<br>
 
-					<input type="checkbox" name="attr_directhitextraeffect"> <span>Direct Hit Extra Effect</span>
+					<span>Direct Hit Extra Effect</span>
 					<input type="text" name="attr_abilitydirecthitextraeffect" placeholder="Generates Emnity">
 				</div>
 
 				<!-- DISPLAY MODE - PRIMARY ABILITIES -->
 				<div class="sheet-block-b" style="padding: 3px;">
 					<button type="roll" class="sheet-diceroll" value="@{abilityRollValue}" name="roll_abilityCheck"> <span name="attr_abilityname"></span> </button><br>
-					<span name="attr_abilitytags" style="font-style: italic;"></span>
-					<div class="displaymode">
-						<input type="checkbox" name="attr_requirementcheckbox" class="sheet-requirementcheckbox" hidden>
-						<span style="font-weight: 700;" class="sheet-requirementfield">Requirement:</span>
-						<span name="attr_abilityrequirement" class="sheet-requirementfield"></span>
-					</div>
-					<div class="displaymode">
-						<input type="checkbox" name="attr_triggercheckbox" class="sheet-triggercheckbox" hidden>
-						<span style="font-weight: 700;" class="sheet-triggerfield">Trigger: </span>
-						<span name="attr_abilitytrigger" class="sheet-triggerfield"></span>
-					</div>
-					<div class="displaymode">
-						<input type="checkbox" name="attr_costcheckbox" class="sheet-costcheckbox" hidden>
-						<span style="font-weight: 700;" class="sheet-costfield">Cost: </span>
-						<span name="attr_abilitycost" class="sheet-costfield"></span>
-					</div>
-					<div class="displaymode">
-						<input type="checkbox" name="attr_targetcheckbox" class="sheet-targetcheckbox" hidden>
-						<span style="font-weight: 700;" class="sheet-targetfield">Target: </span>
-						<span name="attr_abilitytarget" class="sheet-targetfield"></span>
-					</div>
-					<div class="displaymode">
-						<input type="checkbox" name="attr_rangecheckbox" class="sheet-rangecheckbox" hidden>
-						<span style="font-weight: 700;" class="sheet-rangefield">Range: </span>
-						<span name="attr_abilityrange" class="sheet-rangefield"></span>
-					</div>
-					<div class="displaymode">
-						<input type="checkbox" name="attr_checkcheckbox" class="sheet-checkcheckbox" hidden>
-						<span style="font-weight: 700;" class="sheet-checkfield">Check: </span>
-						<span name="attr_abilitycheck" class="sheet-checkfield"></span>
-					</div>
-					<div class="displaymode">
-						<input type="checkbox" name="attr_crcheckbox" class="sheet-crcheckbox" hidden>
-						<span style="font-weight: 700;" class="sheet-crfield">CR: </span>
-						<span name="attr_abilitycr" class="sheet-crfield"></span>
-					</div>
-					<div class="displaymode">
-						<span style="font-weight: 700;">Base Effect: </span>
-						<span name="attr_abilitybaseeffect"></span>
-					</div>
-					<div class="displaymode">
-						<input type="checkbox" name="attr_directhitcheckbox" class="sheet-directeffectcheckbox" hidden>
-						<span style="font-weight: 700;" class="sheet-directeffectfield">Direct Hit Effect: </span>
-						<span name="attr_abilitydirecthit" class="sheet-directeffectfield"></span>
-					</div>
+					
 					<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilitydirecthitdamage}]] }}">Hide</button>
 				</div>
 			</fieldset>
@@ -870,17 +827,67 @@
 			let switchToggle = values.repeating_primaryability_blockswitch;
 			switchToggle = 1 - switchToggle;
 
-			// Tag Builder
-			// var tags = [];
-			// tags.push(values.repeating_primaryability_tagphysical, values.repeating_primaryability_tagmagical, values.repeating_primaryability_tagice, values.repeating_primaryability_tagfire, values.repeating_primaryability_tagthunder, values.repeating_primaryability_tagwind, values.repeating_primaryability_tagearth, values.repeating_primaryability_tagwater, values.repeating_primaryability_taginvoked);
-			// tags = removeItemAll(tags, "0")
-			// tags.unshift("Primary")
-			// const tagString = tags.join(', ');
 
 			setAttrs({
 				repeating_primaryability_blockswitch: switchToggle,
-				//repeating_primaryability_tags: tagString
 			});
+		});
+	});
+
+	on("clicked:repeating_primaryability:edit", function() {
+		getAttrs([
+			"repeating_primaryability_abilityname", // Name
+			"repeating_primaryability_abilitytags",
+			"repeating_primaryability_abilitybaseeffect",
+			"repeating_primaryability_limitation",
+			"repeating_primaryability_limitationamount",
+			"repeating_primaryability_abilityrequirement",
+			"repeating_primaryability_abilitytrigger",
+			"repeating_primaryability_abilitycost",
+			"repeating_primaryability_abilitytarget",
+			"repeating_primaryability_abilityrange",
+			"repeating_primaryability_abilitycheck",
+			"repeating_primaryability_abilitycr",
+			"repeating_primaryability_abilitybaseeffectdamage",
+			"repeating_primaryability_abilitybaseeffectdamageorhealing",
+			"repeating_primaryability_abilitybaseeffectextraeffect",
+			"repeating_primaryability_abilitydirecthit",
+			"repeating_primaryability_abilitydirecthitdamage",
+			"repeating_primaryability_abilitydirecteffectdamageorhealing",
+			"repeating_primaryability_abilitydirecthitextraeffect",
+			], function(values){
+				console.log(values);
+				var rollvalue = "&{template:ffxivmain} {{header=primary}} {{name=@{abilityname} }} {{tags=@{abilitytags} }} {{baseeffect=@{abilitybaseeffect} }}"
+
+				if (values.repeating_primaryability_abilitycheck) {
+					rollvalue = rollvalue.concat(" {{Attack = [[@{abilitycheck}]]}} ")
+					rollvalue = rollvalue.concat(" {{check=Ability Check }} ")
+				}
+
+				if (values.repeating_primaryability_abilitybaseeffectdamage) {
+					console.log(values.repeating_primaryability_abilitybaseeffectdamage);
+					rollvalue = rollvalue.concat(" {{basedamage=[[@{abilitybaseeffectdamage}]] }} ")
+				}
+
+				if (values.repeating_primaryability_abilitybaseeffectdamageorhealing) {
+					console.log(values.repeating_primaryability_abilitybaseeffectdamageorhealing);
+					rollvalue = rollvalue.concat(" {{damagetype=@{abilitybaseeffectdamageorhealing} }} ")
+				}
+
+				if (values.repeating_primaryability_abilitybaseeffectextraeffect) {
+					console.log(values.repeating_primaryability_abilitybaseeffectextraeffect)
+					rollvalue = rollvalue.concat(" {{effect=@{abilitybaseeffectextraeffect} }} ")
+				}
+
+				if (values.repeating_primaryability_abilitydirecthit) {
+					console.log(values.repeating_primaryability_abilitydirecthit);
+					rollvalue = rollvalue.concat(" {{directdamage=[ROLL DIRECT HIT](~repeating_primaryability_directDamageRoll) }} ")
+				}
+
+
+				setAttrs({
+					repeating_primaryability_abilityRollValue: rollvalue,
+				});
 		});
 	});
 
