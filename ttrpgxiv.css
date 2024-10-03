@@ -169,6 +169,79 @@
 .charsheet .sheet-tabstoggle[value="abilities"] ~ div.sheet-abilitiespage {
     display: block;
 }
+
+.charsheet .sheet-limitation {
+  display: none;
+}
+
+.charsheet .sheet-limitationshow:checked ~ .sheet-limitation {
+  display: flex;
+}
+
+.charsheet .sheet-target {
+  display: none;
+}
+
+.charsheet .sheet-targetshow:checked ~ .sheet-target {
+  display: flex;
+}
+
+.charsheet .sheet-range {
+  display: none;
+}
+
+.charsheet .sheet-rangeshow:checked ~ .sheet-range {
+  display: flex;
+}
+
+.charsheet .sheet-abilitycheck {
+  display: none;
+}
+
+.charsheet .sheet-abilitycheckshow:checked ~ .sheet-abilitycheck {
+  display: flex;
+}
+
+.charsheet .sheet-abilitycr {
+  display: none;
+}
+
+.charsheet .sheet-abilitycrshow:checked ~ .sheet-abilitycr {
+  display: flex;
+}
+
+.charsheet .sheet-abilitybaseeffect {
+  display: none;
+}
+
+.charsheet .sheet-abilitybaseeffectshow:checked ~ .sheet-abilitybaseeffect {
+  display: flex;
+}
+
+.charsheet .sheet-abilitydirecthit {
+  display: none;
+}
+
+.charsheet .sheet-abilitydirecthitshow:checked ~ .sheet-abilitydirecthit {
+  display: flex;
+}
+
+.charsheet .sheet-trigger {
+  display: none;
+}
+
+.charsheet .sheet-triggershow:checked ~ .sheet-trigger {
+  display: flex;
+}
+
+.charsheet .sheet-requirement {
+  display: none;
+}
+
+.charsheet .sheet-requirementshow:checked ~ .sheet-requirement {
+  display: flex;
+}
+
 /*End of Toggles*/
 
 
@@ -625,11 +698,12 @@ button[type=roll].traitdisplay::before {
   border: none;
   box-shadow: none;
   color: white;
-  font-family: "Jura";
-  font-weight: 700;
+  font-family: "Bebas Neue";
+  font-weight: 500;
   font-style: normal;
-  font-size: 1.6em;
-  transform: scale(1, 0.8);
+  font-size: 1em;
+  letter-spacing: 1px;
+  transform: scale(1,1.1);
   padding: 0px;
   margin: 0px;
   position: relative;
@@ -652,7 +726,7 @@ button[type=roll].sheet-diceroll::before {
   display: none;
   position: absolute;
   left: 260px;
-  top: 25px;
+  top: 5px;
   color: rgba(255,255,255,0.5);
   border: none;
   background-color: transparent;
@@ -680,6 +754,19 @@ button[type=roll].sheet-diceroll::before {
 
 .charsheet .sheet-abilities .toggle_repeating_npcaction_edit:hover {
   color: rgba(255,255,255,1);
+}
+
+.charsheet .sheet-abilities .input-shorter {
+  position: relative;
+  bottom: 2px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: right;
+  width: 45px;
 }
 
 
