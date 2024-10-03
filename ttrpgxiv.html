@@ -1186,7 +1186,7 @@
 				console.log(values);
 
 				// ROLL TEMPLATE STRING BUILDER	
-				var rollvalue = "&{template:ffxivmain} {{header=primary}} {{name=@{abilityname} }} {{tags=@{abilitytags} }} {{baseeffect=@{abilitybaseeffect} }}"
+				var rollvalue = "&{template:ffxivmain} {{header=secondary}} {{name=@{abilityname} }} {{tags=@{abilitytags} }} {{baseeffect=@{abilitybaseeffect} }}"
 
 				if (values.repeating_secondaryability_abilitycheck) {
 					rollvalue = rollvalue.concat(" {{Attack = [[@{abilitycheck}]]}} ")
@@ -1395,7 +1395,7 @@
 				console.log(values);
 
 				// ROLL TEMPLATE STRING BUILDER	
-				var rollvalue = "&{template:ffxivmain} {{header=primary}} {{name=@{abilityname} }} {{tags=@{abilitytags} }} {{baseeffect=@{abilitybaseeffect} }}"
+				var rollvalue = "&{template:ffxivmain} {{header=instant}} {{name=@{abilityname} }} {{tags=@{abilitytags} }} {{baseeffect=@{abilitybaseeffect} }}"
 
 				if (values.repeating_instantability_abilitycheck) {
 					rollvalue = rollvalue.concat(" {{Attack = [[@{abilitycheck}]]}} ")
