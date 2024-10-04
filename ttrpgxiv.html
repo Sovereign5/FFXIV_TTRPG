@@ -207,7 +207,9 @@
 		<div>
 			<!-- GLOBAL VARIABLES LIMIT BREAK --> 
 			<input type="checkbox" name="attr_limitbreakswitch" class="sheet-limitbreak-switch" value="0" hidden>
+			<input type="checkbox" name="attr_limitbreakcollapse" class="sheet-limitbreakcollapse" value="0" hidden>
 			<button type="action" name="act_limitbreakedit" class="editlimitbreakbutton"><span style="font-family:Pictos; z-index: 99;">y</span></button>
+			<button type="action" class="toggle_limitbreakcollapse" name="act_collapse"><span style="font-family:Pictos; z-index: 99;">w</button><br>
 			<input type="text" name="attr_limitbreakRollValue" value="" hidden>
 
 
@@ -250,7 +252,13 @@
 					<span style="font-weight: 700;">Base Effect Die:&nbsp;</span>
 					<span name="attr_limitbreakbaseeffectdie_display"></span>
 				</div> -->
+			</div>
 
+			<!-- COLLAPSE MODE LIMIT BREAK -->
+			<div class="sheet-limitbreak-c" style="position: absolute;">
+				<img src="">
+				<button type="roll" class="sheet-diceroll-collapsed" style="font-size: 2em; width: 400px; position: absolute; top: -42px; left: 120px" value="@{limitbreakRollValue}" name="roll_limitbreakdie"> <span name="attr_limitbreakName"></span> </button><br>
+				<span name="attr_limitbreakTags" class="sheet-limitbreaktags-collapse" style="position: absolute; top: -20px; left: 130px; width: 300px;"></span>
 			</div>
 
 
@@ -290,7 +298,7 @@
 				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit"><span style="font-family:Pictos;">y</button><br>
-				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos;">i</button><br>
+				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos;">w</button><br>
 
 				<!-- EDITING MODE - PRIMARY ABILITIES -->
 				<div class="sheet-block-a" style="padding: 3px;">
@@ -466,17 +474,18 @@
 
 
 				<!-- Collapsed Ability View -->
-				<div class="sheet-block-c" style="padding: 3px">
+				<div class="sheet-block-c" style="padding: 3px; position: absolute;">
 					<div style="display: flex;">
-						<button type="roll" class="sheet-diceroll" value="@{abilityRollValue}" name="roll_abilityCheck" style="width: 70%; text-align: left;"> <span name="attr_abilityname"></span> </button><br>
+						<button type="roll" class="sheet-diceroll-collapsed" value="@{abilityRollValue}" name="roll_abilityCheck"> <span name="attr_abilityname"></span> </button><br>
 
 						<!-- Limitation -->
 						<input type="checkbox" name="attr_limitation_show" class="sheet-limitationshow" hidden>
-						<div class="sheet-limitation" style="text-align: right; width: 30%;">
-							<input dir="rtl" type="number" name="attr_limitationamount" class="input-shorter" style="position: relative; left: 17px; top: -2px; width: 80%; vertical-align: top;">
-							<span name="attr_limitation_display" class="input-shorter" style="margin: auto;"></span>
+						<div class="sheet-limitation-collapsed">
+							<input dir="rtl" type="number" name="attr_limitationamount" class="input-shorter-collapsed" style="position: absolute; top: 2px; left: 35px; width: 45px; height: 25px;">
+							<span name="attr_limitation_display" class="input-shorter-collapsed" style="position: absolute; top: 0px; left: 80px;"></span>
 						</div>
 					</div>
+					<span name="attr_abilitytags_display" class="sheet-tags-collapsed"></span>
 				</div>
 			</fieldset>
 		</div>
@@ -492,7 +501,7 @@
 				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit"><span style="font-family:Pictos;">y</button><br>
-				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos;">i</button><br>
+				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos;">w</button><br>
 
 				<!-- EDITING MODE - PRIMARY ABILITIES -->
 				<div class="sheet-block-a" style="padding: 3px;">
@@ -667,17 +676,18 @@
 				</div>
 
 				<!-- Collapsed Ability View -->
-				<div class="sheet-block-c" style="padding: 3px;">
+				<div class="sheet-block-c" style="padding: 3px; position: absolute;">
 					<div style="display: flex;">
-						<button type="roll" class="sheet-diceroll" value="@{abilityRollValue}" name="roll_abilityCheck" style="width: 70%; text-align: left;"> <span name="attr_abilityname"></span> </button><br>
+						<button type="roll" class="sheet-diceroll-collapsed" value="@{abilityRollValue}" name="roll_abilityCheck"> <span name="attr_abilityname"></span> </button><br>
 
 						<!-- Limitation -->
 						<input type="checkbox" name="attr_limitation_show" class="sheet-limitationshow" hidden>
-						<div class="sheet-limitation" style="text-align: right; width: 30%;">
-							<input dir="rtl" type="number" name="attr_limitationamount" class="input-shorter" style="position: relative; left: 17px; top: -2px; width: 80%; vertical-align: top;">
-							<span name="attr_limitation_display" class="input-shorter" style="margin: auto;"></span>
+						<div class="sheet-limitation-collapsed">
+							<input dir="rtl" type="number" name="attr_limitationamount" class="input-shorter-collapsed" style="position: absolute; top: 2px; left: 35px; width: 45px; height: 25px;">
+							<span name="attr_limitation_display" class="input-shorter-collapsed" style="position: absolute; top: 0px; left: 80px;"></span>
 						</div>
 					</div>
+					<span name="attr_abilitytags_display" class="sheet-tags-collapsed"></span>
 				</div>
 			</fieldset>
 		</div>
@@ -693,7 +703,7 @@
 				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit"><span style="font-family:Pictos;">y</button><br>
-				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos;">i</button><br>
+				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos;">w</button><br>
 
 				<!-- EDITING MODE - PRIMARY ABILITIES -->
 				<div class="sheet-block-a" style="padding: 3px;">
@@ -868,17 +878,18 @@
 				</div>
 
 				<!-- Collapsed Ability View -->
-				<div class="sheet-block-c" style="padding: 3px;">
+				<div class="sheet-block-c" style="padding: 3px; position: absolute;">
 					<div style="display: flex;">
-						<button type="roll" class="sheet-diceroll" value="@{abilityRollValue}" name="roll_abilityCheck" style="width: 70%; text-align: left;"> <span name="attr_abilityname"></span> </button><br>
+						<button type="roll" class="sheet-diceroll-collapsed" value="@{abilityRollValue}" name="roll_abilityCheck"> <span name="attr_abilityname"></span> </button><br>
 
 						<!-- Limitation -->
 						<input type="checkbox" name="attr_limitation_show" class="sheet-limitationshow" hidden>
-						<div class="sheet-limitation" style="text-align: right; width: 30%;">
-							<input dir="rtl" type="number" name="attr_limitationamount" class="input-shorter" style="position: relative; left: 17px; top: -2px; width: 80%; vertical-align: top;">
-							<span name="attr_limitation_display" class="input-shorter" style="margin: auto;"></span>
+						<div class="sheet-limitation-collapsed">
+							<input dir="rtl" type="number" name="attr_limitationamount" class="input-shorter-collapsed" style="position: absolute; top: 2px; left: 35px; width: 45px; height: 25px;">
+							<span name="attr_limitation_display" class="input-shorter-collapsed" style="position: absolute; top: 0px; left: 80px;"></span>
 						</div>
 					</div>
+					<span name="attr_abilitytags_display" class="sheet-tags-collapsed"></span>
 				</div>
 			</fieldset>		
 		</div>
@@ -1025,7 +1036,7 @@
 <script type="text/worker">
 	// Edit Button Functionality (For Primary)
 	on("clicked:repeating_primaryability:edit", function() {
-		getAttrs(["repeating_primaryability_abilityname", "repeating_primaryability_blockswitch", "repeating_primaryability_tagphysical", "repeating_primaryability_tagmagical", "repeating_primaryability_tagice", "repeating_primaryability_tagfire", "repeating_primaryability_tagthunder", "repeating_primaryability_tagwind", "repeating_primaryability_tagearth", "repeating_primaryability_tagwater", "repeating_primaryability_taginvoked"], function(values) {
+		getAttrs(["repeating_primaryability_abilityname", "repeating_primaryability_blockswitch"], function(values) {
 			let name = values.repeating_primaryability_abilityname;
 			let switchToggle = values.repeating_primaryability_blockswitch;
 			switchToggle = 1 - switchToggle;
@@ -1033,6 +1044,7 @@
 
 			setAttrs({
 				repeating_primaryability_blockswitch: switchToggle,
+				repeating_primaryability_blockcollapse: 0,
 			});
 		});
 	});
@@ -1069,6 +1081,18 @@
 
 			setAttrs({
 				repeating_instantability_blockcollapse: switchToggle,
+			});
+		});
+	});
+
+	// Collapse for Limitbreak
+	on("clicked:collapse", function() {
+		getAttrs(["limitbreakcollapse"], function(values) {
+			console.log(values.limitbreakcollapse)
+			let switchToggle = values.limitbreakcollapse;
+			switchToggle = 1 - switchToggle;
+			setAttrs({
+				limitbreakcollapse: switchToggle,
 			});
 		});
 	});
@@ -1279,7 +1303,8 @@
 			let switchToggle = values.repeating_secondaryability_blockswitch;
 			switchToggle = 1 - switchToggle;
 			setAttrs({
-				repeating_secondaryability_blockswitch: switchToggle
+				repeating_secondaryability_blockswitch: switchToggle,
+				repeating_secondaryability_blockcollapse: 0,
 			});
 		});
 	});
@@ -1495,6 +1520,7 @@
 
 			setAttrs({
 				repeating_instantability_blockswitch: switchToggle,
+				repeating_instantability_blockcollapse: 0,
 			});
 		});
 	});
@@ -1705,7 +1731,8 @@
 			let switchToggle = values.limitbreakswitch;
 			switchToggle = 1 - switchToggle;
 			setAttrs({
-				limitbreakswitch: switchToggle
+				limitbreakswitch: switchToggle,
+				limitbreakcollapse: 1,
 			});
 		});
 	});

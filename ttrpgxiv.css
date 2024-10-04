@@ -174,7 +174,15 @@
   display: none;
 }
 
+.charsheet .sheet-limitation-collapsed {
+  display: none;
+}
+
 .charsheet .sheet-limitationshow:checked ~ .sheet-limitation {
+  display: flex;
+}
+
+.charsheet .sheet-limitationshow:checked ~ .sheet-limitation-collapsed {
   display: flex;
 }
 
@@ -300,6 +308,18 @@
 
 .charsheet .sheet-costshow:checked ~ .sheet-cost {
   display: flex;
+}
+
+.charsheet .sheet-limitbreak-c {
+  display: none;
+}
+
+.charsheet .sheet-limitbreakcollapse:checked ~ .sheet-limitbreak-c {
+  display: block;
+}
+
+.charsheet .sheet-limitbreakcollapse:checked ~ .sheet-limitbreak-a {
+  display: none;
 }
 
 /*End of Toggles*/
@@ -781,6 +801,71 @@ button[type=roll].sheet-diceroll::before {
     font-size: 0em;
 }
 
+/* Collapsing Display Section */
+.charsheet .sheet-abilitiespage .sheet-diceroll-collapsed {
+  background: none;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  color: white;
+  font-family: "Bebas Neue";
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1em;
+  letter-spacing: 1px;
+  transform: scale(1,1.1);
+  padding: 0px;
+  margin: 0px;
+  width: 230px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  position: absolute;
+  top: -35px;
+  left: -10px;
+}
+
+.charsheet .sheet-abilities .sheet-block-collapse:checked ~ .toggle_repeating_npcaction_edit {
+  top: 20px;
+}
+
+.charsheet .sheet-abilities .sheet-block-collapse:checked ~ .toggle_collapse {
+  top: 20px;
+}
+
+.charsheet .sheet-abilities .sheet-limitation-collapsed {
+  text-align: right;
+  position: absolute;
+  top: -40px;
+  left: 175px;
+}
+
+.charsheet .sheet-abilities .sheet-tags-collapsed {
+  position: absolute;
+  top: -18px;
+  width: 200px;
+  font-style: italic
+}
+
+.charsheet .sheet-abilities .input-shorter-collapsed {
+  bottom: 2px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.charsheet .sheet-abilitiespage .sheet-diceroll-collapsed:hover {
+  color: grey;
+}
+
+button[type=roll].sheet-diceroll-collapsed::before {
+    font-size: 0em;
+}
+
 .repcontainer[data-groupname="repeating_skills"] > .repitem {
     background: none;
 }
@@ -795,6 +880,46 @@ button[type=roll].sheet-diceroll::before {
   background-color: transparent;
 }
 
+.charsheet .ability-limitbreak .toggle_limitbreakcollapse {
+  display: block;
+  position: absolute;
+  left: 780px;
+  top: 5px;
+  color: rgba(255,255,255,0.5);
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .ability-limitbreak .toggle_limitbreakcollapse:hover {
+  color: rgba(255,255,255,1);
+}
+
+/* End of Collapsing Display Section */
+
+/* Limitbreak Collapsing */
+.charsheet .ability-limitbreak {
+  min-height: 60px;
+}
+
+.charsheet .sheet-limitbreak-c .sheet-limitbreaktags-collapse {
+  font-style: italic;
+  z-index: 10;
+}
+
+.charsheet .ability-limitbreak .sheet-limitbreakcollapse:checked ~ .editlimitbreakbutton {
+  position: absolute;
+  left: 100px;
+  top: 19px;
+}
+
+.charsheet .ability-limitbreak .sheet-limitbreakcollapse:checked ~ .toggle_limitbreakcollapse {
+  position: absolute;
+  left: 80px;
+  top: 19px;
+}
+
+/* End of Limitbreak Collapsing */
+
 .charsheet .ability-limitbreak .editlimitbreakbutton {
   display: block;
   position: absolute;
@@ -803,6 +928,10 @@ button[type=roll].sheet-diceroll::before {
   color: rgba(255,255,255,0.5);
   border: none;
   background-color: transparent;
+}
+
+.charsheet .ability-limitbreak .editlimitbreakbutton:hover {
+  color: rgba(255,255,255,1);
 }
 
 .charsheet .sheet-abilities .toggle_repeating_npcaction_edit:hover {
@@ -822,15 +951,15 @@ button[type=roll].sheet-diceroll::before {
 
 .charsheet .sheet-abilities .repcontainer[data-groupname="repeating_primaryability"]> .repitem {
   padding-left: 5px;
-  padding-bottom: 0px;
+  padding-bottom: 15px;
 }
 .charsheet .sheet-abilities .repcontainer[data-groupname="repeating_secondaryability"]> .repitem {
   padding-left: 5px;
-  padding-bottom: 0px;
+  padding-bottom: 15px;
 }
 .charsheet .sheet-abilities .repcontainer[data-groupname="repeating_instantability"]> .repitem {
   padding-left: 5px;
-  padding-bottom: 0px;
+  padding-bottom: 15px;
 }
 
 .charsheet .sheet-abilities .toggle_collapse {
