@@ -760,7 +760,10 @@ button[type=roll].traitdisplay::before {
   margin: 0px;
   position: relative;
   left: -10px;
-  text-wrap: pretty;
+  width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .charsheet .sheet-abilitiespage .sheet-diceroll:hover {
   color: grey;
@@ -778,7 +781,7 @@ button[type=roll].sheet-diceroll::before {
   display: none;
   position: absolute;
   left: 260px;
-  top: 5px;
+  top: 15px;
   color: rgba(255,255,255,0.5);
   border: none;
   background-color: transparent;
@@ -788,7 +791,7 @@ button[type=roll].sheet-diceroll::before {
   display: block;
   position: absolute;
   left: 800px;
-  top: 0px;
+  top: 5px;
   color: rgba(255,255,255,0.5);
   border: none;
   background-color: transparent;
@@ -809,11 +812,24 @@ button[type=roll].sheet-diceroll::before {
   display: block;
 }
 
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_primaryability"]> .repitem {
+  padding-left: 5px;
+  padding-bottom: 0px;
+}
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_secondaryability"]> .repitem {
+  padding-left: 5px;
+  padding-bottom: 0px;
+}
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_instantability"]> .repitem {
+  padding-left: 5px;
+  padding-bottom: 0px;
+}
+
 .charsheet .sheet-abilities .toggle_collapse {
   display: none;
   position: absolute;
   left: 240px;
-  top: 5px;
+  top: 15px;
   color: rgba(255,255,255,0.5);
   border: none;
   background-color: transparent;
