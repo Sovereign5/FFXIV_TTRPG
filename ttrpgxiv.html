@@ -350,7 +350,7 @@
 
 					<span>Base Effect</span>
 					<div style="display: flex;">
-						<input type="text" name="attr_abilitybaseeffectdamage" value="0" placeholder="1d6" style="width: 70px;" required>
+						<input type="text" name="attr_abilitybaseeffectdamage" placeholder="1d6" style="width: 70px;" required>
 						<span>&nbsp;</span>
 						<select name="attr_abilitybaseeffectdamageorhealing">
 							<option value="Damage">Damage</option>
@@ -369,7 +369,7 @@
 
 					<span>Direct Hit Damage</span>
 					<div style="display: flex;">
-						<input type="text" name="attr_abilitydirecthitdamage" value="0" placeholder="2d6" style="width: 70px;" required>
+						<input type="text" name="attr_abilitydirecthitdamage" placeholder="2d6" style="width: 70px;" required>
 						<span>&nbsp;</span>
 						<select name="attr_abilitydirecteffectdamageorhealing">
 							<option value="Damage">Damage</option>
@@ -416,6 +416,13 @@
 					<div class="sheet-target">
 						<span style="font-weight: 700;">Target:&nbsp;</span>
 						<span name="attr_target_display"></span>
+					</div>
+
+					<!-- Cost -->
+					<input type="checkbox" name="attr_abilitycost_show" class="sheet-costshow" hidden>
+					<div class="sheet-cost">
+						<span style="font-weight: 700;">Cost:&nbsp;</span>
+						<span name="attr_abilitycost_display"></span>
 					</div>
 
 					<!-- Range -->
@@ -564,7 +571,7 @@
 
 					<span>Direct Hit Damage</span>
 					<div style="display: flex;">
-						<input type="text" name="attr_abilitydirecthitdamage" value="0" placeholder="2d6" style="width: 70px;" required>
+						<input type="text" name="attr_abilitydirecthitdamage" placeholder="2d6" style="width: 70px;" required>
 						<span>&nbsp;</span>
 						<select name="attr_abilitydirecteffectdamageorhealing">
 							<option value="Damage">Damage</option>
@@ -611,6 +618,13 @@
 					<div class="sheet-target">
 						<span style="font-weight: 700;">Target:&nbsp;</span>
 						<span name="attr_target_display"></span>
+					</div>
+
+					<!-- Cost -->
+					<input type="checkbox" name="attr_abilitycost_show" class="sheet-costshow" hidden>
+					<div class="sheet-cost">
+						<span style="font-weight: 700;">Cost:&nbsp;</span>
+						<span name="attr_abilitycost_display"></span>
 					</div>
 
 					<!-- Range -->
@@ -739,7 +753,7 @@
 
 					<span>Base Effect</span>
 					<div style="display: flex;">
-						<input type="text" name="attr_abilitybaseeffectdamage" value="0" placeholder="1d6" style="width: 70px;" required>
+						<input type="text" name="attr_abilitybaseeffectdamage" placeholder="1d6" style="width: 70px;" required>
 						<span>&nbsp;</span>
 						<select name="attr_abilitybaseeffectdamageorhealing">
 							<option value="Damage">Damage</option>
@@ -758,7 +772,7 @@
 
 					<span>Direct Hit Damage</span>
 					<div style="display: flex;">
-						<input type="text" name="attr_abilitydirecthitdamage" value="0" placeholder="2d6" style="width: 70px;" required>
+						<input type="text" name="attr_abilitydirecthitdamage" placeholder="2d6" style="width: 70px;" required>
 						<span>&nbsp;</span>
 						<select name="attr_abilitydirecteffectdamageorhealing">
 							<option value="Damage">Damage</option>
@@ -805,6 +819,13 @@
 					<div class="sheet-target">
 						<span style="font-weight: 700;">Target:&nbsp;</span>
 						<span name="attr_target_display"></span>
+					</div>
+
+					<!-- Cost -->
+					<input type="checkbox" name="attr_abilitycost_show" class="sheet-costshow" hidden>
+					<div class="sheet-cost">
+						<span style="font-weight: 700;">Cost:&nbsp;</span>
+						<span name="attr_abilitycost_display"></span>
 					</div>
 
 					<!-- Range -->
@@ -1075,8 +1096,6 @@
 			"repeating_primaryability_abilitydirecthitextraeffect",
 			"repeating_primaryability_limitation_show",
 			], function(values){
-				console.log(values);
-
 				// ROLL TEMPLATE STRING BUILDER	
 				var rollvalue = "&{template:ffxivmain} {{header=primary}} {{name=@{abilityname} }} {{tags=@{abilitytags} }} {{baseeffect=@{abilitybaseeffect} }}"
 
@@ -1086,22 +1105,18 @@
 				}
 
 				if (values.repeating_primaryability_abilitybaseeffectdamage) {
-					console.log(values.repeating_primaryability_abilitybaseeffectdamage);
 					rollvalue = rollvalue.concat(" {{basedamage=[[@{abilitybaseeffectdamage}]] }} ")
 				}
 
 				if (values.repeating_primaryability_abilitybaseeffectdamageorhealing) {
-					console.log(values.repeating_primaryability_abilitybaseeffectdamageorhealing);
 					rollvalue = rollvalue.concat(" {{damagetype=@{abilitybaseeffectdamageorhealing} }} ")
 				}
 
 				if (values.repeating_primaryability_abilitybaseeffectextraeffect) {
-					console.log(values.repeating_primaryability_abilitybaseeffectextraeffect)
 					rollvalue = rollvalue.concat(" {{effect=@{abilitybaseeffectextraeffect} }} ")
 				}
 
 				if (values.repeating_primaryability_abilitydirecthit) {
-					console.log(values.repeating_primaryability_abilitydirecthit);
 					rollvalue = rollvalue.concat(" {{directdamage=[ROLL DIRECT HIT](~repeating_primaryability_directDamageRoll) }} ")
 				}
 
@@ -1109,7 +1124,6 @@
 				var abilityTagsDisplay;
 				if (values.repeating_primaryability_abilitytags) {
 					abilityTagsDisplay = values.repeating_primaryability_abilitytags;
-					console.log(abilityTagsDisplay)
 				}
 
 				// Limitation Display
@@ -1117,7 +1131,6 @@
 				var switchToggleLimitation;
 				if (values.repeating_primaryability_limitation) {
 					limitationDisplay = "/" + values.repeating_primaryability_limitation;
-					console.log(limitationDisplay)
 
 					switchToggleLimitation = "on";
 				} else {
@@ -1132,6 +1145,16 @@
 					switchToggleTarget = "on";
 				} else {
 					switchToggleTarget = 0;
+				}
+
+				// Cost Display
+				var costDisplay;
+				var switchToggleCost;
+				if (values.repeating_primaryability_abilitycost) {
+					costDisplay = values.repeating_primaryability_abilitycost;
+					switchToggleCost = "on";
+				} else {
+					switchToggleCost = 0;
 				}
 
 				// Range Display
@@ -1227,8 +1250,10 @@
 					repeating_primaryability_abilitytags_display: abilityTagsDisplay,
 					repeating_primaryability_limitation_show: switchToggleLimitation,
 					repeating_primaryability_limitation_display: limitationDisplay,
-					repeating_primaryability_target_show: switchToggleTarget,
-					repeating_primaryability_target_display: targetDisplay,
+					repeating_primaryability_abilitytarget_show: switchToggleTarget,
+					repeating_primaryability_abilitytarget_display: targetDisplay,
+					repeating_primaryability_abilitycost_show: switchToggleCost,
+					repeating_primaryability_abilitycost_display: costDisplay,
 					repeating_primaryability_range_show: switchToggleRange,
 					repeating_primaryability_range_display: rangeDisplay,
 					repeating_primaryability_abilitycheck_show: switchToggleCheck,
@@ -1283,7 +1308,6 @@
 			"repeating_secondaryability_abilitydirecthitextraeffect",
 			"repeating_secondaryability_limitation_show",
 			], function(values){
-				console.log(values);
 
 				// ROLL TEMPLATE STRING BUILDER	
 				var rollvalue = "&{template:ffxivmain} {{header=secondary}} {{name=@{abilityname} }} {{tags=@{abilitytags} }} {{baseeffect=@{abilitybaseeffect} }}"
@@ -1294,22 +1318,18 @@
 				}
 
 				if (values.repeating_secondaryability_abilitybaseeffectdamage) {
-					console.log(values.repeating_secondaryability_abilitybaseeffectdamage);
 					rollvalue = rollvalue.concat(" {{basedamage=[[@{abilitybaseeffectdamage}]] }} ")
 				}
 
 				if (values.repeating_secondaryability_abilitybaseeffectdamageorhealing) {
-					console.log(values.repeating_secondaryability_abilitybaseeffectdamageorhealing);
 					rollvalue = rollvalue.concat(" {{damagetype=@{abilitybaseeffectdamageorhealing} }} ")
 				}
 
 				if (values.repeating_secondaryability_abilitybaseeffectextraeffect) {
-					console.log(values.repeating_secondaryability_abilitybaseeffectextraeffect)
 					rollvalue = rollvalue.concat(" {{effect=@{abilitybaseeffectextraeffect} }} ")
 				}
 
 				if (values.repeating_secondaryability_abilitydirecthit) {
-					console.log(values.repeating_secondaryability_abilitydirecthit);
 					rollvalue = rollvalue.concat(" {{directdamage=[ROLL DIRECT HIT](~repeating_secondaryability_directDamageRoll) }} ")
 				}
 
@@ -1317,7 +1337,6 @@
 				var abilityTagsDisplay;
 				if (values.repeating_secondaryability_abilitytags) {
 					abilityTagsDisplay = values.repeating_secondaryability_abilitytags;
-					console.log(abilityTagsDisplay)
 				}
 
 				// Limitation Display
@@ -1325,7 +1344,6 @@
 				var switchToggleLimitation;
 				if (values.repeating_secondaryability_limitation) {
 					limitationDisplay = "/" + values.repeating_secondaryability_limitation;
-					console.log(limitationDisplay)
 
 					switchToggleLimitation = "on";
 				} else {
@@ -1400,6 +1418,16 @@
 					switchToggleBaseEffect = 0;
 				}
 
+				// Cost Display
+				var costDisplay;
+				var switchToggleCost;
+				if (values.repeating_secondaryability_abilitycost) {
+					costDisplay = values.repeating_secondaryability_abilitycost;
+					switchToggleCost = "on";
+				} else {
+					switchToggleCost = 0;
+				}
+
 				// Direct Hit Display
 				var directhitDisplay;
 				var switchToggleDirectHit;
@@ -1435,8 +1463,10 @@
 					repeating_secondaryability_abilitytags_display: abilityTagsDisplay,
 					repeating_secondaryability_limitation_show: switchToggleLimitation,
 					repeating_secondaryability_limitation_display: limitationDisplay,
-					repeating_secondaryability_target_show: switchToggleTarget,
-					repeating_secondaryability_target_display: targetDisplay,
+					repeating_secondaryability_abilitytarget_show: switchToggleTarget,
+					repeating_secondaryability_abilitytarget_display: targetDisplay,
+					repeating_secondaryability_abilitycost_show: switchToggleCost,
+					repeating_secondaryability_abilitycost_display: costDisplay,
 					repeating_secondaryability_range_show: switchToggleRange,
 					repeating_secondaryability_range_display: rangeDisplay,
 					repeating_secondaryability_abilitycheck_show: switchToggleCheck,
@@ -1492,7 +1522,6 @@
 			"repeating_instantability_abilitydirecthitextraeffect",
 			"repeating_instantability_limitation_show",
 			], function(values){
-				console.log(values);
 
 				// ROLL TEMPLATE STRING BUILDER	
 				var rollvalue = "&{template:ffxivmain} {{header=instant}} {{name=@{abilityname} }} {{tags=@{abilitytags} }} {{baseeffect=@{abilitybaseeffect} }}"
@@ -1503,22 +1532,18 @@
 				}
 
 				if (values.repeating_instantability_abilitybaseeffectdamage) {
-					console.log(values.repeating_instantability_abilitybaseeffectdamage);
 					rollvalue = rollvalue.concat(" {{basedamage=[[@{abilitybaseeffectdamage}]] }} ")
 				}
 
 				if (values.repeating_instantability_abilitybaseeffectdamageorhealing) {
-					console.log(values.repeating_instantability_abilitybaseeffectdamageorhealing);
 					rollvalue = rollvalue.concat(" {{damagetype=@{abilitybaseeffectdamageorhealing} }} ")
 				}
 
 				if (values.repeating_instantability_abilitybaseeffectextraeffect) {
-					console.log(values.repeating_instantability_abilitybaseeffectextraeffect)
 					rollvalue = rollvalue.concat(" {{effect=@{abilitybaseeffectextraeffect} }} ")
 				}
 
 				if (values.repeating_instantability_abilitydirecthit) {
-					console.log(values.repeating_instantability_abilitydirecthit);
 					rollvalue = rollvalue.concat(" {{directdamage=[ROLL DIRECT HIT](~repeating_instantability_directDamageRoll) }} ")
 				}
 
@@ -1526,7 +1551,6 @@
 				var abilityTagsDisplay;
 				if (values.repeating_instantability_abilitytags) {
 					abilityTagsDisplay = values.repeating_instantability_abilitytags;
-					console.log(abilityTagsDisplay)
 				}
 
 				// Limitation Display
@@ -1534,7 +1558,6 @@
 				var switchToggleLimitation;
 				if (values.repeating_instantability_limitation) {
 					limitationDisplay = "/" + values.repeating_instantability_limitation;
-					console.log(limitationDisplay)
 
 					switchToggleLimitation = "on";
 				} else {
@@ -1549,6 +1572,16 @@
 					switchToggleTarget = "on";
 				} else {
 					switchToggleTarget = 0;
+				}
+
+				// Cost Display
+				var costDisplay;
+				var switchToggleCost;
+				if (values.repeating_instantability_abilitycost) {
+					costDisplay = values.repeating_instantability_abilitycost;
+					switchToggleCost = "on";
+				} else {
+					switchToggleCost = 0;
 				}
 
 				// Range Display
@@ -1644,8 +1677,10 @@
 					repeating_instantability_abilitytags_display: abilityTagsDisplay,
 					repeating_instantability_limitation_show: switchToggleLimitation,
 					repeating_instantability_limitation_display: limitationDisplay,
-					repeating_instantability_target_show: switchToggleTarget,
-					repeating_instantability_target_display: targetDisplay,
+					repeating_instantability_abilitytarget_show: switchToggleTarget,
+					repeating_instantability_abilitytarget_display: targetDisplay,
+					repeating_instantability_abilitycost_show: switchToggleCost,
+					repeating_instantability_abilitycost_display: costDisplay,
 					repeating_instantability_range_show: switchToggleRange,
 					repeating_instantability_range_display: rangeDisplay,
 					repeating_instantability_abilitycheck_show: switchToggleCheck,
@@ -1817,7 +1852,6 @@
 		getAttrs(["repeating_primaryability_checkcheckbox", "repeating_primaryability_abilityRollValue"], function(values) {
 			let toggle = values.repeating_primaryability_checkcheckbox;
 			let originalrollvalue = values.repeating_primaryability_abilityRollValue;
-			console.log(originalrollvalue)
 			var newrollvalue = checkboxStringEditor(toggle, originalrollvalue)
 
 			setAttrs({

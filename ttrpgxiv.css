@@ -294,6 +294,14 @@
   display: flex;
 }
 
+.charsheet .sheet-cost {
+  display: none;
+}
+
+.charsheet .sheet-costshow:checked ~ .sheet-cost {
+  display: flex;
+}
+
 /*End of Toggles*/
 
 
