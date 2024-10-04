@@ -918,6 +918,10 @@ button[type=roll].sheet-diceroll-collapsed::before {
   top: 19px;
 }
 
+.charsheet .ability-limitbreak .limitbreak-image {
+  min-width: 50px;
+}
+
 /* End of Limitbreak Collapsing */
 
 .charsheet .ability-limitbreak .editlimitbreakbutton {
@@ -947,6 +951,9 @@ button[type=roll].sheet-diceroll-collapsed::before {
 }
 .charsheet .sheet-abilities .repcontainer[data-groupname="repeating_instantability"]> .repitem:hover> .toggle_repeating_npcaction_edit {
   display: block;
+}
+.itemcontrol {
+  z-index: 99;
 }
 
 .charsheet .sheet-abilities .repcontainer[data-groupname="repeating_primaryability"]> .repitem {
