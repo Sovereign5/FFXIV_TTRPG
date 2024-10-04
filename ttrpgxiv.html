@@ -208,31 +208,49 @@
 			<!-- GLOBAL VARIABLES LIMIT BREAK --> 
 			<input type="checkbox" name="attr_limitbreakswitch" class="sheet-limitbreak-switch" value="0" hidden>
 			<button type="action" name="act_limitbreakedit" class="editlimitbreakbutton"><span style="font-family:Pictos; z-index: 99;">y</span></button>
-			<input type="text" name="attr_limitbreakRollValue" value="&{template:ffxivmain} {{header=limitbreak}} {{baseeffect=@{limitbreakBaseEffect} }} {{name=@{limitbreakName} }} {{tags=@{limitbreakTags} }} {{damagetype=@{limitbreakDamageOrHealing} }}" hidden>
+			<input type="text" name="attr_limitbreakRollValue" value="" hidden>
 
 
 			<!-- DISPLAY MODE LIMIT BREAK -->
 			<div class="sheet-limitbreak-a">
 				<button type="roll" class="sheet-diceroll" style="font-size: 2em;" value="@{limitbreakRollValue}" name="roll_limitbreakdie"> <span name="attr_limitbreakName"></span> </button><br>
 				<span name="attr_limitbreakTags" style="font-style: italic;"></span>
-				<div class="displaymode">
-					<span style="font-weight: 700;">Trigger:</span>
-					<span name="attr_limitbreakTrigger" class="sheet-limitbreakTriggerField"></span>
+				
+				<!-- Trigger -->
+				<input type="checkbox" name="attr_limitbreaktrigger_show" class="sheet-limitbreaktriggershow" hidden>
+				<div class="sheet-limitbreaktrigger">
+					<span style="font-weight: 700;">Trigger:&nbsp;</span>
+					<span name="attr_limitbreaktrigger_display"></span>
 				</div>
-				<div class="displaymode">
-					<input type="checkbox" name="attr_limitbreakTargetCheckbox" class="sheet-limitbreaktargetcheckbox" hidden>
-					<span style="font-weight: 700;" class="sheet-limitbreakTargetField">Target:</span>
-					<span name="attr_limitbreakTarget" class="sheet-limitbreakTargetField"></span>
+
+				<!-- Target -->
+				<input type="checkbox" name="attr_limitbreaktarget_show" class="sheet-limitbreaktargetshow" hidden>
+				<div class="sheet-limitbreaktarget">
+					<span style="font-weight: 700;">Target:&nbsp;</span>
+					<span name="attr_limitbreaktarget_display"></span>
 				</div>
-				<div class="displaymode">
-					<input type="checkbox" name="attr_limitbreakRangeCheckbox" class="sheet-limitbreakrangecheckbox" hidden>
-					<span style="font-weight: 700;" class="sheet-limitbreakRangeField">Range:</span>
-					<span name="attr_limitbreakRange" class="sheet-limitbreakRangeField"></span>
+
+				<!-- Range -->
+				<input type="checkbox" name="attr_limitbreakrange_show" class="sheet-limitbreakrangeshow" hidden>
+				<div class="sheet-limitbreakrange">
+					<span style="font-weight: 700;">Range:&nbsp;</span>
+					<span name="attr_limitbreakrange_display"></span>
 				</div>
-				<div class="displaymode">
-					<span style="font-weight: 700;">Base Effect: </span>
-					<span name="attr_limitbreakBaseEffect"></span>
+
+				<!-- Base Effect -->
+				<input type="checkbox" name="attr_limitbreakbaseeffect_show" class="sheet-limitbreakbaseeffectshow" hidden>
+				<div class="sheet-limitbreakbaseeffect">
+					<span style="font-weight: 700;">Base Effect:&nbsp;</span>
+					<span name="attr_limitbreakbaseeffect_display"></span>
 				</div>
+
+				<!-- Base Effect Dice -->
+				<!-- <input type="checkbox" name="attr_limitbreakbaseeffectdie_show" class="sheet-limitbreakbaseeffectdieshow" hidden>
+				<div class="sheet-limitbreakbaseeffectdie">
+					<span style="font-weight: 700;">Base Effect Die:&nbsp;</span>
+					<span name="attr_limitbreakbaseeffectdie_display"></span>
+				</div> -->
+
 			</div>
 
 
@@ -242,15 +260,15 @@
 				<span>Tags: </span> <input type="text" name="attr_limitbreakTags" style="width: 780px;"><br>
 				<span>Trigger: </span> <input type="text" name="attr_limitbreakTrigger"><br>
 
-				<input type="checkbox" name="attr_limitbreakTargetCheckbox" class="sheet-limitbreaktargetcheckbox"> <span>Target: </span>
+				<span>Target: </span>
 				<input type="text" name="attr_limitbreakTarget"><br>
 
-				<input type="checkbox" name="attr_limitbreakRangeCheckbox" class="sheet-limitbreakrangecheckbox"> <span>Range: </span> 
+				<span>Range: </span> 
 				<input type="text" name="attr_limitbreakRange"><br>
 
 				<span> Base Effect: </span> <textarea name="attr_limitbreakBaseEffect" style="width: 800px;"></textarea><br>
 
-				<input type="checkbox" name="attr_limitbreakBaseEffectDieCheckbox" class="sheet-limitbreakbaseeffectdie"> <span>Base Effect Dice: </span>
+				<span>Base Effect Dice: </span>
 				<input type="text" name="attr_limitbreakBaseEffectDie" style="width: 200px;" >
 				<span>&nbsp;</span>
 				<select name="attr_limitbreakDamageOrHealing">
@@ -267,10 +285,12 @@
 			<label>PRIMARY ABILITIES</label>
 			<fieldset class=repeating_primaryability>
 				<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
+				<input type="checkbox" class="sheet-block-collapse" name="attr_blockcollapse" value="1" hidden>
 				<input type="text" name="attr_abilityRollValue" value="" hidden>
 				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit"><span style="font-family:Pictos;">y</button><br>
+				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos;">i</button><br>
 
 				<!-- EDITING MODE - PRIMARY ABILITIES -->
 				<div class="sheet-block-a" style="padding: 3px;">
@@ -436,9 +456,23 @@
 					<!-- Direct Hit Button -->
 					<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilitydirecthitdamage}]] }}">Hide</button>
 				</div>
+
+
+				<!-- Collapsed Ability View -->
+				<div class="sheet-block-c" style="padding: 3px;">
+					<div style="display: flex;">
+						<button type="roll" class="sheet-diceroll" value="@{abilityRollValue}" name="roll_abilityCheck" style="width: 70%; text-align: left;"> <span name="attr_abilityname"></span> </button><br>
+
+						<!-- Limitation -->
+						<input type="checkbox" name="attr_limitation_show" class="sheet-limitationshow" hidden>
+						<div class="sheet-limitation" style="text-align: right; width: 30%;">
+							<input dir="rtl" type="number" name="attr_limitationamount" class="input-shorter" style="position: relative; left: 17px; top: -2px; width: 80%; vertical-align: top;">
+							<span name="attr_limitation_display" class="input-shorter" style="margin: auto;"></span>
+						</div>
+					</div>
+				</div>
 			</fieldset>
 		</div>
-
 
 
 
@@ -446,10 +480,12 @@
 			<label>SECONDARY ABILITIES</label>
 			<fieldset class=repeating_secondaryability>
 				<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
+				<input type="checkbox" class="sheet-block-collapse" name="attr_blockcollapse" value="1" hidden>
 				<input type="text" name="attr_abilityRollValue" value="" hidden>
 				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit"><span style="font-family:Pictos;">y</button><br>
+				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos;">i</button><br>
 
 				<!-- EDITING MODE - PRIMARY ABILITIES -->
 				<div class="sheet-block-a" style="padding: 3px;">
@@ -509,7 +545,7 @@
 
 					<span>Base Effect</span>
 					<div style="display: flex;">
-						<input type="text" name="attr_abilitybaseeffectdamage" value="0" placeholder="1d6" style="width: 70px;" required>
+						<input type="text" name="attr_abilitybaseeffectdamage" placeholder="1d6" style="width: 70px;">
 						<span>&nbsp;</span>
 						<select name="attr_abilitybaseeffectdamageorhealing">
 							<option value="Damage">Damage</option>
@@ -615,10 +651,22 @@
 					<!-- Direct Hit Button -->
 					<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilitydirecthitdamage}]] }}">Hide</button>
 				</div>
+
+				<!-- Collapsed Ability View -->
+				<div class="sheet-block-c" style="padding: 3px;">
+					<div style="display: flex;">
+						<button type="roll" class="sheet-diceroll" value="@{abilityRollValue}" name="roll_abilityCheck" style="width: 70%; text-align: left;"> <span name="attr_abilityname"></span> </button><br>
+
+						<!-- Limitation -->
+						<input type="checkbox" name="attr_limitation_show" class="sheet-limitationshow" hidden>
+						<div class="sheet-limitation" style="text-align: right; width: 30%;">
+							<input dir="rtl" type="number" name="attr_limitationamount" class="input-shorter" style="position: relative; left: 17px; top: -2px; width: 80%; vertical-align: top;">
+							<span name="attr_limitation_display" class="input-shorter" style="margin: auto;"></span>
+						</div>
+					</div>
+				</div>
 			</fieldset>
 		</div>
-
-
 
 
 
@@ -626,10 +674,12 @@
 			<label>INSTANT ABILITIES</label>
 			<fieldset class="repeating_instantability">
 				<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
+				<input type="checkbox" class="sheet-block-collapse" name="attr_blockcollapse" value="1" hidden>
 				<input type="text" name="attr_abilityRollValue" value="" hidden>
 				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit"><span style="font-family:Pictos;">y</button><br>
+				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos;">i</button><br>
 
 				<!-- EDITING MODE - PRIMARY ABILITIES -->
 				<div class="sheet-block-a" style="padding: 3px;">
@@ -794,6 +844,20 @@
 
 					<!-- Direct Hit Button -->
 					<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilitydirecthitdamage}]] }}">Hide</button>
+				</div>
+
+				<!-- Collapsed Ability View -->
+				<div class="sheet-block-c" style="padding: 3px;">
+					<div style="display: flex;">
+						<button type="roll" class="sheet-diceroll" value="@{abilityRollValue}" name="roll_abilityCheck" style="width: 70%; text-align: left;"> <span name="attr_abilityname"></span> </button><br>
+
+						<!-- Limitation -->
+						<input type="checkbox" name="attr_limitation_show" class="sheet-limitationshow" hidden>
+						<div class="sheet-limitation" style="text-align: right; width: 30%;">
+							<input dir="rtl" type="number" name="attr_limitationamount" class="input-shorter" style="position: relative; left: 17px; top: -2px; width: 80%; vertical-align: top;">
+							<span name="attr_limitation_display" class="input-shorter" style="margin: auto;"></span>
+						</div>
+					</div>
 				</div>
 			</fieldset>		
 		</div>
@@ -948,6 +1012,42 @@
 
 			setAttrs({
 				repeating_primaryability_blockswitch: switchToggle,
+			});
+		});
+	});
+
+	// Collapse for Primary
+	on("clicked:repeating_primaryability:collapse", function() {
+		getAttrs(["repeating_primaryability_blockcollapse"], function(values) {
+			let switchToggle = values.repeating_primaryability_blockcollapse;
+			switchToggle = 1 - switchToggle;
+
+			setAttrs({
+				repeating_primaryability_blockcollapse: switchToggle,
+			});
+		});
+	});
+
+	// Collapse for Secondary
+	on("clicked:repeating_secondaryability:collapse", function() {
+		getAttrs(["repeating_secondaryability_blockcollapse"], function(values) {
+			let switchToggle = values.repeating_secondaryability_blockcollapse;
+			switchToggle = 1 - switchToggle;
+
+			setAttrs({
+				repeating_secondaryability_blockcollapse: switchToggle,
+			});
+		});
+	});
+
+	// Collapse for Instant
+	on("clicked:repeating_instantability:collapse", function() {
+		getAttrs(["repeating_instantability_blockcollapse"], function(values) {
+			let switchToggle = values.repeating_instantability_blockcollapse;
+			switchToggle = 1 - switchToggle;
+
+			setAttrs({
+				repeating_instantability_blockcollapse: switchToggle,
 			});
 		});
 	});
@@ -1574,6 +1674,91 @@
 			});
 		});
 	});
+
+	// String builder for Limit break
+	on("clicked:limitbreakedit", function() {
+		getAttrs([
+		"limitbreakBaseEffectDie",
+		"limitbreakDamageOrHealing",
+		"limitbreakRollValue",
+		"limitbreakTrigger",
+		"limitbreakTarget",
+		"limitbreakRange",
+		"limitbreakBaseEffect",
+		"limitbreakBaseEffectDie"
+		], function(values) {
+			var rollValue = "&{template:ffxivmain} {{header=limitbreak}} {{baseeffect=@{limitbreakBaseEffect} }} {{name=@{limitbreakName} }} {{tags=@{limitbreakTags} }}"
+
+			if (values.limitbreakBaseEffectDie) {
+				rollValue = rollValue.concat(" {{Attack = [[@{limitbreakBaseEffectDie}]]}} ")
+				rollValue = rollValue.concat(" {{check=@{limitbreakDamageOrHealing} }} ")
+			}
+
+			// Trigger Display
+			var triggerDisplay;
+			var switchToggleTrigger;
+			if (values.limitbreakTrigger) {
+				triggerDisplay = values.limitbreakTrigger;
+				switchToggleTrigger = "on"
+			} else {
+				switchToggleTrigger = 0;
+			}
+
+			// Target Display
+			var targetDisplay;
+			var switchToggleTarget;
+			if (values.limitbreakTarget) {
+				targetDisplay = values.limitbreakTarget;
+				switchToggleTarget = "on"
+			} else {
+				switchToggleTarget = 0;
+			}
+
+			// Range Display
+			var rangeDisplay;
+			var switchToggleRange;
+			if (values.limitbreakRange) {
+				rangeDisplay = values.limitbreakRange;
+				switchToggleRange = "on"
+			} else {
+				switchToggleRange = 0;
+			}
+
+			// BaseEffect Display
+			var baseEffectDisplay;
+			var switchToggleBaseEffect;
+			if (values.limitbreakBaseEffect) {
+				baseEffectDisplay = values.limitbreakBaseEffect;
+				switchToggleBaseEffect = "on"
+			} else {
+				switchToggleBaseEffect = 0;
+			}
+
+			// BaseEffectDie Display
+			var baseEffectDieDisplay;
+			var switchToggleBaseEffectDie;
+			if (values.limitbreakBaseEffectDie) {
+				baseEffectDieDisplay = values.limitbreakBaseEffectDie;
+				switchToggleBaseEffectDie = "on"
+			} else {
+				switchToggleBaseEffectDie = 0;
+			}
+
+			setAttrs({
+				limitbreakRollValue: rollValue,
+				limitbreaktrigger_show:switchToggleTrigger,
+				limitbreaktrigger_display: triggerDisplay,
+				limitbreaktarget_show:switchToggleTarget,
+				limitbreaktarget_display: targetDisplay,
+				limitbreakrange_show: switchToggleRange,
+				limitbreakrange_display: rangeDisplay,
+				limitbreakbaseeffect_show: switchToggleBaseEffect,
+				limitbreakbaseeffect_display: baseEffectDisplay,
+				limitbreakbaseeffectdie_show: switchToggleBaseEffectDie,
+				limitbreakbaseeffectdie_display: baseEffectDieDisplay,
+			});
+		});
+	})
 
 	// Checkbox for Attack
 	on("clicked:repeating_primaryability:attackcheckbox", function() {

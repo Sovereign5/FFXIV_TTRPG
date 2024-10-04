@@ -242,6 +242,58 @@
   display: flex;
 }
 
+.charsheet .sheet-block-c {
+  display: none;
+}
+
+.charsheet .sheet-block-collapse:checked ~ .sheet-block-b {
+  display: none;
+}
+
+.charsheet .sheet-block-collapse:checked ~ .sheet-block-c {
+  display: block;
+}
+
+.charsheet .sheet-limitbreaktrigger {
+  display: none;
+}
+
+.charsheet .sheet-limitbreaktriggershow:checked ~ .sheet-limitbreaktrigger {
+  display: flex;
+}
+
+.charsheet .sheet-limitbreaktarget {
+  display: none;
+}
+
+.charsheet .sheet-limitbreaktargetshow:checked ~ .sheet-limitbreaktarget {
+  display: flex;
+}
+
+.charsheet .sheet-limitbreakrange {
+  display: none;
+}
+
+.charsheet .sheet-limitbreakrangeshow:checked ~ .sheet-limitbreakrange {
+  display: flex;
+}
+
+.charsheet .sheet-limitbreakbaseeffect {
+  display: none;
+}
+
+.charsheet .sheet-limitbreakbaseeffectshow:checked ~ .sheet-limitbreakbaseeffect {
+  display: flex;
+}
+
+.charsheet .sheet-limitbreakbaseeffectdie {
+  display: none;
+}
+
+.charsheet .sheet-limitbreakbaseeffectdieshow:checked ~ .sheet-limitbreakbaseeffectdie {
+  display: flex;
+}
+
 /*End of Toggles*/
 
 
@@ -742,6 +794,11 @@ button[type=roll].sheet-diceroll::before {
   background-color: transparent;
 }
 
+.charsheet .sheet-abilities .toggle_repeating_npcaction_edit:hover {
+  color: rgba(255,255,255,1);
+}
+
+
 .charsheet .sheet-abilities .repcontainer[data-groupname="repeating_primaryability"]> .repitem:hover> .toggle_repeating_npcaction_edit {
   display: block;
 }
@@ -752,7 +809,27 @@ button[type=roll].sheet-diceroll::before {
   display: block;
 }
 
-.charsheet .sheet-abilities .toggle_repeating_npcaction_edit:hover {
+.charsheet .sheet-abilities .toggle_collapse {
+  display: none;
+  position: absolute;
+  left: 240px;
+  top: 5px;
+  color: rgba(255,255,255,0.5);
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_primaryability"]> .repitem:hover> .toggle_collapse {
+  display: block;
+}
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_secondaryability"]> .repitem:hover> .toggle_collapse {
+  display: block;
+}
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_instantability"]> .repitem:hover> .toggle_collapse {
+  display: block;
+}
+
+.charsheet .sheet-abilities .toggle_collapse:hover {
   color: rgba(255,255,255,1);
 }
 
