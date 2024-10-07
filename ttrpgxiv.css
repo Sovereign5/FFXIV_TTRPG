@@ -27,7 +27,7 @@
   display: block;
   margin: 0px;
   padding: 0px;
-  width: 830px;
+  width: 845px;
 }
 
 /*Toggles*/
@@ -322,6 +322,26 @@
   display: none;
 }
 
+.charsheet .sheet-traits-collapsed {
+  display: none;
+}
+
+.charsheet .sheet-traits-collapse:checked ~ .sheet-traits-collapsed {
+  display: block;
+}
+
+.charsheet .sheet-traits-collapse:checked ~ .sheet-traits-show {
+  display: none;
+}
+
+.charsheet .traitdiv .chargesdisplay {
+  visibility: hidden;
+}
+
+.charsheet .traitdiv .chargesdisplay_check:checked ~ .chargesdisplay {
+  visibility: visible;
+}
+
 /*End of Toggles*/
 
 
@@ -486,7 +506,10 @@
 }
 
 .charsheet .body .body-left {
-  width: 50%;
+  width: 424px;
+}
+
+.charsheet .body .body-statuspage {
   height: 320px;
   margin-top: 4px;
   border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
@@ -503,23 +526,23 @@
   color: white;
 }
 
-.charsheet .body .body-left .grid-item {
+.charsheet .body .body-statuspage .grid-item {
   font-size: 24px;
   padding: 2px;
 }
 
-.charsheet .body .body-left .grid-item span {
+.charsheet .body .body-statuspage .grid-item span {
   display: inline-block;
   width: 50px;
 }
 
-.charsheet .body .body-left .grid-item .span-longer {
+.charsheet .body .body-statuspage .grid-item .span-longer {
   font-size: 20px;
   display: inline-block;
   width: 130px;
 }
 
-.charsheet .body .body-left .grid-item .input-shorter {
+.charsheet .body .body-statuspage .grid-item .input-shorter {
   position: relative;
   bottom: 2px;
   appearance: none;
@@ -532,12 +555,12 @@
   width: 45px;
 }
 
-.charsheet .body .body-left .grid-item label {
+.charsheet .body .body-statuspage .grid-item label {
   color: white;
   font-size: 18px;
 }
 
-.charsheet .body .body-left .grid-item hr {
+.charsheet .body .body-statuspage .grid-item hr {
   width: 70%;
   border-top: 2px solid white;
   text-align: left;
@@ -546,7 +569,7 @@
   right: 32px;
 }
 
-.charsheet .body .body-left input {
+.charsheet .body .body-statuspage input {
   position: relative;
   bottom: 2px;
   appearance: none;
@@ -559,15 +582,39 @@
   width: 110px;
 }
 
-.charsheet .body .body-left button {
+.charsheet .body .body-statuspage button {
   width: 25px;
   height: 25px;
   align-content: center;
 }
 
+.charsheet .body .body-inventory {
+  height: auto;
+  margin-top: 4px;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(40,40,40);
+  background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(74,74,74,1) 10%, rgba(74,74,74,1) 90%, rgba(97,97,97,1) 100%);
+  color: white;
+}
+
+.charsheet .body .body-inventory label {
+  text-transform: uppercase;
+  color: white;
+  font-size: 18px;
+  position: relative;
+  left: 10px;
+  top: 10px;
+  min-height: 100px;
+}
+
 .charsheet .body .body-right {
   text-transform: none;
-  width: 50%;
+  width: 414px;
   height: auto;
   margin-left: 4px;
   margin-top: 4px;
@@ -611,6 +658,24 @@
   background-color: transparent;
 }
 
+.charsheet .body .body-right .editcollapsebutton {
+  display: none;
+  color: rgba(255,255,255,0.5);
+  position: absolute;
+  left: 350px;
+  top: -10px;
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .body .body-right .traitdiv:hover > .editcollapsebutton {
+  display: block;
+}
+
+.charsheet .body .body-right .editcollapsebutton:hover {
+  color: rgba(255,255,255,1);
+}
+
 .charsheet .body .body-right .traitdiv:hover > .edittraitbutton {
   display: block;
 }
@@ -622,6 +687,8 @@
 .charsheet .body .body-right .traitdiv {
   display: block;
   padding: 5px;
+  font-family: "Bebas Neue";
+  letter-spacing: 1px;
 }
 
 .charsheet .body .body-right .traitdiv .traits-headerbar {
@@ -633,18 +700,6 @@
 
 .charsheet .body .body-right .traitdiv .traits-headerbar  {
   background-image: none;
-}
-
-.charsheet .body .body-right .traitdiv .traitdisplay {
-  background: none;
-  background-image: none;
-  border: none;
-  box-shadow: none;
-  color: black;
-  font-family: "Jura";
-  font-weight: 500;
-  font-style: normal;
-  font-size: 1.2em;
 }
 
 .charsheet .body .body-right .traitdiv .traitdisplay:hover {
@@ -674,6 +729,75 @@ button[type=roll].traitdisplay::before {
   color: black;
 }
 
+.charsheet .body .sheet-traits-show {
+}
+
+.charsheet .body .sheet-traits-header {
+  display: flex;
+  color: white;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+  transform: scale(1, 0.8);
+}
+
+
+.charsheet .body .traitdisplay {
+  background: none;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  color: white;
+  text-align: left;
+  position: relative;
+  left: -7px;
+  width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.charsheet .body .chargesdisplay {
+  width: 100px; 
+  float: right; 
+  text-align: right;
+  font-size: 25px;
+}
+
+.charsheet .body .traitchargesamount {
+  position: relative;
+  top: 2px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+  text-align: right;
+  width: 20px;
+}
+
+.charsheet .body .traiteffect {
+  position: relative;
+  bottom: 13px;
+  font-size: 15px;
+  transform: scale(1.0);
+  font-style: italic;
+}
+
+.charsheet .body .traitdescription {
+  font-family: "Jura";
+  text-transform: none;
+}
+
+.charsheet .body .repitem {
+  padding-bottom: 3px;
+}
+
+.charsheet .body .sheet-traits-collapsed {
+  height: 50px;
+}
+
 /*End of Body Section*/
 
 
@@ -681,7 +805,7 @@ button[type=roll].traitdisplay::before {
 .charsheet .sheet-abilitiespage {
   margin: 0px;
   padding: 0px;
-  width: 860px;
+  width: 840px;
 }
 
 .charsheet .ability-limitbreak {
@@ -701,7 +825,7 @@ button[type=roll].traitdisplay::before {
 }
 
 .charsheet .sheet-abilities {
-  width: 866px;
+  width: 846px;
   display: flex;
   height: auto;
   color: white;
@@ -838,14 +962,19 @@ button[type=roll].sheet-diceroll::before {
   text-align: right;
   position: absolute;
   top: -40px;
-  left: 175px;
+  left: 155px;
 }
 
 .charsheet .sheet-abilities .sheet-tags-collapsed {
+  font-family: "Bebas Neue";
+  font-weight: 100;
   position: absolute;
   top: -18px;
   width: 200px;
-  font-style: italic
+  font-style: italic;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .charsheet .sheet-abilities .input-shorter-collapsed {
@@ -873,7 +1002,7 @@ button[type=roll].sheet-diceroll-collapsed::before {
 .charsheet .sheet-abilities .toggle_repeating_npcaction_edit {
   display: none;
   position: absolute;
-  left: 260px;
+  left: 220px;
   top: 15px;
   color: rgba(255,255,255,0.5);
   border: none;
@@ -883,7 +1012,7 @@ button[type=roll].sheet-diceroll-collapsed::before {
 .charsheet .ability-limitbreak .toggle_limitbreakcollapse {
   display: block;
   position: absolute;
-  left: 780px;
+  left: 760px;
   top: 5px;
   color: rgba(255,255,255,0.5);
   border: none;
