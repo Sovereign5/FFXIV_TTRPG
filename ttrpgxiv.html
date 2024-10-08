@@ -398,6 +398,7 @@
 				<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
 				<input type="checkbox" class="sheet-block-collapse" name="attr_blockcollapse" value="1" hidden>
 				<input type="text" name="attr_abilityRollValue" value="" hidden>
+				<input type="text" name="attr_abilityDamageRollValue" value="" hidden>
 				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit"><span style="font-family:Pictos; font-size: 1.4em;">y</button><br>
@@ -572,7 +573,7 @@
 					</div>
 
 					<!-- Direct Hit Button -->
-					<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilitydirecthitdamage}]] }}">Hide</button>
+					<button class="hide" type="roll" name="roll_directDamageRoll" value="@{abilityDamageRollValue}">Hide</button>
 				</div>
 
 
@@ -601,6 +602,7 @@
 				<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
 				<input type="checkbox" class="sheet-block-collapse" name="attr_blockcollapse" value="1" hidden>
 				<input type="text" name="attr_abilityRollValue" value="" hidden>
+				<input type="text" name="attr_abilityDamageRollValue" value="" hidden>
 				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit"><span style="font-family:Pictos; font-size: 1.4em;">y</button><br>
@@ -686,6 +688,7 @@
 						<input type="text" name="attr_abilitydirecthitdamage" placeholder="2d6" style="width: 70px;" required>
 						<span>&nbsp;</span>
 						<select name="attr_abilitydirecteffectdamageorhealing">
+							<option value="">None</option>
 							<option value="Damage">Damage</option>
 							<option value="Healing">Healing</option>
 						</select>
@@ -775,7 +778,7 @@
 					</div>
 
 					<!-- Direct Hit Button -->
-					<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilitydirecthitdamage}]] }}">Hide</button>
+					<button class="hide" type="roll" name="roll_directDamageRoll" value="@{abilityDamageRollValue}">Hide</button>
 				</div>
 
 				<!-- Collapsed Ability View -->
@@ -803,6 +806,7 @@
 				<input type="checkbox" class="sheet-block-switch" name="attr_blockswitch" value="1" hidden>
 				<input type="checkbox" class="sheet-block-collapse" name="attr_blockcollapse" value="1" hidden>
 				<input type="text" name="attr_abilityRollValue" value="" hidden>
+				<input type="text" name="attr_abilityDamageRollValue" value="" hidden>
 				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit"><span style="font-family:Pictos; font-size: 1.4em;">y</button><br>
@@ -977,7 +981,7 @@
 					</div>
 
 					<!-- Direct Hit Button -->
-					<button class="hide" type="roll" name="roll_directDamageRoll" value="&{template:ffxivdamage} {{name=@{abilityname} }} {{Attack = [[@{abilitydirecthitdamage}]] }}">Hide</button>
+					<button class="hide" type="roll" name="roll_directDamageRoll" value="@{abilityDamageRollValue}">Hide</button>
 				</div>
 
 				<!-- Collapsed Ability View -->
@@ -1234,6 +1238,7 @@
 			], function(values){
 				// ROLL TEMPLATE STRING BUILDER	
 				var rollvalue = "&{template:ffxivmain} {{header=primary}} {{name=@{abilityname} }} {{tags=@{abilitytags} }} {{baseeffect=@{abilitybaseeffect} }}"
+				var damagerollvalue = "&{template:ffxivmain} {{header=primary}} {{name=@{abilityname} }} {{tags=Direct Hit}} {{baseeffect=@{abilitydirecthit} }}"
 
 				if (values.repeating_primaryability_abilitycheck) {
 					rollvalue = rollvalue.concat(" {{Attack = [[@{abilitycheck}]]}} ")
@@ -1254,6 +1259,10 @@
 
 				if (values.repeating_primaryability_abilitydirecthit) {
 					rollvalue = rollvalue.concat(" {{directdamage=[ROLL DIRECT HIT](~repeating_primaryability_directDamageRoll) }} ")
+				}
+
+				if (values.repeating_primaryability_abilitydirecthitdamage) {
+					damagerollvalue = damagerollvalue.concat("{{check=@{abilitydirecteffectdamageorhealing} }} {{Attack = [[@{abilitydirecthitdamage}]] }} ")
 				}
 
 				// CONDITIONAL DISPLAYS
@@ -1383,6 +1392,7 @@
 
 				setAttrs({
 					repeating_primaryability_abilityRollValue: rollvalue,
+					repeating_primaryability_abilityDamageRollValue: damagerollvalue,
 					repeating_primaryability_abilitytags_display: abilityTagsDisplay,
 					repeating_primaryability_limitation_show: switchToggleLimitation,
 					repeating_primaryability_limitation_display: limitationDisplay,
@@ -1448,6 +1458,7 @@
 
 				// ROLL TEMPLATE STRING BUILDER	
 				var rollvalue = "&{template:ffxivmain} {{header=secondary}} {{name=@{abilityname} }} {{tags=@{abilitytags} }} {{baseeffect=@{abilitybaseeffect} }}"
+				var damagerollvalue = "&{template:ffxivmain} {{header=secondary}} {{name=@{abilityname} }} {{tags=Direct Hit}} {{baseeffect=@{abilitydirecthit} }}"
 
 				if (values.repeating_secondaryability_abilitycheck) {
 					rollvalue = rollvalue.concat(" {{Attack = [[@{abilitycheck}]]}} ")
@@ -1468,6 +1479,10 @@
 
 				if (values.repeating_secondaryability_abilitydirecthit) {
 					rollvalue = rollvalue.concat(" {{directdamage=[ROLL DIRECT HIT](~repeating_secondaryability_directDamageRoll) }} ")
+				}
+
+				if (values.repeating_secondaryability_abilitydirecthitdamage) {
+					damagerollvalue = damagerollvalue.concat("{{check=@{abilitydirecteffectdamageorhealing} }} {{Attack = [[@{abilitydirecthitdamage}]] }} ")
 				}
 
 				// CONDITIONAL DISPLAYS
@@ -1596,6 +1611,7 @@
 				}
 
 				setAttrs({
+					repeating_secondaryability_abilityDamageRollValue: damagerollvalue,
 					repeating_secondaryability_abilityRollValue: rollvalue,
 					repeating_secondaryability_abilitytags_display: abilityTagsDisplay,
 					repeating_secondaryability_limitation_show: switchToggleLimitation,
@@ -1663,6 +1679,7 @@
 
 				// ROLL TEMPLATE STRING BUILDER	
 				var rollvalue = "&{template:ffxivmain} {{header=instant}} {{name=@{abilityname} }} {{tags=@{abilitytags} }} {{baseeffect=@{abilitybaseeffect} }}"
+				var damagerollvalue = "&{template:ffxivmain} {{header=instant}} {{name=@{abilityname} }} {{tags=Direct Hit}} {{baseeffect=@{abilitydirecthit} }}"
 
 				if (values.repeating_instantability_abilitycheck) {
 					rollvalue = rollvalue.concat(" {{Attack = [[@{abilitycheck}]]}} ")
@@ -1683,6 +1700,10 @@
 
 				if (values.repeating_instantability_abilitydirecthit) {
 					rollvalue = rollvalue.concat(" {{directdamage=[ROLL DIRECT HIT](~repeating_instantability_directDamageRoll) }} ")
+				}
+
+				if (values.repeating_instantability_abilitydirecthitdamage) {
+					damagerollvalue = damagerollvalue.concat("{{check=@{abilitydirecteffectdamageorhealing} }} {{Attack = [[@{abilitydirecthitdamage}]] }} ")
 				}
 
 				// CONDITIONAL DISPLAYS
@@ -1812,6 +1833,7 @@
 
 				setAttrs({
 					repeating_instantability_abilityRollValue: rollvalue,
+					repeating_instantability_abilityDamageRollValue: damagerollvalue,
 					repeating_instantability_abilitytags_display: abilityTagsDisplay,
 					repeating_instantability_limitation_show: switchToggleLimitation,
 					repeating_instantability_limitation_display: limitationDisplay,
@@ -1861,7 +1883,7 @@
 		"limitbreakBaseEffect",
 		"limitbreakBaseEffectDie"
 		], function(values) {
-			var rollValue = "&{template:ffxivmain} {{header=limitbreak}} {{limitbreakBbaseeffect=@{aseEffect} }} {{name=@{limitbreakName} }} {{tags=@{limitbreakTags} }}"
+			var rollValue = "&{template:ffxivmain} {{header=limitbreak}} {{limitbreakBbaseeffect=@{baseEffect} }} {{name=@{limitbreakName} }} {{tags=@{limitbreakTags} }}"
 
 			if (values.limitbreakBaseEffectDie) {
 				rollValue = rollValue.concat(" {{Attack = [[@{limitbreakBaseEffectDie}]]}} ")
