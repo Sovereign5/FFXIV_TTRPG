@@ -1883,7 +1883,7 @@
 		"limitbreakBaseEffect",
 		"limitbreakBaseEffectDie"
 		], function(values) {
-			var rollValue = "&{template:ffxivmain} {{header=limitbreak}} {{limitbreakBbaseeffect=@{baseEffect} }} {{name=@{limitbreakName} }} {{tags=@{limitbreakTags} }}"
+			var rollValue = "&{template:ffxivmain} {{header=limitbreak}} {{baseeffect=@{limitbreakBaseEffect} }} {{name=@{limitbreakName} }} {{tags=@{limitbreakTags} }}"
 
 			if (values.limitbreakBaseEffectDie) {
 				rollValue = rollValue.concat(" {{Attack = [[@{limitbreakBaseEffectDie}]]}} ")
