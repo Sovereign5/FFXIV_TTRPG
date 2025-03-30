@@ -23,39 +23,18 @@
 	<!-- ROLE BAR + HP + MP -->
 	<div class="rolebar">
 		<div class="rolebar-left">
-			<!-- ROLE SELECTION -->
-			<div class="stacking-element-font" style="position: relative; top: 8px">
-				<span style="position: relative; right: 60px">ROLE</span>
-				<span style="position: relative; left: 15px;">JOB</span>
-			</div>
-			<div>
-				<span style="position: relative; font-size: 20px;">LV</span>
-				<input type="number" name="attr_char_level" step="10" min="0" max="50" style="position: relative; bottom: 6px; text-decoration: underline;">
-				<select name="attr_class" style="position: relative; width: 280px; height: 40px; font-size: 24px; font-weight: 600;">
-					<option style="color: black;" value="-1">Select</option>
-					<option style="color: black;" value="Paladin">Tank / Paladin</option>
-					<option style="color: black;" value="Warrior">Tank / Warrior</option>
-					<option style="color: black;" value="DarkKnight">Tank / Dark Knight</option>
-					<option style="color: black;" value="Gunbreaker">Tank / Gunbreaker</option>
-					<option style="color: black;" value="WhiteMage">Healer / White Mage</option>
-					<option style="color: black;" value="Scholar">Healer / Scholar</option>
-					<option style="color: black;" value="Astrologian">Healer / Astrologian</option>
-					<option style="color: black;" value="Sage">Healer / Sage</option>
-					<option style="color: black;" value="Monk">DPS / Monk</option>
-					<option style="color: black;" value="Dragoon">DPS / Dragoon</option>
-					<option style="color: black;" value="Ninja">DPS / Ninja</option>
-					<option style="color: black;" value="Samurai">DPS / Samurai</option>
-					<option style="color: black;" value="Reaper">DPS / Reaper</option>
-					<option style="color: black;" value="Bard">DPS / Bard</option>
-					<option style="color: black;" value="Machinist">DPS / Machinist</option>
-					<option style="color: black;" value="Dancer">DPS / Dancer</option>
-					<option style="color: black;" value="BlackMage">DPS / Black Mage</option>
-					<option style="color: black;" value="Summoner">DPS / Summoner</option>
-					<option style="color: black;" value="RedMage">DPS / Red Mage</option>
-					<option style="color: black;" value="BlueMage">DPS / Blue Mage</option>
-				</select>
-			</div>
-			
+ 			<div class="split rolebar-level">
+ 				<span>Lvl.</span>
+ 				<input type="number" name="attr_char_level" min="0" step="5" style="width: 3em; position: relative; top: -5px;">
+ 			</div>
+ 			<div class="split rolebar-role" style="overflow: hidden;">
+ 				<span>Role</span>
+ 				<input type="text" name="attr_char_role" style="width: 8em; background-color: transparent; border: none; color: white; font-size: 25px; position: relative; top: -7px">
+ 			</div>
+ 			<div class="split rolebar-job" style="overflow: hidden">
+ 				<span>Job</span>
+ 				<input type="text" name="attr_char_job" style="width: 100%; background-color: transparent; border: none; color: white; font-size: 25px; position: relative; top: -8px">
+ 			</div>
 		</div>
 
 		<div class="rolebar-middle">
@@ -65,7 +44,7 @@
 			<span class="dividing-line" style="position: relative;">/</span>
 			<div class="stacking-element">
 				<span class="stacking-element-font" style="position: relative; right: 8px">MAX</span>
-				<input type="number" name="attr_char_maxHP" min="0" style="position: relative; left: 2px">
+				<input type="number" name="attr_char_HP_max" min="0" style="position: relative; left: 2px">
 			</div>
 			<span class="dividing-line" style="position: relative; right: 13px">|</span>
 			<div class="stacking-element">
@@ -77,11 +56,12 @@
 		<div class="rolebar-right">
 			<!-- MP BAR -->
 			<span style="font-size: 2em;">MP</span>
-			<input type="number" name="attr_char_MP" min="0" max="5" style="position: relative; width: 45px; height: 60px; font-size: 50px;"/>
+			<input type="number" name="attr_char_MP" min="0" style="position: relative; width: 45px; height: 60px; font-size: 50px;"/>
 			<span class="dividing-line" style="position: relative; right: 13px">/</span>
 			<div class="stacking-element" style="position: relative; right: 5px">
 				<span class="stacking-element-font">MAX</span>
-				<span>5</span>
+				<span hidden>5</span>
+				<input type="number" name="attr_char_MP_max" min="0" style="position: relative; width: 45px; height: 30px; font-size: 25px; right: -13px;">
 			</div>
 		</div>
 	</div>
@@ -239,39 +219,18 @@
 	<!-- ROLE BAR + HP + MP -->
 	<div class="rolebar" style="width: 845px; padding-bottom: 3px;">
 		<div class="rolebar-left">
-			<!-- ROLE SELECTION -->
-			<div class="stacking-element-font" style="position: relative; top: 8px">
-				<span style="position: relative; right: 60px">ROLE</span>
-				<span style="position: relative; left: 15px;">JOB</span>
-			</div>
-			<div>
-				<span style="position: relative; font-size: 20px;">LV</span>
-				<input type="number" name="attr_char_level" step="10" min="0" max="50" style="position: relative; bottom: 6px; text-decoration: underline;">
-				<select name="attr_class" style="position: relative; width: 280px; height: 40px; font-size: 24px; font-weight: 600;">
-					<option style="color: black;" value="-1">Select</option>
-					<option style="color: black;" value="Paladin">Tank / Paladin</option>
-					<option style="color: black;" value="Warrior">Tank / Warrior</option>
-					<option style="color: black;" value="DarkKnight">Tank / Dark Knight</option>
-					<option style="color: black;" value="Gunbreaker">Tank / Gunbreaker</option>
-					<option style="color: black;" value="WhiteMage">Healer / White Mage</option>
-					<option style="color: black;" value="Scholar">Healer / Scholar</option>
-					<option style="color: black;" value="Astrologian">Healer / Astrologian</option>
-					<option style="color: black;" value="Sage">Healer / Sage</option>
-					<option style="color: black;" value="Monk">DPS / Monk</option>
-					<option style="color: black;" value="Dragoon">DPS / Dragoon</option>
-					<option style="color: black;" value="Ninja">DPS / Ninja</option>
-					<option style="color: black;" value="Samurai">DPS / Samurai</option>
-					<option style="color: black;" value="Reaper">DPS / Reaper</option>
-					<option style="color: black;" value="Bard">DPS / Bard</option>
-					<option style="color: black;" value="Machinist">DPS / Machinist</option>
-					<option style="color: black;" value="Dancer">DPS / Dancer</option>
-					<option style="color: black;" value="BlackMage">DPS / Black Mage</option>
-					<option style="color: black;" value="Summoner">DPS / Summoner</option>
-					<option style="color: black;" value="RedMage">DPS / Red Mage</option>
-					<option style="color: black;" value="BlueMage">DPS / Blue Mage</option>
-				</select>
-			</div>
-			
+ 			<div class="split rolebar-level">
+ 				<span>Lvl.</span>
+ 				<input type="number" name="attr_char_level" min="0" step="5" style="width: 3em; position: relative; top: -5px;">
+ 			</div>
+ 			<div class="split rolebar-role" style="overflow: hidden;">
+ 				<span>Role</span>
+ 				<input type="text" name="attr_char_role" style="width: 8em; background-color: transparent; border: none; color: white; font-size: 25px; position: relative; top: -7px">
+ 			</div>
+ 			<div class="split rolebar-job" style="overflow: hidden">
+ 				<span>Job</span>
+ 				<input type="text" name="attr_char_job" style="width: 100%; background-color: transparent; border: none; color: white; font-size: 25px; position: relative; top: -8px">
+ 			</div>
 		</div>
 
 		<div class="rolebar-middle">
@@ -281,7 +240,7 @@
 			<span class="dividing-line" style="position: relative;">/</span>
 			<div class="stacking-element">
 				<span class="stacking-element-font" style="position: relative; right: 8px">MAX</span>
-				<input type="number" name="attr_char_maxHP" min="0" style="position: relative; left: 2px">
+				<input type="number" name="attr_char_HP_max" min="0" style="position: relative; left: 2px">
 			</div>
 			<span class="dividing-line" style="position: relative; right: 13px">|</span>
 			<div class="stacking-element">
@@ -297,7 +256,8 @@
 			<span class="dividing-line" style="position: relative; right: 13px">/</span>
 			<div class="stacking-element" style="position: relative; right: 5px">
 				<span class="stacking-element-font">MAX</span>
-				<span>5</span>
+				<span hidden>5</span>
+				<input type="number" name="attr_char_MP_max" min="0" style="position: relative; width: 45px; height: 30px; font-size: 25px; right: -13px;">
 			</div>
 		</div>
 	</div>
