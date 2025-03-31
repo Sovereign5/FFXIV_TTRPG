@@ -71,6 +71,16 @@
   display: none;
 }
 
+.charsheet .sheet-currency-edit,
+.charsheet .sheet-currency-switch:checked ~ .sheet-currency-display {
+  display: block;
+}
+
+.charsheet .sheet-currency-display,
+.charsheet .sheet-currency-switch:checked ~ .sheet-currency-edit {
+  display: none;
+}
+
 .charsheet .sheet-requirementfield {
   display: none;
 }
@@ -627,7 +637,6 @@
   position: relative;
   left: 10px;
   top: 10px;
-  min-height: 100px;
 }
 
 .charsheet .body .body-right {
