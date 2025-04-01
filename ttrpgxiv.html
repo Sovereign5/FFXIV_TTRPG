@@ -201,13 +201,13 @@
 									<span>Target: </span> <input type="text" name="attr_itemtarget"><br>
 									<span>Range: </span> <input type="text" name="attr_itemrange"><br>
 									<span>Base Effect: </span> <input type="text" name="attr_itembaseeffect"><br>
+									<span>Base Effect: </span> <input type="text" name="attr_itemroll"><br>
 									<span>Cost: </span> <input type="text" name="attr_itemcost"><br>
 								</div>
 
 								<!-- ITEM DISPLAY MODE -->
 								<div class="sheet-item-display">
-									<button type='roll' value="&{template:item} {{name=@{itemname} }} {{tags=@{itemtags} }} {{tier=@{itemtags} }} {{baseeffect=@{itembaseeffect} }} {{}}" name="roll_itemdisplay" class="itemdisplay"><span name="attr_itemname"></span> </button>
-									<span name="attr_itemname"></span><br>
+									<button type='roll' value="&{template:ffxivmain} {{header=attribute}} {{name=@{itemname} }} {{tags=@{itemtags} }} {{tier=@{itemtier} }} {{baseeffect=@{itembaseeffect} }} {{check=[[@{itemroll}]] }}" name="roll_itemdisplay" class="itemdisplay"><span name="attr_itemname"></span></button><br>
 									<span name="attr_itemtags"></span><br>
 									<span name="attr_itemtier"></span><br>
 									<span name="attr_itemtarget"></span><br>
@@ -1064,9 +1064,9 @@
 		<!-- Primary Roll Template Check -->
 		{{#check}}
 		<div class="sheet-template-header">
-			{{#allprops() rolltype name tags basedamage directdamage effect baseeffect check damagetype header}}
+			{{#allprops() rolltype name tags tier basedamage directdamage effect baseeffect check damagetype header}}
     		<div class="sheet-value">{{value}}</div>
- 			{{/allprops() rolltype name tags basedamage directdamage effect baseeffect check damagetype header}}
+ 			{{/allprops() rolltype name tags tier basedamage directdamage effect baseeffect check damagetype header}}
  			<div class="sheet-info">
  				<span>{{check}}</span>
  			</div>
