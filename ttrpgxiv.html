@@ -145,35 +145,76 @@
 				</div>
 
 				<div class="body-inventory">
-					<label>Inventory & Currency</label>
+					<label>Currency & Inventory</label>
 					<div class="body-currency">
 						<fieldset class="repeating_currency">
 							<div class="currencydiv">
-								<!-- EDIT MODE -->
+
+								<!-- EDIT GLOBAL VARIABLES -->
 								<input type="checkbox" name="attr_currencyswitch" class="sheet-currency-switch" value="1" hidden>
+								<input type="checkbox" name="attr_currencymaxswitch" class="sheet-currencymax-display" hidden>
 								<button type="action" name="act_currencyedit" class="editcurrencybutton"><span style="font-family:Pictos; font-size: 1.4em;">y</span></button>
 
+								<!-- EDIT MODE -->
 								<div class="sheet-currency-edit">
-									<span>Currency Name: </span> <input type="text" name="attr_currencyname"><br>
-									<span>Amount: </span> <input type="number" name="attr_currencyamount" style="width: 10em; background: transparent; border: none; color: white;"><br>
-									<span> Max (optional): </span> <input type="number" name="attr_currencymax"><br>
+									<div class="element">
+										<span>Currency Name: </span>
+										<input type="text" name="attr_currencyname">
+									</div>
+									<div class="element">
+										<span>Amount: </span>
+										<input type="number" name="attr_currencyamount" class="amount">
+									</div>
+									<div class="element">
+										<span> Max: </span><br>
+										<input type="number" name="attr_currencymax" class="amount">
+									</div>
 								</div>
 
 								<!-- DISPLAY MODE -->
 								<div class="sheet-currency-display">
 									<span name="attr_currencyname"></span>
 									<span>: </span>
-									<input type="number" name="attr_currencyamount" style="width: 10em; background: transparent; border: none; color: white;">
-									<span name="attr_currencymax"></span>
+									<input type="number" name="attr_currencyamount" class="amount">
+									<div class="currencymaxdisplay">
+										<span>/</span>
+										<span name="attr_currencymax"></span>
+									</div>
 								</div>
 							</div>
 						</fieldset>
 					</div>
 					<span>----</span>
 					<div class="body-items">
-						<fieldset class="repeating_inventory">
-							<div class="inventorydiv">
+						<fieldset class="repeating_item">
+							<div class="itemdiv">
 								
+								<!-- ITEMS GLOBAL VARIABLES -->
+								<input type="checkbox" name="attr_itemswitch" class="sheet-item-switch" value="1" hidden>
+								<button type="action" name="act_itemedit" class="edititembutton"><span style="font-family:Pictos; font-size: 1.4em;">y</span></button>
+
+								<!-- ITEM EDIT MODE -->
+								<div class="sheet-item-edit">
+									<span>Name: </span> <input type="text" name="attr_itemname"><br>
+									<span>Tags: </span> <input type="text" name="attr_itemtags"><br>
+									<span>Tier: </span> <input type="text" name="attr_itemtier"><br>
+									<span>Target: </span> <input type="text" name="attr_itemtarget"><br>
+									<span>Range: </span> <input type="text" name="attr_itemrange"><br>
+									<span>Base Effect: </span> <input type="text" name="attr_itembaseeffect"><br>
+									<span>Cost: </span> <input type="text" name="attr_itemcost"><br>
+								</div>
+
+								<!-- ITEM DISPLAY MODE -->
+								<div class="sheet-item-display">
+									<button type='roll' value="&{template:item} {{name=@{itemname} }} {{tags=@{itemtags} }} {{tier=@{itemtags} }} {{baseeffect=@{itembaseeffect} }} {{}}" name="roll_itemdisplay" class="itemdisplay"><span name="attr_itemname"></span> </button>
+									<span name="attr_itemname"></span><br>
+									<span name="attr_itemtags"></span><br>
+									<span name="attr_itemtier"></span><br>
+									<span name="attr_itemtarget"></span><br>
+									<span name="attr_itemrange"></span><br>
+									<span name="attr_itembaseeffect"></span><br>
+									<span name="attr_itemcost"></span><br>
+								</div>
 							</div>
 						</fieldset>
 					</div>
@@ -1082,7 +1123,56 @@
 	</div>
 </rolltemplate>
 
+<!-- ITEM ROLL TEMPLATE -->
+<rolltemplate class="sheet-rolltemplate-item">
+	<div class="sheet-template-container">
+		<div class="sheet-template-header">
+			{{#name}}
+			<div class="sheet-header">{{name}}</div>
+			{{/name}}
+		</div>
+		<div class="sheet-template-row">
+			{{#tags}}
+			<div class="sheet-tags">{{tags}}</div>
+			{{/tags}}
+		</div>
+		<div class="sheet-template-row">
+			{{#tier}}
+			<div class="sheet-tags">{{tier}}</div>
+			{{/tier}}
+		</div>
+		<hr class="sheet-line">
 
+		{{#baseeffect}}
+		<div class="sheet-info-larger">{{baseeffect}}</div>
+		{{/baseeffect}}
+
+		{{#check}}
+		<div class="sheet-template-header">
+			{{#allprops() name tags tier basedamage baseeffect check damagetype}}
+    		<div class="sheet-value">{{value}}</div>
+ 			{{/allprops() name tags tier basedamage baseeffect check damagetype}}
+ 			<div class="sheet-info">
+ 				<span>{{check}}</span>
+ 			</div>
+		</div>
+		{{/check}}
+
+		{{#basedamage}}
+		<hr class="sheet-line">
+		<div class="sheet-template-header">
+			<div class="sheet-value">
+				<span class="inlinerollresult" style="color:white;font-family: 'Bebas Neue, sans-serif';padding-bottom:'2px">{{basedamage}}</span>
+			</div>
+			{{#damagetype}}
+			<div class="sheet-info">
+				<span>{{damagetype}}</span>
+			</div>
+			{{/damagetype}}
+		</div>
+		{{/basedamage}}
+	</div>
+</rolltemplate>
 
 
 <!-- INFO ROLL TEMPLATE -->
@@ -1981,13 +2071,33 @@
 
 	// Edit Button Functionality for Currency
 	on("clicked:repeating_currency:currencyedit", function() {
-		getAttrs(["repeating_currency_currencyswitch"], function(values) {
+		getAttrs(["repeating_currency_currencyswitch", "repeating_currency_currencymaxswitch", "repeating_currency_currencymax"], function(values) {
 			let switchToggle = values.repeating_currency_currencyswitch;
 			switchToggle = 1 - switchToggle
 
+			// max currency value display toggle
+			var newCurrencyMax;
+			if (values.repeating_currency_currencymax && values.repeating_currency_currencymax != 0) {
+				newCurrencyMax = "on"
+			} else {
+				newCurrencyMax = 0;
+			}
+
 			setAttrs({
 				repeating_currency_currencyswitch: switchToggle,
+				repeating_currency_currencymaxswitch: newCurrencyMax,
 			});
+		});
+	});
+
+	// Edit Button Functionality for Items
+	on("clicked:repeating_item:itemedit", function() {
+		getAttrs(["repeating_item_itemswitch"], function(values) {
+			let switchToggle = values.repeating_item_itemswitch;
+			switchToggle = 1 - switchToggle;
+			setAttrs({
+				repeating_item_itemswitch: switchToggle,
+			})
 		});
 	});
 

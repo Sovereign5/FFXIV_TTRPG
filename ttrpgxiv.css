@@ -73,11 +73,21 @@
 
 .charsheet .sheet-currency-edit,
 .charsheet .sheet-currency-switch:checked ~ .sheet-currency-display {
-  display: block;
+  display: flex;
 }
 
 .charsheet .sheet-currency-display,
 .charsheet .sheet-currency-switch:checked ~ .sheet-currency-edit {
+  display: none;
+}
+
+.charsheet .sheet-item-edit,
+.charsheet .sheet-item-switch:checked ~ .sheet-item-display {
+  display: block;
+}
+
+.charsheet .sheet-item-display,
+.charsheet .sheet-item-switch:checked ~ .sheet-item-edit {
   display: none;
 }
 
@@ -349,6 +359,14 @@
 }
 
 .charsheet .traitdiv .chargesdisplay_check:checked ~ .chargesdisplay {
+  visibility: visible;
+}
+
+.charsheet .currencydiv .currencymaxdisplay {
+  visibility: hidden;
+}
+
+.charsheet .currencydiv .sheet-currencymax-display:checked ~ .sheet-currency-display .currencymaxdisplay {
   visibility: visible;
 }
 
@@ -638,6 +656,76 @@
   left: 10px;
   top: 10px;
 }
+
+.charsheet .body .body-inventory input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  color: white;
+  position: relative;
+  top: -3px;
+}
+
+.charsheet .body .body-inventory .currencydiv {
+  padding: 0.1em;
+}
+
+.charsheet .body .body-inventory .body-currency {
+  padding: 0.5em;
+}
+
+.charsheet .body .body-inventory .amount {
+  width: 6em;
+}
+
+.charsheet .body .body-inventory .editcurrencybutton {
+  display: none;
+  color: rgba(255,255,255,0.5);
+  position: absolute;
+  left: 375px;
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .currencydiv .element {
+  width: 100%;
+}
+
+.charsheet .body .body-inventory .currencydiv:hover > .editcurrencybutton {
+  display: block;
+}
+
+.charsheet .body .body-inventory .editcurrencybutton:hover {
+  color: rgba(255,255,255,1);
+}
+
+/*INVENTORY*/
+
+.charsheet .body .body-inventory .body-items {
+  padding: 0.5em;
+}
+
+.charsheet .body ..body-inventory .body-items .inventorydiv {
+  padding: 0.1em;
+}
+
+.charsheet .body .body-inventory .edititembutton {
+  display: none;
+  color: rgba(255,255,255,0.5);
+  position: absolute;
+  left: 375px;
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .body .body-inventory .itemdiv:hover > .edititembutton {
+  display: block;
+}
+
+.charsheet .body .body-inventory .edititembutton:hover {
+  color: rgba(255,255,255,1);
+}
+
 
 .charsheet .body .body-right {
   text-transform: none;
