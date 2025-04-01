@@ -705,7 +705,7 @@
   padding: 0.5em;
 }
 
-.charsheet .body ..body-inventory .body-items .inventorydiv {
+.charsheet .body .body-inventory .body-items .inventorydiv {
   padding: 0.1em;
 }
 
@@ -724,6 +724,17 @@
 
 .charsheet .body .body-inventory .edititembutton:hover {
   color: rgba(255,255,255,1);
+}
+
+.charsheet .body .body-inventory .sheet-item-display .row {
+  position: relative;
+  left: 1em;
+  display: flex;
+}
+
+.charsheet .body .body-inventory .sheet-item-display .tags {
+  font-style: italic;
+  font-weight: 18px;
 }
 
 
@@ -1011,7 +1022,7 @@ button[type=roll].traitdisplay::before {
   display: flex;
 }
 
-.charsheet .sheet-abilitiespage .sheet-diceroll {
+.charsheet .sheet-diceroll {
   background: none;
   background-image: none;
   border: none;
@@ -1032,7 +1043,7 @@ button[type=roll].traitdisplay::before {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.charsheet .sheet-abilitiespage .sheet-diceroll:hover {
+.charsheet .sheet-diceroll:hover {
   color: grey;
 }
 
@@ -1041,7 +1052,7 @@ button[type=roll].sheet-diceroll::before {
 }
 
 /* Collapsing Display Section */
-.charsheet .sheet-abilitiespage .sheet-diceroll-collapsed {
+.charsheet .sheet-diceroll-collapsed {
   background: none;
   background-image: none;
   border: none;
@@ -1102,7 +1113,7 @@ button[type=roll].sheet-diceroll::before {
   font-weight: 700;
 }
 
-.charsheet .sheet-abilitiespage .sheet-diceroll-collapsed:hover {
+.charsheet .sheet-diceroll-collapsed:hover {
   color: grey;
 }
 

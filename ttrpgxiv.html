@@ -203,17 +203,43 @@
 									<span>Base Effect: </span> <input type="text" name="attr_itembaseeffect"><br>
 									<span>Base Effect: </span> <input type="text" name="attr_itemroll"><br>
 									<span>Cost: </span> <input type="text" name="attr_itemcost"><br>
+									<span>Amount: </span> <input type="text" name="attr_itemamount">
 								</div>
 
 								<!-- ITEM DISPLAY MODE -->
 								<div class="sheet-item-display">
-									<button type='roll' value="&{template:ffxivmain} {{header=attribute}} {{name=@{itemname} }} {{tags=@{itemtags} }} {{tier=@{itemtier} }} {{baseeffect=@{itembaseeffect} }} {{check=[[@{itemroll}]] }}" name="roll_itemdisplay" class="itemdisplay"><span name="attr_itemname"></span></button><br>
-									<span name="attr_itemtags"></span><br>
-									<span name="attr_itemtier"></span><br>
-									<span name="attr_itemtarget"></span><br>
-									<span name="attr_itemrange"></span><br>
-									<span name="attr_itembaseeffect"></span><br>
-									<span name="attr_itemcost"></span><br>
+									<button type='roll' value="&{template:ffxivmain} {{header=attribute}} {{name=@{itemname} }} {{tags=@{itemtags} }} {{tier=@{itemtier} }} {{baseeffect=@{itembaseeffect} }} {{check=[[@{itemroll}]] }}" name="roll_itemdisplay" class="sheet-diceroll" style="text-align: left; left: 0px; font-size: 20px; padding: 0px; margin: 0px;"><span name="attr_itemname"></span></button><br>
+									<div class="row tags">
+										<span name="attr_itemtags"></span>
+									</div>
+									<div class="row">
+										<span style="font-weight: 800;">Tier:&ensp;</span>
+										<span name="attr_itemtier"></span>
+									</div>
+									<div class="row">
+										<span style="font-weight: 800;">Target:&ensp;</span>
+										<span name="attr_itemtarget"></span>
+									</div>
+									
+									<div class="row">
+										<span style="font-weight: 800;">Range:&ensp;</span>
+										<span name="attr_itemrange"></span>
+									</div>
+
+									<div class="row">
+										<span style="font-weight: 800;">Base Effect:&ensp;</span>
+										<span name="attr_itembaseeffect"></span>
+									</div>
+									
+									<div class="row">
+										<span style="font-weight: 800;">Cost:&ensp;</span>
+										<span name="attr_itemcost"></span>
+									</div>
+
+									<div class="row">
+										<span style="font-weight: 800;">Amount:&ensp;</span>
+										<span name="attr_itemamount"></span>
+									</div>
 								</div>
 							</div>
 						</fieldset>
