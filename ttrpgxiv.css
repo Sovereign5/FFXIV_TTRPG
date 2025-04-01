@@ -354,6 +354,18 @@
   display: none;
 }
 
+.charsheet .sheet-item-collapsed {
+  display: none;
+}
+
+.charsheet .sheet-item-collapse:checked ~ .sheet-item-collapsed {
+  display: block;
+}
+
+.charsheet .sheet-item-collapse:checked ~ .sheet-item-display {
+  display: none;
+}
+
 .charsheet .traitdiv .chargesdisplay {
   visibility: hidden;
 }
@@ -368,6 +380,46 @@
 
 .charsheet .currencydiv .sheet-currencymax-display:checked ~ .sheet-currency-display .currencymaxdisplay {
   visibility: visible;
+}
+
+.charsheet .sheet-itemtier {
+  display: none;
+}
+
+.charsheet .sheet-itemtiershow:checked ~ .sheet-itemtier {
+  display: flex;
+}
+
+.charsheet .sheet-itemtarget {
+  display: none;
+}
+
+.charsheet .sheet-itemtargetshow:checked ~ .sheet-itemtarget {
+  display: flex;
+}
+
+.charsheet .sheet-itemrange {
+  display: none;
+}
+
+.charsheet .sheet-itemrangeshow:checked ~ .sheet-itemrange {
+  display: flex;
+}
+
+.charsheet .sheet-itemcost {
+  display: none;
+}
+
+.charsheet .sheet-itemcostshow:checked ~ .sheet-itemcost {
+  display: flex;
+}
+
+.charsheet .sheet-itemamount {
+  display: none;
+}
+
+.charsheet .sheet-itemamountshow:checked ~ .sheet-itemamount {
+  display: flex;
 }
 
 /*End of Toggles*/
@@ -555,6 +607,10 @@
   width: 424px;
 }
 
+.charsheet .body .body-left label {
+  font-family: "Jura";
+}
+
 .charsheet .body .body-statuspage {
   height: 320px;
   margin-top: 4px;
@@ -646,6 +702,9 @@
   background: rgb(40,40,40);
   background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(74,74,74,1) 10%, rgba(74,74,74,1) 90%, rgba(97,97,97,1) 100%);
   color: white;
+  font-family: "Bebas Neue";
+  font-size: 16px;
+  font-weight: 200;
 }
 
 .charsheet .body .body-inventory label {
@@ -664,6 +723,7 @@
   color: white;
   position: relative;
   top: -3px;
+  font-size: 18px;
 }
 
 .charsheet .body .body-inventory .currencydiv {
@@ -709,6 +769,10 @@
   padding: 0.1em;
 }
 
+.charsheet .itemdiv {
+  padding-bottom: 1em;
+}
+
 .charsheet .body .body-inventory .edititembutton {
   display: none;
   color: rgba(255,255,255,0.5);
@@ -726,15 +790,14 @@
   color: rgba(255,255,255,1);
 }
 
-.charsheet .body .body-inventory .sheet-item-display .row {
+.charsheet .body .body-inventory .row {
   position: relative;
   left: 1em;
-  display: flex;
 }
 
-.charsheet .body .body-inventory .sheet-item-display .tags {
+.charsheet .body .body-inventory .tags {
   font-style: italic;
-  font-weight: 18px;
+  font-weight: 800;
 }
 
 
@@ -784,7 +847,7 @@
   background-color: transparent;
 }
 
-.charsheet .body .body-right .editcollapsebutton {
+.charsheet .body .editcollapsebutton {
   display: none;
   color: rgba(255,255,255,0.5);
   position: absolute;
@@ -794,11 +857,15 @@
   background-color: transparent;
 }
 
-.charsheet .body .body-right .traitdiv:hover > .editcollapsebutton {
+.charsheet .body .traitdiv:hover > .editcollapsebutton {
   display: block;
 }
 
-.charsheet .body .body-right .editcollapsebutton:hover {
+.charsheet .body .itemdiv:hover > .editcollapsebutton {
+  display: block;
+}
+
+.charsheet .body .editcollapsebutton:hover {
   color: rgba(255,255,255,1);
 }
 

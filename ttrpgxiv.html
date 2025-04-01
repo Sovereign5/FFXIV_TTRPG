@@ -184,61 +184,93 @@
 							</div>
 						</fieldset>
 					</div>
-					<span>----</span>
+					<hr>
 					<div class="body-items">
 						<fieldset class="repeating_item">
 							<div class="itemdiv">
 								
 								<!-- ITEMS GLOBAL VARIABLES -->
 								<input type="checkbox" name="attr_itemswitch" class="sheet-item-switch" value="1" hidden>
+								<input type="checkbox" name="attr_itemswitchcollapse" class="sheet-item-collapse" value="1" hidden>
+
 								<button type="action" name="act_itemedit" class="edititembutton"><span style="font-family:Pictos; font-size: 1.4em;">y</span></button>
+								<button type="action" name="act_itemcollapse" class="editcollapsebutton"><span style="font-family:Pictos; font-size: 1.4em; position: absolute; top: 11px">i</span></button>
+								<input type="text" name="attr_itemrollvalue" value="" hidden>
 
 								<!-- ITEM EDIT MODE -->
 								<div class="sheet-item-edit">
-									<span>Name: </span> <input type="text" name="attr_itemname"><br>
+									<span>Icon: </span> <select name="attr_itemicon" class="sheet-item-icon" style="background-color: transparent; border-top: none; border-left: none; border-bottom: 2px solid white; border-right: none; color: white; font-size: 16px;">
+										<!-- TODO: CHANGE VALUES FROM 'beta' TO 'main' ON RELEASE -->
+										<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/MedicineIcon.png">Medicine</option>
+										<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/MealIcon.png">Meal</option>
+									</select><br>
+									<span>Name: </span> <input type="text" name="attr_itemname" required><br>
 									<span>Tags: </span> <input type="text" name="attr_itemtags"><br>
 									<span>Tier: </span> <input type="text" name="attr_itemtier"><br>
 									<span>Target: </span> <input type="text" name="attr_itemtarget"><br>
 									<span>Range: </span> <input type="text" name="attr_itemrange"><br>
-									<span>Base Effect: </span> <input type="text" name="attr_itembaseeffect"><br>
-									<span>Base Effect: </span> <input type="text" name="attr_itemroll"><br>
+									<span>Base Effect: </span> <textarea type="text" name="attr_itembaseeffect" style="max-width: 95%;"></textarea><br>
+									<span>Roll: </span> <input type="text" name="attr_itemroll"><br>
+									<span>Roll Effect: </span> <select name="attr_itemcheck" style="background-color: transparent; border-top: none; border-left: none; border-bottom: 2px solid white; border-right: none; color: white; font-size: 16px;">
+										<option value="Damage" style="color: black;" selected>Damage</option>
+										<option value="Healing" style="color: black;">Healing</option>
+										<option value="Other" style="color: black;">Other</option>
+									</select><br>
 									<span>Cost: </span> <input type="text" name="attr_itemcost"><br>
 									<span>Amount: </span> <input type="text" name="attr_itemamount">
 								</div>
 
 								<!-- ITEM DISPLAY MODE -->
 								<div class="sheet-item-display">
-									<button type='roll' value="&{template:ffxivmain} {{header=attribute}} {{name=@{itemname} }} {{tags=@{itemtags} }} {{tier=@{itemtier} }} {{baseeffect=@{itembaseeffect} }} {{check=[[@{itemroll}]] }}" name="roll_itemdisplay" class="sheet-diceroll" style="text-align: left; left: 0px; font-size: 20px; padding: 0px; margin: 0px;"><span name="attr_itemname"></span></button><br>
+									<img name="attr_itemicon" style="width: 24px;" />
+									<button type='roll' value="@{itemRollValue}" name="roll_itemdisplay" class="sheet-diceroll" style="text-align: left; left: 0px; font-size: 20px; padding: 0px; margin: 0px;"><span name="attr_itemname"></span></button><br>
+
 									<div class="row tags">
 										<span name="attr_itemtags"></span>
 									</div>
-									<div class="row">
+
+									<input type="checkbox" name="attr_itemtier_show" class="sheet-itemtiershow" hidden>
+									<div class="sheet-itemtier row">
 										<span style="font-weight: 800;">Tier:&ensp;</span>
 										<span name="attr_itemtier"></span>
 									</div>
-									<div class="row">
+
+									<input type="checkbox" name="attr_itemtarget_show" class="sheet-itemtargetshow" hidden>
+									<div class="row sheet-itemtarget">
 										<span style="font-weight: 800;">Target:&ensp;</span>
 										<span name="attr_itemtarget"></span>
 									</div>
 									
-									<div class="row">
+									<input type="checkbox" name="attr_itemrange_show" class="sheet-itemrangeshow" hidden>
+									<div class="row sheet-itemrange">
 										<span style="font-weight: 800;">Range:&ensp;</span>
 										<span name="attr_itemrange"></span>
 									</div>
 
-									<div class="row">
+									<div class="row" style="display: block; width: 95%;">
 										<span style="font-weight: 800;">Base Effect:&ensp;</span>
 										<span name="attr_itembaseeffect"></span>
 									</div>
 									
-									<div class="row">
+									<input type="checkbox" name="attr_itemcost_show" class="sheet-itemcostshow" hidden>
+									<div class="row sheet-itemcost">
 										<span style="font-weight: 800;">Cost:&ensp;</span>
 										<span name="attr_itemcost"></span>
 									</div>
 
-									<div class="row">
+									<input type="checkbox" name="attr_itemamount_show" class="sheet-itemamountshow" hidden>
+									<div class="row sheet-itemamount">
 										<span style="font-weight: 800;">Amount:&ensp;</span>
 										<span name="attr_itemamount"></span>
+									</div>
+								</div>
+
+								<!-- ITEM COLLAPSE MODE -->
+								<div class="sheet-item-collapsed">
+									<img name="attr_itemicon" style="width: 24px;" />
+									<button type='roll' value="@{itemRollValue}" name="roll_itemdisplay" class="sheet-diceroll" style="text-align: left; left: 0px; font-size: 20px; padding: 0px; margin: 0px;"><span name="attr_itemname"></span></button>
+									<div class="row tags">
+										<span name="attr_itemtags"></span>
 									</div>
 								</div>
 							</div>
@@ -255,7 +287,7 @@
 					<input type="checkbox" name="attr_traitswitch" class="sheet-traits-switch" value="1" hidden>
 					<input type="checkbox" name="attr_traitswitchcollapse" class="sheet-traits-collapse" value="1" hidden>
 					<button type="action" name="act_traitedit" class="edittraitbutton"><span style="font-family:Pictos; font-size: 1.4em;">y</span></button>
-					<button type="action" name="act_traitcollapse" class="editcollapsebutton"><span style="font-family:Pictos; font-size: 1.4em;">w</span></button>
+					<button type="action" name="act_traitcollapse" class="editcollapsebutton"><span style="font-family:Pictos; font-size: 1.4em;">i</span></button>
 					<div class="sheet-traits-hide">
 						<span>Name:</span> <input type="text" name="attr_traitname"><br>
 						<span>Effect:</span> <input type="text" name="attr_traiteffect"><br>
@@ -369,7 +401,7 @@
 			<input type="checkbox" name="attr_limitbreakswitch" class="sheet-limitbreak-switch" value="0" hidden>
 			<input type="checkbox" name="attr_limitbreakcollapse" class="sheet-limitbreakcollapse" value="0" hidden>
 			<button type="action" name="act_limitbreakedit" class="editlimitbreakbutton"><span style="font-family:Pictos; z-index: 99;">y</span></button>
-			<button type="action" class="toggle_limitbreakcollapse" name="act_collapse"><span style="font-family:Pictos; z-index: 99;">w</button><br>
+			<button type="action" class="toggle_limitbreakcollapse" name="act_collapse"><span style="font-family:Pictos; z-index: 99;">i</button><br>
 			<input type="text" name="attr_limitbreakRollValue" value="" hidden>
 
 
@@ -460,7 +492,7 @@
 				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit"><span style="font-family:Pictos; font-size: 1.4em;">y</button><br>
-				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos; font-size: 1.4em">w</button><br>
+				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos; font-size: 1.4em">i</button><br>
 
 				<!-- EDITING MODE - PRIMARY ABILITIES -->
 				<div class="sheet-block-a" style="padding: 3px;">
@@ -664,7 +696,7 @@
 				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit"><span style="font-family:Pictos; font-size: 1.4em;">y</button><br>
-				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos; font-size: 1.4em;">w</button><br>
+				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos; font-size: 1.4em;">i</button><br>
 
 				<!-- EDITING MODE - PRIMARY ABILITIES -->
 				<div class="sheet-block-a" style="padding: 3px;">
@@ -868,7 +900,7 @@
 				
 
 				<button type="action" class="toggle_repeating_npcaction_edit" name="act_edit"><span style="font-family:Pictos; font-size: 1.4em;">y</button><br>
-				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos; font-size: 1.4em;">w</button><br>
+				<button type="action" class="toggle_collapse" name="act_collapse"><span style="font-family:Pictos; font-size: 1.4em;">i</button><br>
 
 				<!-- EDITING MODE - PRIMARY ABILITIES -->
 				<div class="sheet-block-a" style="padding: 3px;">
@@ -1316,6 +1348,16 @@
 			switchToggle = 1 - switchToggle;
 			setAttrs({
 				repeating_traits_traitswitchcollapse: switchToggle,
+			});
+		});
+	});
+
+	on("clicked:repeating_item:itemcollapse", function() {
+		getAttrs(["repeating_item_itemswitchcollapse"], function(values) {
+			let switchToggle = values.repeating_item_itemswitchcollapse;
+			switchToggle = 1 - switchToggle;
+			setAttrs({
+				repeating_item_itemswitchcollapse: switchToggle,
 			});
 		});
 	});
@@ -2123,7 +2165,89 @@
 			switchToggle = 1 - switchToggle;
 			setAttrs({
 				repeating_item_itemswitch: switchToggle,
+				repeating_item_itemswitchcollapse: 0,
 			})
+		});
+	});
+
+	// String Builder for Items
+	on("clicked:repeating_item:itemedit", function() {
+		getAttrs([
+		"repeating_item_itemtier",
+		"repeating_item_itemtarget",
+		"repeating_item_itemrange",
+		"repeating_item_itemcost",
+		"repeating_item_itemamount",
+		"repeating_item_itembaseeffect",
+		"repeating_item_itemcheck",
+		"repeating_item_itemroll",
+		], function(values) {
+			var rollValue = "&{template:ffxivmain} {{header=attribute}} {{name=@{itemname} }} {{tags=@{itemtags} }} {{baseeffect=@{itembaseeffect} }} ";
+
+			// Check Check
+			if (values.repeating_item_itemroll) {
+				rollValue = rollValue.concat("{{check=@{itemcheck} }} {{value=[[@{itemroll}]] }}")
+			}
+
+			// Tier Display
+			var tierDisplay;
+			var switchToggleTier;
+			if (values.repeating_item_itemtier) {
+				tierDisplay = values.repeating_item_itemtier;
+				switchToggleTier = "on";
+			} else {
+				switchToggleTier = 0;
+			}
+
+			// Target Display
+			var targetDisplay;
+			var switchToggleTarget;
+			if (values.repeating_item_itemtarget) {
+				targetDisplay = values.repeating_item_itemtarget;
+				switchToggleTarget = "on";
+			} else {
+				switchToggleTarget = 0;
+			}
+
+			// Range Display
+			var rangeDisplay;
+			var switchToggleRange;
+			if (values.repeating_item_itemrange) {
+				rangeDisplay = values.repeating_item_itemrange;
+				switchToggleRange = "on";
+			} else {
+				switchToggleRange = 0;
+			}
+
+			// Cost Display
+			var costDisplay;
+			var switchToggleCost;
+			if (values.repeating_item_itemcost) {
+				costDisplay = values.repeating_item_itemcost;
+				switchToggleCost = "on";
+			} else {
+				switchToggleCost = 0;
+			}
+
+			// Amount Display
+			var amountDisplay;
+			var switchToggleAmount;
+			if (values.repeating_item_itemamount) {
+				amountDisplay = values.repeating_item_itemamount;
+				switchToggleAmount = "on";
+			} else {
+				switchToggleAmount = 0;
+			}
+
+			setAttrs({
+				repeating_item_itemrollvalue: rollValue,
+				repeating_item_itemtier_show: switchToggleTier,
+				repeating_item_itemtarget_show: switchToggleTarget,
+				repeating_item_itemrange_show: switchToggleRange,
+				repeating_item_itemcost_show: switchToggleCost,
+				repeating_item_itemamount_show: switchToggleAmount,
+			});
+
 		});
 	});
 
