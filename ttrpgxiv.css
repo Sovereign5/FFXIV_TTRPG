@@ -81,6 +81,36 @@
   display: none;
 }
 
+.charsheet .sheet-currency-display .split {
+  width: 50%;
+  height: 100%;
+  top: 0;
+}
+
+.charsheet .sheet-currency-display .left {
+  left: 0;
+  text-align: left;
+}
+
+.charsheet .sheet-currency-display .right {
+  display: flex;
+  flex-direction: row-reverse;
+  right: 0;
+  text-align: right;
+}
+
+.charsheet .sheet-currency-display input[type=number]::-webkit-inner-spin-button,
+.charsheet .sheet-currency-display input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+.charsheet .sheet-currency-display input[type=number] {
+  text-align: right;
+}
+
 .charsheet .sheet-item-edit,
 .charsheet .sheet-item-switch:checked ~ .sheet-item-display {
   display: block;
@@ -705,9 +735,9 @@
   font-family: "Bebas Neue";
   font-size: 16px;
   font-weight: 200;
-  max-height: 400px;
+  /*max-height: 400px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: scroll;*/
 }
 
 .charsheet .body .body-inventory label {
@@ -722,7 +752,7 @@
 .charsheet .body .body-inventory input {
   background: transparent;
   border: none;
-  border-bottom: 2px solid white;
+/*  border-bottom: 2px solid white;*/
   color: white;
   position: relative;
   top: -3px;
@@ -745,7 +775,9 @@
   display: none;
   color: rgba(255,255,255,0.5);
   position: absolute;
-  left: 350px;
+  left: 375px;
+  top: -10px;
+  z-index: 5;
   border: none;
   background-color: transparent;
 }

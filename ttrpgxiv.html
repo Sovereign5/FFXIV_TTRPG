@@ -144,58 +144,7 @@
 				</div>
 
 				<div class="body-inventory">
-					<label>Currency & Inventory</label>
-					<div class="body-currency">
-						<fieldset class="repeating_currency">
-							<div class="currencydiv">
-
-								<!-- EDIT GLOBAL VARIABLES -->
-								<input type="checkbox" name="attr_currencyswitch" class="sheet-currency-switch" value="1" hidden>
-								<input type="checkbox" name="attr_currencymaxswitch" class="sheet-currencymax-display" hidden>
-								<button type="action" name="act_currencyedit" class="editcurrencybutton"><span style="font-family:Pictos; font-size: 1.4em;">y</span></button>
-
-								<!-- EDIT MODE -->
-								<div class="sheet-currency-edit" style="flex-direction: column;">
-									<div class="element">
-										<span>Currency Name: </span>
-										<input type="text" name="attr_currencyname">
-									</div>
-									<div class="element">
-										<span>Currency Icon: </span>
-										<select name="attr_currencyicon" class="sheet-currency-icon" style="background-color: transparent; border-top: none; border-left: none; border-bottom: 2px solid white; border-right: none; color: white; font-size: 16px;">
-											<option style="color: black;" selected>Blank</option>
-											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/gil.png">Gil</option>
-											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/wolfmark.png">Wolf Mark</option>
-											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/tomestone.png">Tomestone</option>
-											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/experience.png">Experience</option>
-											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/mgp.png">MGP</option>
-										</select>
-									</div>
-									<div class="element">
-										<span>Amount: </span>
-										<input type="number" name="attr_currencyamount" class="amount">
-									</div>
-									<div class="element">
-										<span> Max: </span>
-										<input type="number" name="attr_currencymax" class="amount">
-									</div>
-								</div>
-
-								<!-- DISPLAY MODE -->
-								<div class="sheet-currency-display">
-									<img name="attr_currencyicon" class="sheet-icon"/>
-									<span name="attr_currencyname" style="font-size: 20px;"></span>
-									<span>: </span>
-									<input type="number" name="attr_currencyamount" class="amount">
-									<div class="currencymaxdisplay">
-										<span>/</span>
-										<span name="attr_currencymax"></span>
-									</div>
-								</div>
-							</div>
-						</fieldset>
-					</div>
-					<hr>
+					<label>Items & Currencies</label>
 					<div class="body-items">
 						<fieldset class="repeating_item">
 							<div class="itemdiv">
@@ -295,6 +244,61 @@
 									<div class="row tags">
 										<span name="attr_itemtagsdisplay"></span>
 									</div>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+					<hr>
+					<div class="body-currency">
+						<fieldset class="repeating_currency">
+							<div class="currencydiv">
+
+								<!-- EDIT GLOBAL VARIABLES -->
+								<input type="checkbox" name="attr_currencyswitch" class="sheet-currency-switch" value="1" hidden>
+								<input type="checkbox" name="attr_currencymaxswitch" class="sheet-currencymax-display" hidden>
+								<button type="action" name="act_currencyedit" class="editcurrencybutton"><span style="font-family:Pictos; font-size: 1.4em;">y</span></button>
+
+								<!-- EDIT MODE -->
+								<div class="sheet-currency-edit" style="flex-direction: column;">
+									<div class="element">
+										<span>Currency Name: </span>
+										<input type="text" name="attr_currencyname">
+									</div>
+									<div class="element">
+										<span>Currency Icon: </span>
+										<select name="attr_currencyicon" class="sheet-currency-icon" style="background-color: transparent; border-top: none; border-left: none; border-bottom: 2px solid white; border-right: none; color: white; font-size: 16px;">
+											<option style="color: black;" selected>Blank</option>
+											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/gil.png">Gil</option>
+											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/wolfmark.png">Wolf Mark</option>
+											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/tomestone.png">Tomestone</option>
+											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/experience.png">Experience</option>
+											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/mgp.png">MGP</option>
+										</select>
+									</div>
+									<div class="element">
+										<span>Amount: </span>
+										<input type="number" name="attr_currencyamount" class="amount">
+									</div>
+									<div class="element">
+										<span> Max: </span>
+										<input type="number" name="attr_currencymax" class="amount">
+									</div>
+								</div>
+
+								<!-- DISPLAY MODE -->
+								<div class="sheet-currency-display">
+									<div class="split left">
+										<span name="attr_currencyname" style="font-size: 20px;"></span>
+									</div>
+									<div class=" split right">
+										<img name="attr_currencyicon" class="sheet-icon"/>
+										<div class="currencymaxdisplay" style="font-size: 20px; display: flex; padding-right: 0.2em; ">
+											<span>/</span>
+											<span name="attr_currencymax"></span>
+										</div>
+										<input type="number" name="attr_currencyamount" class="amount" style="font-size: 20px; min-width: 20px;">
+									</div>
+
 								</div>
 							</div>
 						</fieldset>
