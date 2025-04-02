@@ -215,7 +215,7 @@
 										<option value="Other" style="color: black;">Other</option>
 									</select><br>
 									<span>Cost: </span> <input type="text" name="attr_itemcost" style="position: relative; top: 1px;"><br>
-									<span>Amount: </span> <input type="text" name="attr_itemamount" style="position: relative; top: 1px;">
+									<span>Amount: </span> <input type="number" name="attr_itemamount" max="99" style="position: relative; top: 1px;">
 								</div>
 
 								<!-- ITEM DISPLAY MODE -->
@@ -257,8 +257,8 @@
 
 									<input type="checkbox" name="attr_itemamount_show" class="sheet-itemamountshow" hidden>
 									<div class="row sheet-itemamount" style="position: absolute; top: 0; left: 275px;">
-										<input type="text" name="attr_itemamount" class="sheet-itemamount-input" style="text-align: right; width: 50px; font-size: 24px;">
 										<span style="position: relative; top:5px">x</span>
+										<input type="number" name="attr_itemamount" class="sheet-itemamount-input" max="99" style="text-align: left; width: 50px; font-size: 24px;">
 									</div>
 								</div>
 
@@ -270,8 +270,8 @@
 									</div>
 									<input type="checkbox" name="attr_itemamount_show" class="sheet-itemamountshow" hidden>
 									<div class="row sheet-itemamount" style="position: absolute; top: 0; left: 275px;">
-										<input type="text" name="attr_itemamount" class="sheet-itemamount-input" style="text-align: right; width: 50px; font-size: 24px;">
 										<span style="position: relative; top:5px">x</span>
+										<input type="number" name="attr_itemamount" class="sheet-itemamount-input" max="99" style="text-align: left; width: 50px; font-size: 24px;">
 									</div>
 								</div>
 							</div>
@@ -1258,57 +1258,6 @@
 		<div class="sheet-template-row">
 			<div class="sheet-tags-2">DAMAGE</div>
 		</div>
-	</div>
-</rolltemplate>
-
-<!-- ITEM ROLL TEMPLATE -->
-<rolltemplate class="sheet-rolltemplate-item">
-	<div class="sheet-template-container">
-		<div class="sheet-template-header">
-			{{#name}}
-			<div class="sheet-header">{{name}}</div>
-			{{/name}}
-		</div>
-		<div class="sheet-template-row">
-			{{#tags}}
-			<div class="sheet-tags">{{tags}}</div>
-			{{/tags}}
-		</div>
-		<div class="sheet-template-row">
-			{{#tier}}
-			<div class="sheet-tags">{{tier}}</div>
-			{{/tier}}
-		</div>
-		<hr class="sheet-line">
-
-		{{#baseeffect}}
-		<div class="sheet-info-larger">{{baseeffect}}</div>
-		{{/baseeffect}}
-
-		{{#check}}
-		<div class="sheet-template-header">
-			{{#allprops() name tags tier basedamage baseeffect check damagetype}}
-    		<div class="sheet-value">{{value}}</div>
- 			{{/allprops() name tags tier basedamage baseeffect check damagetype}}
- 			<div class="sheet-info">
- 				<span>{{check}}</span>
- 			</div>
-		</div>
-		{{/check}}
-
-		{{#basedamage}}
-		<hr class="sheet-line">
-		<div class="sheet-template-header">
-			<div class="sheet-value">
-				<span class="inlinerollresult" style="color:white;font-family: 'Bebas Neue, sans-serif';padding-bottom:'2px">{{basedamage}}</span>
-			</div>
-			{{#damagetype}}
-			<div class="sheet-info">
-				<span>{{damagetype}}</span>
-			</div>
-			{{/damagetype}}
-		</div>
-		{{/basedamage}}
 	</div>
 </rolltemplate>
 
