@@ -14,8 +14,32 @@
 	<div class="headerbar">
 		<img src="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/main/images/logo_text.png" />
 		<div class="headerbar-right">
-			<input type="text" name="attr_character_name" style="position: relative; font-size: 24px; font-family: Jura; background-color: transparent; appearance: none; border: none; color: white; width: 255px;">
-			<hr style="width: 255px; position: relative; right: 150px; bottom: 24px; border-top: 2px solid white;">
+			<div class="headerbar-right-grid">
+				<div class="div1">
+					<span>Name</span>
+					<input type="text" name="attr_character_name">
+				</div>
+				<div class="div2">
+					<span>Race/Clan</span>
+					<input type="text" name="attr_character_race">
+				</div>
+				<div class="div3">
+					<span>Alignment</span>
+					<input type="text" name="attr_character_alignment">
+				</div>
+				<div class="div4">
+					<span>Origin</span>
+					<input type="text" name="attr_character_origin">
+				</div>
+				<div class="div5">
+					<span>Motive</span>
+					<input type="text" name="attr_character_motive">
+				</div>
+				<div class="div6">
+					<span>Bond</span>
+					<input type="text" name="attr_character_bond">
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -172,26 +196,26 @@
 										<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/MiscIcon.png">Miscellaneous</option>
 										<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/OtherIcon.png">Other</option>
 									</select><br>
-									<span>Name: </span> <input type="text" name="attr_itemname" required><br>
+									<span>Name: </span> <input type="text" name="attr_itemname" style="position: relative; top: 1px;" required><br>
 									<span>Ability Type: </span> <select name="attr_itemabilitytype" style="background-color: transparent; border-top: none; border-left: none; border-bottom: 2px solid white; border-right: none; color: white; font-size: 16px;">
 										<option style="color: black;" value="primary" selected>Primary</option>
 										<option style="color: black;" value="secondary">Secondary</option>
 										<option style="color: black;" value="instant">Instant</option>
 										<option style="color: black;" value="attribute">Other</option>
 									</select><br>
-									<span>Tags: </span> <input type="text" name="attr_itemtags"><br>
-									<span>Tier: </span> <input type="text" name="attr_itemtier"><br>
-									<span>Target: </span> <input type="text" name="attr_itemtarget"><br>
-									<span>Range: </span> <input type="text" name="attr_itemrange"><br>
+									<span>Tags: </span> <input type="text" name="attr_itemtags" style="position: relative; top: 1px;"><br>
+									<span>Tier: </span> <input type="text" name="attr_itemtier" style="position: relative; top: 1px;"><br>
+									<span>Target: </span> <input type="text" name="attr_itemtarget" style="position: relative; top: 1px;"><br>
+									<span>Range: </span> <input type="text" name="attr_itemrange" style="position: relative; top: 1px;"><br>
 									<span>Base Effect: </span> <textarea type="text" name="attr_itembaseeffect" style="max-width: 95%;"></textarea><br>
-									<span>Roll: </span> <input type="text" name="attr_itemroll"><br>
+									<span>Roll: </span> <input type="text" name="attr_itemroll" style="position: relative; top: 1px;"><br>
 									<span>Roll Effect: </span> <select name="attr_itemcheck" style="background-color: transparent; border-top: none; border-left: none; border-bottom: 2px solid white; border-right: none; color: white; font-size: 16px;">
 										<option value="Damage" style="color: black;" selected>Damage</option>
 										<option value="Healing" style="color: black;">Healing</option>
 										<option value="Other" style="color: black;">Other</option>
 									</select><br>
-									<span>Cost: </span> <input type="text" name="attr_itemcost"><br>
-									<span>Amount: </span> <input type="text" name="attr_itemamount">
+									<span>Cost: </span> <input type="text" name="attr_itemcost" style="position: relative; top: 1px;"><br>
+									<span>Amount: </span> <input type="text" name="attr_itemamount" style="position: relative; top: 1px;">
 								</div>
 
 								<!-- ITEM DISPLAY MODE -->
@@ -232,9 +256,9 @@
 									</div>
 
 									<input type="checkbox" name="attr_itemamount_show" class="sheet-itemamountshow" hidden>
-									<div class="row sheet-itemamount">
-										<span style="font-weight: 800;">Amount:&ensp;</span>
-										<span name="attr_itemamount"></span>
+									<div class="row sheet-itemamount" style="position: absolute; top: 0; left: 275px;">
+										<input type="text" name="attr_itemamount" class="sheet-itemamount-input" style="text-align: right; width: 50px; font-size: 24px;">
+										<span style="position: relative; top:5px">x</span>
 									</div>
 								</div>
 
@@ -243,6 +267,11 @@
 									<button type='roll' value="@{itemRollValue}" name="roll_itemdisplay" class="sheet-diceroll" style="text-align: left; left: 0px; font-size: 20px; padding: 0px; margin: 0px;"><img name="attr_itemicon" class="sheet-icon" /><span name="attr_itemname"></span></button>
 									<div class="row tags">
 										<span name="attr_itemtagsdisplay"></span>
+									</div>
+									<input type="checkbox" name="attr_itemamount_show" class="sheet-itemamountshow" hidden>
+									<div class="row sheet-itemamount" style="position: absolute; top: 0; left: 275px;">
+										<input type="text" name="attr_itemamount" class="sheet-itemamount-input" style="text-align: right; width: 50px; font-size: 24px;">
+										<span style="position: relative; top:5px">x</span>
 									</div>
 								</div>
 							</div>
@@ -368,8 +397,32 @@
 	<div class="headerbar" style="width: 845px;">
 		<img src="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/main/images/logo_text.png" />
 		<div class="headerbar-right">
-			<input type="text" name="attr_character_name" style="position: relative; font-size: 24px; font-family: Jura; background-color: transparent; appearance: none; border: none; color: white; width: 255px;">
-			<hr style="width: 255px; position: relative; right: 150px; bottom: 24px; border-top: 2px solid white;">
+			<div class="headerbar-right-grid">
+				<div class="div1">
+					<span>Name</span>
+					<input type="text" name="attr_character_name">
+				</div>
+				<div class="div2">
+					<span>Race/Clan</span>
+					<input type="text" name="attr_character_race">
+				</div>
+				<div class="div3">
+					<span>Alignment</span>
+					<input type="text" name="attr_character_alignment">
+				</div>
+				<div class="div4">
+					<span>Origin</span>
+					<input type="text" name="attr_character_origin">
+				</div>
+				<div class="div5">
+					<span>Motive</span>
+					<input type="text" name="attr_character_motive">
+				</div>
+				<div class="div6">
+					<span>Bond</span>
+					<input type="text" name="attr_character_bond">
+				</div>
+			</div>
 		</div>
 	</div>
 

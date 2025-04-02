@@ -111,6 +111,15 @@
   text-align: right;
 }
 
+.charsheet .sheet-item-display .sheet-itemamount-input input[type=number]  {
+  text-align: right;
+}
+
+.charsheet .sheet-currency-display .sheet-itemamount {
+  position: absolute;
+
+}
+
 .charsheet .sheet-item-edit,
 .charsheet .sheet-item-switch:checked ~ .sheet-item-display {
   display: block;
@@ -483,19 +492,59 @@
 }
 
 .charsheet .headerbar .headerbar-right {
-  width: 70%;
+  width: 67%;
   margin-left: 10px;
   margin-bottom: 3px;
   position: relative;
   border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
   border-width: 3px;
   border-style: solid;
-  padding: 0px;
+  padding: 0.4em;
   border-radius: 3px 3px 3px 3px;
   outline: 2px solid #000 !important;
   background: rgb(40,40,40);
   background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(74,74,74,1) 10%, rgba(74,74,74,1) 90%, rgba(97,97,97,1) 100%);
   color: white;
+}
+
+.charsheet .headerbar .headerbar-right .headerbar-right-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 3px;
+  grid-row-gap: 3px;
+  font-family: "Jura";
+  font-size: 14px;
+
+}
+
+.charsheet .headerbar .headerbar-right .headerbar-right-grid input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  color: white;
+  width: 180px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.div1 { 
+  grid-area: 1 / 1 / 2 / 2; 
+}
+.div2 { 
+  grid-area: 1 / 2 / 2 / 3; 
+}
+.div3 { 
+  grid-area: 1 / 3 / 2 / 4; 
+}
+.div4 { 
+  grid-area: 2 / 1 / 3 / 2; 
+}
+.div5 { 
+  grid-area: 2 / 2 / 3 / 3; 
+}
+.div6 {
+  grid-area: 2 / 3 / 3 / 4; 
 }
 
 /*End of Header Section*/
