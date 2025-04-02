@@ -10,7 +10,6 @@
     <button type="action" name="act_character" >Character</button>
     <button type="action" name="act_abilities" >Abilites</button>
 </div>
-
 <div class="sheet-mainpage">
 	<div class="headerbar">
 		<img src="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/main/images/logo_text.png" />
@@ -156,24 +155,36 @@
 								<button type="action" name="act_currencyedit" class="editcurrencybutton"><span style="font-family:Pictos; font-size: 1.4em;">y</span></button>
 
 								<!-- EDIT MODE -->
-								<div class="sheet-currency-edit">
+								<div class="sheet-currency-edit" style="flex-direction: column;">
 									<div class="element">
 										<span>Currency Name: </span>
 										<input type="text" name="attr_currencyname">
+									</div>
+									<div class="element">
+										<span>Currency Icon: </span>
+										<select name="attr_currencyicon" class="sheet-currency-icon" style="background-color: transparent; border-top: none; border-left: none; border-bottom: 2px solid white; border-right: none; color: white; font-size: 16px;">
+											<option style="color: black;" selected>Blank</option>
+											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/gil.png">Gil</option>
+											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/wolfmark.png">Wolf Mark</option>
+											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/tomestone.png">Tomestone</option>
+											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/experience.png">Experience</option>
+											<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/mgp.png">MGP</option>
+										</select>
 									</div>
 									<div class="element">
 										<span>Amount: </span>
 										<input type="number" name="attr_currencyamount" class="amount">
 									</div>
 									<div class="element">
-										<span> Max: </span><br>
+										<span> Max: </span>
 										<input type="number" name="attr_currencymax" class="amount">
 									</div>
 								</div>
 
 								<!-- DISPLAY MODE -->
 								<div class="sheet-currency-display">
-									<span name="attr_currencyname"></span>
+									<img name="attr_currencyicon" class="sheet-icon"/>
+									<span name="attr_currencyname" style="font-size: 20px;"></span>
 									<span>: </span>
 									<input type="number" name="attr_currencyamount" class="amount">
 									<div class="currencymaxdisplay">
@@ -201,10 +212,24 @@
 								<div class="sheet-item-edit">
 									<span>Icon: </span> <select name="attr_itemicon" class="sheet-item-icon" style="background-color: transparent; border-top: none; border-left: none; border-bottom: 2px solid white; border-right: none; color: white; font-size: 16px;">
 										<!-- TODO: CHANGE VALUES FROM 'beta' TO 'main' ON RELEASE -->
+										<option style="color: black;" selected>Blank</option>
 										<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/MedicineIcon.png">Medicine</option>
 										<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/MealIcon.png">Meal</option>
+										<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/CraftingMaterialIcon.png">Crafting Material</option>
+										<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/CrystalIcon.png">Crystals</option>
+										<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/MinionIcon.png">Minion</option>
+										<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/MountIcon.png">Mount</option>
+										<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/WeaponIcon.png">Weapon</option>
+										<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/MiscIcon.png">Miscellaneous</option>
+										<option style="color: black;" value="https://raw.githubusercontent.com/Sovereign5/FFXIV_TTRPG/beta/images/OtherIcon.png">Other</option>
 									</select><br>
 									<span>Name: </span> <input type="text" name="attr_itemname" required><br>
+									<span>Ability Type: </span> <select name="attr_itemabilitytype" style="background-color: transparent; border-top: none; border-left: none; border-bottom: 2px solid white; border-right: none; color: white; font-size: 16px;">
+										<option style="color: black;" value="primary" selected>Primary</option>
+										<option style="color: black;" value="secondary">Secondary</option>
+										<option style="color: black;" value="instant">Instant</option>
+										<option style="color: black;" value="attribute">Other</option>
+									</select><br>
 									<span>Tags: </span> <input type="text" name="attr_itemtags"><br>
 									<span>Tier: </span> <input type="text" name="attr_itemtier"><br>
 									<span>Target: </span> <input type="text" name="attr_itemtarget"><br>
@@ -222,11 +247,10 @@
 
 								<!-- ITEM DISPLAY MODE -->
 								<div class="sheet-item-display">
-									<img name="attr_itemicon" style="width: 24px;" />
-									<button type='roll' value="@{itemRollValue}" name="roll_itemdisplay" class="sheet-diceroll" style="text-align: left; left: 0px; font-size: 20px; padding: 0px; margin: 0px;"><span name="attr_itemname"></span></button><br>
+									<button type='roll' value="@{itemRollValue}" name="roll_itemdisplay" class="sheet-diceroll" style="text-align: left; left: 0px; font-size: 20px; padding: 0px; margin: 0px;"><img name="attr_itemicon" class="sheet-icon" /><span name="attr_itemname"></span></button><br>
 
 									<div class="row tags">
-										<span name="attr_itemtags"></span>
+										<span name="attr_itemtagsdisplay"></span>
 									</div>
 
 									<input type="checkbox" name="attr_itemtier_show" class="sheet-itemtiershow" hidden>
@@ -267,10 +291,9 @@
 
 								<!-- ITEM COLLAPSE MODE -->
 								<div class="sheet-item-collapsed">
-									<img name="attr_itemicon" style="width: 24px;" />
-									<button type='roll' value="@{itemRollValue}" name="roll_itemdisplay" class="sheet-diceroll" style="text-align: left; left: 0px; font-size: 20px; padding: 0px; margin: 0px;"><span name="attr_itemname"></span></button>
+									<button type='roll' value="@{itemRollValue}" name="roll_itemdisplay" class="sheet-diceroll" style="text-align: left; left: 0px; font-size: 20px; padding: 0px; margin: 0px;"><img name="attr_itemicon" class="sheet-icon" /><span name="attr_itemname"></span></button>
 									<div class="row tags">
-										<span name="attr_itemtags"></span>
+										<span name="attr_itemtagsdisplay"></span>
 									</div>
 								</div>
 							</div>
@@ -2174,6 +2197,8 @@
 	on("clicked:repeating_item:itemedit", function() {
 		getAttrs([
 		"repeating_item_itemtier",
+		"repeating_item_itemtags",
+		"repeating_item_itemabilitytype",
 		"repeating_item_itemtarget",
 		"repeating_item_itemrange",
 		"repeating_item_itemcost",
@@ -2182,12 +2207,32 @@
 		"repeating_item_itemcheck",
 		"repeating_item_itemroll",
 		], function(values) {
-			var rollValue = "&{template:ffxivmain} {{header=attribute}} {{name=@{itemname} }} {{tags=@{itemtags} }} {{baseeffect=@{itembaseeffect} }} ";
+			var rollValue = "&{template:ffxivmain} {{name=@{itemname} }} {{baseeffect=@{itembaseeffect} }}";
 
 			// Check Check
 			if (values.repeating_item_itemroll) {
 				rollValue = rollValue.concat("{{check=@{itemcheck} }} {{value=[[@{itemroll}]] }}")
 			}
+
+			// Ability Type Fill
+			var abilityType = '{{header=' + values.repeating_item_itemabilitytype + '}}';
+			rollValue = rollValue.concat(abilityType);
+
+			// Tag Combiner
+			var itemAbilityType = values.repeating_item_itemabilitytype;
+			if (itemAbilityType == "attribute") {
+				itemAbilityType = "other";
+			}
+			var itemTags = values.repeating_item_itemtags;
+			
+			if (itemTags) {
+				var tagString = itemAbilityType + ', ' + itemTags;
+			} else {
+				var tagString = itemAbilityType;
+			}
+			rollValue = rollValue.concat("{{tags="+tagString+"}}")
+
+
 
 			// Tier Display
 			var tierDisplay;
@@ -2246,6 +2291,7 @@
 				repeating_item_itemrange_show: switchToggleRange,
 				repeating_item_itemcost_show: switchToggleCost,
 				repeating_item_itemamount_show: switchToggleAmount,
+				repeating_item_itemtagsdisplay: tagString,
 			});
 
 		});

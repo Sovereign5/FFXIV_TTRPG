@@ -705,6 +705,9 @@
   font-family: "Bebas Neue";
   font-size: 16px;
   font-weight: 200;
+  max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .charsheet .body .body-inventory label {
@@ -742,13 +745,13 @@
   display: none;
   color: rgba(255,255,255,0.5);
   position: absolute;
-  left: 375px;
+  left: 350px;
   border: none;
   background-color: transparent;
 }
 
 .charsheet .currencydiv .element {
-  width: 100%;
+  width: 424px;
 }
 
 .charsheet .body .body-inventory .currencydiv:hover > .editcurrencybutton {
@@ -777,9 +780,13 @@
   display: none;
   color: rgba(255,255,255,0.5);
   position: absolute;
-  left: 375px;
+  left: 350px;
   border: none;
   background-color: transparent;
+}
+
+.charsheet .body .body-inventory .editcollapsebutton {
+  left: 325px;
 }
 
 .charsheet .body .body-inventory .itemdiv:hover > .edititembutton {
@@ -798,6 +805,13 @@
 .charsheet .body .body-inventory .tags {
   font-style: italic;
   font-weight: 800;
+}
+
+.charsheet .body .sheet-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  padding-right: 0.2em;
 }
 
 
