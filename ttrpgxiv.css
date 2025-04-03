@@ -27,7 +27,7 @@
   display: block;
   margin: 0px;
   padding: 0px;
-  width: 830px;
+  width: 845px;
 }
 
 /*Toggles*/
@@ -68,6 +68,65 @@
 
 .charsheet .sheet-limitbreak-b,
 .charsheet .sheet-limitbreak-switch:checked ~ .sheet-limitbreak-a {
+  display: none;
+}
+
+.charsheet .sheet-currency-edit,
+.charsheet .sheet-currency-switch:checked ~ .sheet-currency-display {
+  display: flex;
+}
+
+.charsheet .sheet-currency-display,
+.charsheet .sheet-currency-switch:checked ~ .sheet-currency-edit {
+  display: none;
+}
+
+.charsheet .sheet-currency-display .split {
+  width: 50%;
+  height: 100%;
+  top: 0;
+}
+
+.charsheet .sheet-currency-display .left {
+  left: 0;
+  text-align: left;
+}
+
+.charsheet .sheet-currency-display .right {
+  display: flex;
+  flex-direction: row-reverse;
+  right: 0;
+  text-align: right;
+}
+
+.charsheet .sheet-currency-display input[type=number]::-webkit-inner-spin-button,
+.charsheet .sheet-currency-display input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+.charsheet .sheet-currency-display input[type=number] {
+  text-align: right;
+}
+
+.charsheet .sheet-item-display .sheet-itemamount-input input[type=number]  {
+  text-align: right;
+}
+
+.charsheet .sheet-currency-display .sheet-itemamount {
+  position: absolute;
+
+}
+
+.charsheet .sheet-item-edit,
+.charsheet .sheet-item-switch:checked ~ .sheet-item-display {
+  display: block;
+}
+
+.charsheet .sheet-item-display,
+.charsheet .sheet-item-switch:checked ~ .sheet-item-edit {
   display: none;
 }
 
@@ -169,6 +228,239 @@
 .charsheet .sheet-tabstoggle[value="abilities"] ~ div.sheet-abilitiespage {
     display: block;
 }
+
+.charsheet .sheet-limitation {
+  display: none;
+}
+
+.charsheet .sheet-limitation-collapsed {
+  display: none;
+}
+
+.charsheet .sheet-limitationshow:checked ~ .sheet-limitation {
+  display: flex;
+}
+
+.charsheet .sheet-limitationshow:checked ~ .sheet-limitation-collapsed {
+  display: flex;
+}
+
+.charsheet .sheet-target {
+  display: none;
+}
+
+.charsheet .sheet-targetshow:checked ~ .sheet-target {
+  display: flex;
+}
+
+.charsheet .sheet-range {
+  display: none;
+}
+
+.charsheet .sheet-rangeshow:checked ~ .sheet-range {
+  display: flex;
+}
+
+.charsheet .sheet-abilitycheck {
+  display: none;
+}
+
+.charsheet .sheet-abilitycheckshow:checked ~ .sheet-abilitycheck {
+  display: flex;
+}
+
+.charsheet .sheet-abilitycr {
+  display: none;
+}
+
+.charsheet .sheet-abilitycrshow:checked ~ .sheet-abilitycr {
+  display: flex;
+}
+
+.charsheet .sheet-abilitybaseeffect {
+  display: none;
+}
+
+.charsheet .sheet-abilitybaseeffectshow:checked ~ .sheet-abilitybaseeffect {
+  display: flex;
+}
+
+.charsheet .sheet-abilitydirecthit {
+  display: none;
+}
+
+.charsheet .sheet-abilitydirecthitshow:checked ~ .sheet-abilitydirecthit {
+  display: flex;
+}
+
+.charsheet .sheet-trigger {
+  display: none;
+}
+
+.charsheet .sheet-triggershow:checked ~ .sheet-trigger {
+  display: flex;
+}
+
+.charsheet .sheet-requirement {
+  display: none;
+}
+
+.charsheet .sheet-requirementshow:checked ~ .sheet-requirement {
+  display: flex;
+}
+
+.charsheet .sheet-block-c {
+  display: none;
+}
+
+.charsheet .sheet-block-collapse:checked ~ .sheet-block-b {
+  display: none;
+}
+
+.charsheet .sheet-block-collapse:checked ~ .sheet-block-c {
+  display: block;
+}
+
+.charsheet .sheet-limitbreaktrigger {
+  display: none;
+}
+
+.charsheet .sheet-limitbreaktriggershow:checked ~ .sheet-limitbreaktrigger {
+  display: flex;
+}
+
+.charsheet .sheet-limitbreaktarget {
+  display: none;
+}
+
+.charsheet .sheet-limitbreaktargetshow:checked ~ .sheet-limitbreaktarget {
+  display: flex;
+}
+
+.charsheet .sheet-limitbreakrange {
+  display: none;
+}
+
+.charsheet .sheet-limitbreakrangeshow:checked ~ .sheet-limitbreakrange {
+  display: flex;
+}
+
+.charsheet .sheet-limitbreakbaseeffect {
+  display: none;
+}
+
+.charsheet .sheet-limitbreakbaseeffectshow:checked ~ .sheet-limitbreakbaseeffect {
+  display: flex;
+}
+
+.charsheet .sheet-limitbreakbaseeffectdie {
+  display: none;
+}
+
+.charsheet .sheet-limitbreakbaseeffectdieshow:checked ~ .sheet-limitbreakbaseeffectdie {
+  display: flex;
+}
+
+.charsheet .sheet-cost {
+  display: none;
+}
+
+.charsheet .sheet-costshow:checked ~ .sheet-cost {
+  display: flex;
+}
+
+.charsheet .sheet-limitbreak-c {
+  display: none;
+}
+
+.charsheet .sheet-limitbreakcollapse:checked ~ .sheet-limitbreak-c {
+  display: block;
+}
+
+.charsheet .sheet-limitbreakcollapse:checked ~ .sheet-limitbreak-a {
+  display: none;
+}
+
+.charsheet .sheet-traits-collapsed {
+  display: none;
+}
+
+.charsheet .sheet-traits-collapse:checked ~ .sheet-traits-collapsed {
+  display: block;
+}
+
+.charsheet .sheet-traits-collapse:checked ~ .sheet-traits-show {
+  display: none;
+}
+
+.charsheet .sheet-item-collapsed {
+  display: none;
+}
+
+.charsheet .sheet-item-collapse:checked ~ .sheet-item-collapsed {
+  display: block;
+}
+
+.charsheet .sheet-item-collapse:checked ~ .sheet-item-display {
+  display: none;
+}
+
+.charsheet .traitdiv .chargesdisplay {
+  visibility: hidden;
+}
+
+.charsheet .traitdiv .chargesdisplay_check:checked ~ .chargesdisplay {
+  visibility: visible;
+}
+
+.charsheet .currencydiv .currencymaxdisplay {
+  visibility: hidden;
+}
+
+.charsheet .currencydiv .sheet-currencymax-display:checked ~ .sheet-currency-display .currencymaxdisplay {
+  visibility: visible;
+}
+
+.charsheet .sheet-itemtier {
+  display: none;
+}
+
+.charsheet .sheet-itemtiershow:checked ~ .sheet-itemtier {
+  display: flex;
+}
+
+.charsheet .sheet-itemtarget {
+  display: none;
+}
+
+.charsheet .sheet-itemtargetshow:checked ~ .sheet-itemtarget {
+  display: flex;
+}
+
+.charsheet .sheet-itemrange {
+  display: none;
+}
+
+.charsheet .sheet-itemrangeshow:checked ~ .sheet-itemrange {
+  display: flex;
+}
+
+.charsheet .sheet-itemcost {
+  display: none;
+}
+
+.charsheet .sheet-itemcostshow:checked ~ .sheet-itemcost {
+  display: flex;
+}
+
+.charsheet .sheet-itemamount {
+  display: none;
+}
+
+.charsheet .sheet-itemamountshow:checked ~ .sheet-itemamount {
+  display: flex;
+}
+
 /*End of Toggles*/
 
 
@@ -200,19 +492,59 @@
 }
 
 .charsheet .headerbar .headerbar-right {
-  width: 70%;
+  width: 67%;
   margin-left: 10px;
   margin-bottom: 3px;
   position: relative;
   border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
   border-width: 3px;
   border-style: solid;
-  padding: 0px;
+  padding: 0.4em;
   border-radius: 3px 3px 3px 3px;
   outline: 2px solid #000 !important;
   background: rgb(40,40,40);
   background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(74,74,74,1) 10%, rgba(74,74,74,1) 90%, rgba(97,97,97,1) 100%);
   color: white;
+}
+
+.charsheet .headerbar .headerbar-right .headerbar-right-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 3px;
+  grid-row-gap: 3px;
+  font-family: "Jura";
+  font-size: 14px;
+
+}
+
+.charsheet .headerbar .headerbar-right .headerbar-right-grid input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  color: white;
+  width: 180px;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.div1 { 
+  grid-area: 1 / 1 / 2 / 2; 
+}
+.div2 { 
+  grid-area: 1 / 2 / 2 / 3; 
+}
+.div3 { 
+  grid-area: 1 / 3 / 2 / 4; 
+}
+.div4 { 
+  grid-area: 2 / 1 / 3 / 2; 
+}
+.div5 { 
+  grid-area: 2 / 2 / 3 / 3; 
+}
+.div6 {
+  grid-area: 2 / 3 / 3 / 4; 
 }
 
 /*End of Header Section*/
@@ -231,12 +563,8 @@
 }
 
 .charsheet .rolebar .rolebar-left {
-  display: column;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
   width: 53%;
-  position: relative;
+  display: flex;
   border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
   border-width: 3px;
   border-style: solid;
@@ -248,6 +576,28 @@
   padding-left: 5px;
   padding-right: 10px;
 }
+
+.charsheet .rolebar .split {
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+}
+
+.charsheet .rolebar .split .rolebar-level {
+  flex: 1 0 3.5em;
+}
+
+.charsheet .rolebar .split .rolebar-role {
+  flex-basis: 25%;
+}
+
+.charsheet .rolebar .split .rolebar-job {
+  flex-basis: 50%;
+}
+
+
 
 .charsheet .rolebar .rolebar-middle {
   display: flex;
@@ -333,7 +683,14 @@
 }
 
 .charsheet .body .body-left {
-  width: 50%;
+  width: 424px;
+}
+
+.charsheet .body .body-left label {
+  font-family: "Jura";
+}
+
+.charsheet .body .body-statuspage {
   height: 320px;
   margin-top: 4px;
   border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
@@ -350,23 +707,23 @@
   color: white;
 }
 
-.charsheet .body .body-left .grid-item {
+.charsheet .body .body-statuspage .grid-item {
   font-size: 24px;
   padding: 2px;
 }
 
-.charsheet .body .body-left .grid-item span {
+.charsheet .body .body-statuspage .grid-item span {
   display: inline-block;
   width: 50px;
 }
 
-.charsheet .body .body-left .grid-item .span-longer {
+.charsheet .body .body-statuspage .grid-item .span-longer {
   font-size: 20px;
   display: inline-block;
   width: 130px;
 }
 
-.charsheet .body .body-left .grid-item .input-shorter {
+.charsheet .body .body-statuspage .grid-item .input-shorter {
   position: relative;
   bottom: 2px;
   appearance: none;
@@ -379,12 +736,12 @@
   width: 45px;
 }
 
-.charsheet .body .body-left .grid-item label {
+.charsheet .body .body-statuspage .grid-item label {
   color: white;
   font-size: 18px;
 }
 
-.charsheet .body .body-left .grid-item hr {
+.charsheet .body .body-statuspage .grid-item hr {
   width: 70%;
   border-top: 2px solid white;
   text-align: left;
@@ -393,7 +750,7 @@
   right: 32px;
 }
 
-.charsheet .body .body-left input {
+.charsheet .body .body-statuspage input {
   position: relative;
   bottom: 2px;
   appearance: none;
@@ -406,15 +763,142 @@
   width: 110px;
 }
 
-.charsheet .body .body-left button {
+.charsheet .body .body-statuspage button {
   width: 25px;
   height: 25px;
   align-content: center;
 }
 
+.charsheet .body .body-inventory {
+  height: auto;
+  margin-top: 4px;
+  border-image: linear-gradient(rgba(255,237,164,1), rgba(255,223,96,1)) 30;
+  border-width: 3px;
+  border-style: solid;
+  padding: 0px;
+  border-radius: 3px 3px 3px 3px;
+  outline: 2px solid #000 !important;
+  background: rgb(40,40,40);
+  background: linear-gradient(0deg, rgba(40,40,40,1) 0%, rgba(74,74,74,1) 10%, rgba(74,74,74,1) 90%, rgba(97,97,97,1) 100%);
+  color: white;
+  font-family: "Bebas Neue";
+  font-size: 16px;
+  font-weight: 200;
+  /*max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: scroll;*/
+}
+
+.charsheet .body .body-inventory label {
+  text-transform: uppercase;
+  color: white;
+  font-size: 18px;
+  position: relative;
+  left: 10px;
+  top: 10px;
+}
+
+.charsheet .body .body-inventory input {
+  background: transparent;
+  border: none;
+/*  border-bottom: 2px solid white;*/
+  color: white;
+  position: relative;
+  top: -3px;
+  font-size: 18px;
+}
+
+.charsheet .body .body-inventory .currencydiv {
+  padding: 0.1em;
+}
+
+.charsheet .body .body-inventory .body-currency {
+  padding: 0.5em;
+}
+
+.charsheet .body .body-inventory .amount {
+  width: 6em;
+}
+
+.charsheet .body .body-inventory .editcurrencybutton {
+  display: none;
+  color: rgba(255,255,255,0.5);
+  position: absolute;
+  left: 375px;
+  top: -10px;
+  z-index: 5;
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .currencydiv .element {
+  width: 424px;
+}
+
+.charsheet .body .body-inventory .currencydiv:hover > .editcurrencybutton {
+  display: block;
+}
+
+.charsheet .body .body-inventory .editcurrencybutton:hover {
+  color: rgba(255,255,255,1);
+}
+
+/*INVENTORY*/
+
+.charsheet .body .body-inventory .body-items {
+  padding: 0.5em;
+}
+
+.charsheet .body .body-inventory .body-items .inventorydiv {
+  padding: 0.1em;
+}
+
+.charsheet .itemdiv {
+  padding-bottom: 1em;
+}
+
+.charsheet .body .body-inventory .edititembutton {
+  display: none;
+  color: rgba(255,255,255,0.5);
+  position: absolute;
+  left: 380px;
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .body .body-inventory .editcollapsebutton {
+  left: 360px;
+}
+
+.charsheet .body .body-inventory .itemdiv:hover > .edititembutton {
+  display: block;
+}
+
+.charsheet .body .body-inventory .edititembutton:hover {
+  color: rgba(255,255,255,1);
+}
+
+.charsheet .body .body-inventory .row {
+  position: relative;
+  left: 1em;
+}
+
+.charsheet .body .body-inventory .tags {
+  font-style: italic;
+  font-weight: 800;
+}
+
+.charsheet .body .sheet-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  padding-right: 0.2em;
+}
+
+
 .charsheet .body .body-right {
   text-transform: none;
-  width: 50%;
+  width: 414px;
   height: auto;
   margin-left: 4px;
   margin-top: 4px;
@@ -458,6 +942,28 @@
   background-color: transparent;
 }
 
+.charsheet .body .editcollapsebutton {
+  display: none;
+  color: rgba(255,255,255,0.5);
+  position: absolute;
+  left: 350px;
+  top: -10px;
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .body .traitdiv:hover > .editcollapsebutton {
+  display: block;
+}
+
+.charsheet .body .itemdiv:hover > .editcollapsebutton {
+  display: block;
+}
+
+.charsheet .body .editcollapsebutton:hover {
+  color: rgba(255,255,255,1);
+}
+
 .charsheet .body .body-right .traitdiv:hover > .edittraitbutton {
   display: block;
 }
@@ -469,6 +975,8 @@
 .charsheet .body .body-right .traitdiv {
   display: block;
   padding: 5px;
+  font-family: "Bebas Neue";
+  letter-spacing: 1px;
 }
 
 .charsheet .body .body-right .traitdiv .traits-headerbar {
@@ -480,18 +988,6 @@
 
 .charsheet .body .body-right .traitdiv .traits-headerbar  {
   background-image: none;
-}
-
-.charsheet .body .body-right .traitdiv .traitdisplay {
-  background: none;
-  background-image: none;
-  border: none;
-  box-shadow: none;
-  color: black;
-  font-family: "Jura";
-  font-weight: 500;
-  font-style: normal;
-  font-size: 1.2em;
 }
 
 .charsheet .body .body-right .traitdiv .traitdisplay:hover {
@@ -521,6 +1017,75 @@ button[type=roll].traitdisplay::before {
   color: black;
 }
 
+.charsheet .body .sheet-traits-show {
+}
+
+.charsheet .body .sheet-traits-header {
+  display: flex;
+  color: white;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+  transform: scale(1, 0.8);
+}
+
+
+.charsheet .body .traitdisplay {
+  background: none;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  color: white;
+  text-align: left;
+  position: relative;
+  left: -7px;
+  width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.charsheet .body .chargesdisplay {
+  width: 100px; 
+  float: right; 
+  text-align: right;
+  font-size: 25px;
+}
+
+.charsheet .body .traitchargesamount {
+  position: relative;
+  top: 2px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 25px;
+  font-weight: 700;
+  text-align: right;
+  width: 20px;
+}
+
+.charsheet .body .traiteffect {
+  position: relative;
+  bottom: 13px;
+  font-size: 15px;
+  transform: scale(1.0);
+  font-style: italic;
+}
+
+.charsheet .body .traitdescription {
+  font-family: "Jura";
+  text-transform: none;
+}
+
+.charsheet .body .repitem {
+  padding-bottom: 3px;
+}
+
+.charsheet .body .sheet-traits-collapsed {
+  height: 50px;
+}
+
 /*End of Body Section*/
 
 
@@ -528,7 +1093,7 @@ button[type=roll].traitdisplay::before {
 .charsheet .sheet-abilitiespage {
   margin: 0px;
   padding: 0px;
-  width: 860px;
+  width: 840px;
 }
 
 .charsheet .ability-limitbreak {
@@ -548,7 +1113,7 @@ button[type=roll].traitdisplay::before {
 }
 
 .charsheet .sheet-abilities {
-  width: 866px;
+  width: 846px;
   display: flex;
   height: auto;
   color: white;
@@ -619,28 +1184,102 @@ button[type=roll].traitdisplay::before {
   display: flex;
 }
 
-.charsheet .sheet-abilitiespage .sheet-diceroll {
+.charsheet .sheet-diceroll {
   background: none;
   background-image: none;
   border: none;
   box-shadow: none;
   color: white;
-  font-family: "Jura";
-  font-weight: 700;
+  font-family: "Bebas Neue";
+  font-weight: 500;
   font-style: normal;
-  font-size: 1.6em;
-  transform: scale(1, 0.8);
+  font-size: 1em;
+  letter-spacing: 1px;
+  transform: scale(1,1.1);
   padding: 0px;
   margin: 0px;
   position: relative;
   left: -10px;
-  text-wrap: pretty;
+  width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
-.charsheet .sheet-abilitiespage .sheet-diceroll:hover {
+.charsheet .sheet-diceroll:hover {
   color: grey;
 }
 
 button[type=roll].sheet-diceroll::before {
+    font-size: 0em;
+}
+
+/* Collapsing Display Section */
+.charsheet .sheet-diceroll-collapsed {
+  background: none;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+  color: white;
+  font-family: "Bebas Neue";
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1em;
+  letter-spacing: 1px;
+  transform: scale(1,1.1);
+  padding: 0px;
+  margin: 0px;
+  width: 230px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  position: absolute;
+  top: -35px;
+  left: -10px;
+}
+
+.charsheet .sheet-abilities .sheet-block-collapse:checked ~ .toggle_repeating_npcaction_edit {
+  top: 20px;
+}
+
+.charsheet .sheet-abilities .sheet-block-collapse:checked ~ .toggle_collapse {
+  top: 20px;
+}
+
+.charsheet .sheet-abilities .sheet-limitation-collapsed {
+  text-align: right;
+  position: absolute;
+  top: -40px;
+  left: 155px;
+}
+
+.charsheet .sheet-abilities .sheet-tags-collapsed {
+  font-family: "Bebas Neue";
+  font-weight: 100;
+  position: absolute;
+  top: -18px;
+  width: 200px;
+  font-style: italic;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.charsheet .sheet-abilities .input-shorter-collapsed {
+  bottom: 2px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.charsheet .sheet-diceroll-collapsed:hover {
+  color: grey;
+}
+
+button[type=roll].sheet-diceroll-collapsed::before {
     font-size: 0em;
 }
 
@@ -651,22 +1290,75 @@ button[type=roll].sheet-diceroll::before {
 .charsheet .sheet-abilities .toggle_repeating_npcaction_edit {
   display: none;
   position: absolute;
-  left: 260px;
-  top: 25px;
+  left: 220px;
+  top: 15px;
   color: rgba(255,255,255,0.5);
   border: none;
   background-color: transparent;
 }
 
-.charsheet .ability-limitbreak .editlimitbreakbutton {
+.charsheet .ability-limitbreak .toggle_limitbreakcollapse {
   display: block;
   position: absolute;
-  left: 800px;
-  top: 0px;
+  left: 760px;
+  top: 5px;
   color: rgba(255,255,255,0.5);
   border: none;
   background-color: transparent;
 }
+
+.charsheet .ability-limitbreak .toggle_limitbreakcollapse:hover {
+  color: rgba(255,255,255,1);
+}
+
+/* End of Collapsing Display Section */
+
+/* Limitbreak Collapsing */
+.charsheet .ability-limitbreak {
+  min-height: 60px;
+}
+
+.charsheet .sheet-limitbreak-c .sheet-limitbreaktags-collapse {
+  font-style: italic;
+  z-index: 10;
+}
+
+.charsheet .ability-limitbreak .sheet-limitbreakcollapse:checked ~ .editlimitbreakbutton {
+  position: absolute;
+  left: 100px;
+  top: 19px;
+}
+
+.charsheet .ability-limitbreak .sheet-limitbreakcollapse:checked ~ .toggle_limitbreakcollapse {
+  position: absolute;
+  left: 80px;
+  top: 19px;
+}
+
+.charsheet .ability-limitbreak .limitbreak-image {
+  min-width: 50px;
+}
+
+/* End of Limitbreak Collapsing */
+
+.charsheet .ability-limitbreak .editlimitbreakbutton {
+  display: block;
+  position: absolute;
+  left: 800px;
+  top: 5px;
+  color: rgba(255,255,255,0.5);
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .ability-limitbreak .editlimitbreakbutton:hover {
+  color: rgba(255,255,255,1);
+}
+
+.charsheet .sheet-abilities .toggle_repeating_npcaction_edit:hover {
+  color: rgba(255,255,255,1);
+}
+
 
 .charsheet .sheet-abilities .repcontainer[data-groupname="repeating_primaryability"]> .repitem:hover> .toggle_repeating_npcaction_edit {
   display: block;
@@ -677,9 +1369,58 @@ button[type=roll].sheet-diceroll::before {
 .charsheet .sheet-abilities .repcontainer[data-groupname="repeating_instantability"]> .repitem:hover> .toggle_repeating_npcaction_edit {
   display: block;
 }
+.itemcontrol {
+  z-index: 99;
+}
 
-.charsheet .sheet-abilities .toggle_repeating_npcaction_edit:hover {
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_primaryability"]> .repitem {
+  padding-left: 5px;
+  padding-bottom: 15px;
+}
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_secondaryability"]> .repitem {
+  padding-left: 5px;
+  padding-bottom: 15px;
+}
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_instantability"]> .repitem {
+  padding-left: 5px;
+  padding-bottom: 15px;
+}
+
+.charsheet .sheet-abilities .toggle_collapse {
+  display: none;
+  position: absolute;
+  left: 240px;
+  top: 15px;
+  color: rgba(255,255,255,0.5);
+  border: none;
+  background-color: transparent;
+}
+
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_primaryability"]> .repitem:hover> .toggle_collapse {
+  display: block;
+}
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_secondaryability"]> .repitem:hover> .toggle_collapse {
+  display: block;
+}
+.charsheet .sheet-abilities .repcontainer[data-groupname="repeating_instantability"]> .repitem:hover> .toggle_collapse {
+  display: block;
+}
+
+.charsheet .sheet-abilities .toggle_collapse:hover {
   color: rgba(255,255,255,1);
+}
+
+.charsheet .sheet-abilities .input-shorter {
+  position: relative;
+  bottom: 2px;
+  appearance: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: right;
+  width: 45px;
 }
 
 
@@ -781,7 +1522,25 @@ button[type=roll].sheet-diceroll::before {
   padding: 0px;
 }
 
-.sheet-rolltemplate-ffxivmain .sheet-template-masterheader-attribute {
+.charsheet .header-tank {
+  background: rgb(246,162,187);
+  background: linear-gradient(180deg, rgba(246,162,187,1) 0%, rgba(216,87,126,1) 10%, rgba(216,87,126,1) 100%);
+  padding: 0px;
+}
+
+.charsheet .header-healer {
+  background: rgb(75,166,159);
+  background: linear-gradient(0deg, rgba(75,166,159,1) 10%, rgba(75,166,159,1) 95%, rgba(93,207,198,1) 100%);
+  padding: 0px;
+}
+
+.charsheet .header-dps {
+  background: rgb(98,131,176);
+  background: linear-gradient(0deg, rgba(98,131,176,1) 10%, rgba(98,131,176,1) 95%, rgba(125,168,227,1) 100%);
+  padding: 0px;
+}
+
+.charsheet .header-other {
   background: rgb(0,121,244);
   background: linear-gradient(0deg, rgba(0,121,244,1) 10%, rgba(0,121,244,1) 95%, rgba(84,169,255,1) 100%);
   padding: 0px;
