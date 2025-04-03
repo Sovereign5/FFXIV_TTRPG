@@ -861,13 +861,13 @@
   display: none;
   color: rgba(255,255,255,0.5);
   position: absolute;
-  left: 350px;
+  left: 380px;
   border: none;
   background-color: transparent;
 }
 
 .charsheet .body .body-inventory .editcollapsebutton {
-  left: 325px;
+  left: 360px;
 }
 
 .charsheet .body .body-inventory .itemdiv:hover > .edititembutton {
