@@ -1522,7 +1522,25 @@ button[type=roll].sheet-diceroll-collapsed::before {
   padding: 0px;
 }
 
-.sheet-rolltemplate-ffxivmain .sheet-template-masterheader-attribute {
+.charsheet .header-tank {
+  background: rgb(246,162,187);
+  background: linear-gradient(180deg, rgba(246,162,187,1) 0%, rgba(216,87,126,1) 10%, rgba(216,87,126,1) 100%);
+  padding: 0px;
+}
+
+.charsheet .header-healer {
+  background: rgb(75,166,159);
+  background: linear-gradient(0deg, rgba(75,166,159,1) 10%, rgba(75,166,159,1) 95%, rgba(93,207,198,1) 100%);
+  padding: 0px;
+}
+
+.charsheet .header-dps {
+  background: rgb(98,131,176);
+  background: linear-gradient(0deg, rgba(98,131,176,1) 10%, rgba(98,131,176,1) 95%, rgba(125,168,227,1) 100%);
+  padding: 0px;
+}
+
+.charsheet .header-other {
   background: rgb(0,121,244);
   background: linear-gradient(0deg, rgba(0,121,244,1) 10%, rgba(0,121,244,1) 95%, rgba(84,169,255,1) 100%);
   padding: 0px;
